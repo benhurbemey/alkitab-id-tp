@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alkitab ID & TP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header h1 { font-size: 24px; margin-bottom: 5px; }
+    .header p { font-size: 14px; opacity: 0.9; }
+    
+    .controls {
+      background: white;
+      padding: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .controls select, .controls button {
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      background: white;
+    }
+    .controls button {
+      background: #667eea;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .controls button.active {
+      background: #764ba2;
+    }
+    
+    .book-list {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    .book-item {
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .book-item:hover { background: #f0f0f0; }
+    .book-name { font-weight: bold; }
+    .book-testament {
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: #667eea;
+      color: white;
+    }
+    
+    .chapter-view, .verse-view {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+    .back-btn {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 10px;
+    }
+    .chapter-btn {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .chapter-btn:hover { background: #667eea; color: white; }
+    
+    .verse-item {
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .verse-number {
+      font-weight: bold;
+      color: #667eea;
+      margin-bottom: 8px;
+    }
+    .verse-text {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .verse-text.id { color: #333; }
+    .verse-text.tp { color: #555; font-style: italic; }
+    .lang-label {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 5px;
+      font-weight: bold;
+    }
+    .lang-label.id { background: #e3f2fd; color: #1976d2; }
+    .lang-label.tp { background: #f3e5f5; color: #7b1fa2; }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+    
+    @media (max-width: 600px) {
+      .header h1 { font-size: 20px; }
+      .controls { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📖 Alkitab ID & TP</h1>
+    <p>Indonesia & Tok Pisin</p>
+  </div>
+  
+  <div class="controls">
+    <select id="testamentFilter">
+      <option value="all">Semua Perjanjian</option>
+      <option value="PL">Perjanjian Lama</option>
+      <option value="PB">Perjanjian Baru</option>
+    </select>
+    <button id="btnBoth" class="active">ID + TP</button>
+    <button id="btnID">Indonesia</button>
+    <button id="btnTP">Tok Pisin</button>
+  </div>
+  
+  <div id="content">
+    <div class="loading">Memuat database...</div>
+  </div>
+
+<script>
+let bibleData = [];
+let currentView = 'books';
+let currentBook = null;
+let currentChapter = null;
+let displayMode = 'both'; // 'both', 'id', 'tp'
+
+// Load database
+async function loadBible() {
+  try {
+    const response = await fetch('alkitab_bilingual.json');
+    bibleData = await response.json();
+    showBooks();
+  } catch (error) {
+    document.getElementById('content').innerHTML = 
+      `<div class="loading">❌ Error: Gagal memuat database.<br>${error.message}</div>`;
+  }
+}
+
+function showBooks() {
+  currentView = 'books';
+  const filter = document.getElementById('testamentFilter').value;
+  const filtered = filter === 'all' ? bibleData : bibleData.filter(b => b.testament === filter);
+  
+  let html = '<div class="book-list">';
+  filtered.forEach(book => {
+    html += `
+      <div class="book-item" onclick="showChapters('${book.id}')">
+        <span class="book-name">${book.name_id} / ${book.name_tp}</span>
+        <span class="book-testament">${book.testament}</span>
+      </div>
+    `;
+  });
+  html += '</div>';
+  document.getElementById('content').innerHTML = html;
+}
+
+function showChapters(bookId) {
+  currentBook = bibleData.find(b => b.id === bookId);
+  currentView = 'chapters';
+  
+  let html = `
+    <div class="chapter-view">
+      <button class="back-btn" onclick="showBooks()">← Kembali</button>
+      <h2>${currentBook.name_id} / ${currentBook.name_tp}</h2>
+      <div class="chapter-grid">
+  `;
+  
+  currentBook.chapters.forEach(chap => {
+    html += `<button class="chapter-btn" onclick="showVerses(${chap.number})">${chap.number}</button>`;
+  });
+  
+  html += '</div></div>';
+  document.getElementById('content').innerHTML = html;
+}
+
+function showVerses(chapterNum) {
+  currentChapter = currentBook.chapters.find(c => c.number === chapterNum);
+  currentView = 'verses';
+  
+  let html = `
+    <div class="verse-view">
+      <button class="back-btn" onclick="showChapters('${currentBook.id}')">← Kembali</button>
+      <h2>${currentBook.name_id} ${chapterNum}</h2>
+  `;
+  
+  currentChapter.verses.forEach(verse => {
+    html += `<div class="verse-item">`;
+    html += `<div class="verse-number">Ayat ${verse.number}</div>`;
+    
+    if (displayMode === 'both' || displayMode === 'id') {
+      html += `<div class="verse-text id"><span class="lang-label id">ID</span>${verse.id || '-'}</div>`;
+    }
+    if (displayMode === 'both' || displayMode === 'tp') {
+      html += `<div class="verse-text tp"><span class="lang-label tp">TP</span>${verse.tp || '-'}</div>`;
+    }
+    
+    html += `</div>`;
+  });
+  
+  html += '</div>';
+  document.getElementById('content').innerHTML = html;
+}
+
+// Event listeners
+document.getElementById('testamentFilter').addEventListener('change', () => {
+  if (currentView === 'books') showBooks();
+});
+
+document.getElementById('btnBoth').addEventListener('click', function() {
+  displayMode = 'both';
+  updateButtons();
+  if (currentView === 'verses') showVerses(currentChapter.number);
+});
+
+document.getElementById('btnID').addEventListener('click', function() {
+  displayMode = 'id';
+  updateButtons();
+  if (currentView === 'verses') showVerses(currentChapter.number);
+});
+
+document.getElementById('btnTP').addEventListener('click', function() {
+  displayMode = 'tp';
+  updateButtons();
+  if (currentView === 'verses') showVerses(currentChapter.number);
+});
+
+function updateButtons() {
+  document.getElementById('btnBoth').classList.toggle('active', displayMode === 'both');
+  document.getElementById('btnID').classList.toggle('active', displayMode === 'id');
+  document.getElementById('btnTP').classList.toggle('active', displayMode === 'tp');
+}
+
+// Init
+loadBible();
+</script>
+</body>
+</html>
