@@ -2291,49 +2291,90 @@ async function playChapterAudio() {
 
 
         function renderVerses(verses) {
-            const container = document.getElementById('verses-container');
+    const container = document.getElementById('verses-container');
+    
+    // ✅ AMBIL DATA PERIKOP DARI FILE TERPISAH (pericopes.json)
+    const bookId = currentBook.id; // Contoh: "MAT"
+    const chapterKey = currentChapter.toString(); // Contoh: "5"
+    
+    // Cek apakah ada data perikop untuk kitab & pasal ini
+    const pericopes = (window.pericopeData[bookId] && window.pericopeData[bookId][chapterKey]) || [];
+
+    if (currentLang === 'both') {
+        // ===== MODE KEDUANYA (ID & TP) =====
+        let html = '';
         
-            if (currentLang === 'both') {
-                // Mode Keduanya: layout blok dengan nomor di kiri
-                container.innerHTML = verses.map(v => {
-                    const ref = `${currentBook.name} ${currentChapter}:${v.number}`;
-                    const isBookmarked = bookmarks.some(b => b.ref === ref);
-                    const hasNote = notes[ref];
+        verses.forEach(v => {
+            // Cek apakah ayat ini adalah awal dari sebuah perikop
+            const pericope = pericopes.find(p => p.start === v.number);
+            
+            if (pericope) {
+                html += `
+                    <div class="pericope-header">
+                        <div class="pericope-title-id">${pericope.title_id || ''}</div>
+                        <div class="pericope-title-tp">${pericope.title_tp || ''}</div>
+                    </div>
+                `;
+            }
+            
+            const ref = `${currentBook.name} ${currentChapter}:${v.number}`;
+            const isBookmarked = bookmarks.some(b => b.ref === ref);
+            const hasNote = notes[ref];
+            
+            html += `
+                <div class="verse ${isBookmarked ? 'bookmarked' : ''} ${hasNote ? 'has-note' : ''}" data-ref="${ref}">
+                    <div class="verse-number">${v.number}</div>
+                    <div class="verse-content">
+                        <div class="verse-text verse-id-text show">${v.id || ''}</div>
+                        <div class="verse-text verse-tp-text show">${v.tp || ''}</div>
+                        ${hasNote ? `<div class="verse-note-indicator">📝 Ada catatan</div>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+
+    } else {
+        // ===== MODE ID ATAU TP SAJA =====
+        const textKey = currentLang === 'tp' ? 'tp' : 'id';
+        const titleKey = currentLang === 'tp' ? 'title_tp' : 'title_id';
+        const modeClass = currentLang === 'tp' ? 'mode-tp' : 'mode-id';
         
-                    return `
-                        <div class="verse ${isBookmarked ? 'bookmarked' : ''} ${hasNote ? 'has-note' : ''}" data-ref="${ref}">
-                            <div class="verse-number">${v.number}</div>
-                            <div class="verse-content">
-                                <div class="verse-text verse-id-text show">${v.id}</div>
-                                <div class="verse-text verse-tp-text show">${v.tp}</div>
-                                ${hasNote ? `<div class="verse-note-indicator">📝 Ada catatan</div>` : ''}
-                            </div>
+        let html = '';
+        let isFirstVerse = true;
+        
+        verses.forEach(v => {
+            const text = v[textKey] || '';
+            if (!text) return;
+            
+            // Cek apakah ayat ini adalah awal dari sebuah perikop
+            const pericope = pericopes.find(p => p.start === v.number);
+            
+            if (pericope) {
+                const titleText = pericope[titleKey] || '';
+                if (titleText) {
+                    html += `
+                        <div class="pericope-header ${modeClass}">
+                            <div class="pericope-title-id">${pericope.title_id || ''}</div>
+                            <div class="pericope-title-tp">${pericope.title_tp || ''}</div>
                         </div>
                     `;
-                }).join('');
-            } else {
-                // Mode ID atau TP saja: layout mengalir seperti Alkitab cetak
-                const textKey = currentLang === 'tp' ? 'tp' : 'id';
-                let versesHTML = '';
-                let isFirst = true;
-        
-                verses.forEach(v => {
-                    const text = v[textKey] || '';
-                    if (!text) return;
-        
-                    if (isFirst) {
-                        const firstChar = text.charAt(0);
-                        const restText = text.slice(1);
-                        versesHTML += `<span class="verse-drop-cap">${firstChar}</span><span class="verse-flow-text">${restText}</span> `;
-                        isFirst = false;
-                    } else {
-                        versesHTML += `<span class="verse-sup-num">${v.number}</span><span class="verse-flow-text">${text}</span> `;
-                    }
-                });
-        
-                container.innerHTML = `<div class="verse-flow-container">${versesHTML}</div>`;
+                }
             }
-          }
+            
+            if (isFirstVerse) {
+                const firstChar = text.charAt(0);
+                const restText = text.slice(1);
+                html += `<span class="verse-drop-cap">${firstChar}</span><span class="verse-flow-text">${restText}</span> `;
+                isFirstVerse = false;
+            } else {
+                html += `<span class="verse-sup-num">${v.number}</span><span class="verse-flow-text">${text}</span> `;
+            }
+        });
+        
+        container.innerHTML = `<div class="verse-flow-container">${html}</div>`;
+    }
+        }
       
 
         // =========== LANGUAGE ============
