@@ -1772,9 +1772,9 @@ function filterBooks() {
 
 async function selectBookFromPicker(bookId, bookName, totalChapters) {
     closeBookPicker();
-    await openBook(bookId, bookName, totalChapters);
+    openBook(bookId, bookName, totalChapters);
     // Langsung buka pasal 1
-    await openChapter(1);
+    console.log('✅ Pilih kitab:', bookName, '- Tampilkan daftar pasal');
 }
 
 // Tutup modal saat klik di luar sheet
