@@ -2230,39 +2230,6 @@ async function playChapterAudio() {
             console.log(`✅ Rendered ${books.length} kitab untuk ${testament}`);
           }
 
-        // ============ OPEN BOOK ============
-        function openBook(bookId, bookName, totalChapters) {
-        // Cari data lengkap kitab untuk dapat name_tp
-            const allBooks = [...booksData.old_testament, ...booksData.new_testament];
-            const bookData = allBooks.find(b => b.id === bookId);
-            const bookNameTp = bookData ? bookData.name_tp : '';
-            
-            currentBook = { 
-                id: bookId, 
-                name: bookName, 
-                name_tp: bookNameTp,  // ✅ PENTING: Simpan nama Tok Pisin
-                chapters: totalChapters 
-            };
-            currentChapter = 1;
-            
-            const backBtn = document.getElementById('back-btn');
-            if (backBtn) backBtn.style.display = 'block';
-            
-            const jumpInput = document.getElementById('jump-input');
-            if (jumpInput) jumpInput.max = totalChapters;
-        
-            const grid = document.getElementById('chapter-grid');
-            if (grid) {
-                grid.innerHTML = '';
-                for (let i = 1; i <= totalChapters; i++) {
-                    grid.innerHTML += `<div class="chapter-item" onclick="openChapter(${i})">${i}</div>`;
-                }
-            }
-            
-            // ✅ Update floating bar dengan nama kitab
-            updateFloatingNav();
-            showView('view-chapters');
-          }
 
         function jumpToChapter() {
             const input = document.getElementById('jump-input');
