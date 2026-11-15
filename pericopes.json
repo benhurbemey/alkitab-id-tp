@@ -1,49 +1,62 @@
 {
-    "GEN": {
-        "1": [
-            {
-                "title_id": "Allah menciptakan langit dan bumi serta isinya",
-                "title_tp": "God i mekim kamap olgeta samting",
-                "panjang_ayat": "1:1-2:7",
-                "start": 1,
-                "end": 31
-            }
-        ],
-        "2" [
-            {
-                "title_id": "Manusia dan taman Eden",
-                "title_tp": "God i wokim gaden bilong Iden",
-                "panjang_ayat": "2:8-25",
-                "start": 8,
-                "end": 25
-            }
-        ],
-        "3": [
-            {
-                "title_id": "Manusia jatuh ke dalam dosa",
-                "title_tp": "Man na meri i sakim tok bilong God",
-                "panjang_ayat": "3:1-24",
-                "start": 1,
-                "end": 24
-            }
-        ],
-        "4": [
-            {
-                "title_id": "Kain dan Habel",
-                "title_tp": "Kein na Abel",
-                "panjang_ayat": "4:1-16",
-                "start": 1,
-                "end": 16
-            }
-        ],
-        "5": [
-            {
-                "title_id": "Keturunan Adam",
-                "title_tp": "Nem bilong ol lain pikinini bilong Adam",
-                "panjang_ayat": "5:1-32",
-                "start": 1,
-                "end": 32
-            }
-        ]
+  "MAT": {
+    "5": {
+      "theme_id": "Khotbah di Bukit",
+      "theme_tp": "Tok bilong Jisas long Maunten",
+      "theme_range": "Pasal 5-7",
+      "pericopes": [
+        {
+          "title_id": "Ucapan bahagia",
+          "title_tp": "Ol Man i Hapisi",
+          "start": 1,
+          "end": 12,
+          "cross_refs": ["Luk. 6:20-23"]
+        },
+        {
+          "title_id": "Garam dan terang dunia",
+          "title_tp": "Solt na Laet bilong Graun",
+          "start": 13,
+          "end": 16,
+          "cross_refs": ["Mrk. 9:50", "Luk. 14:34-35"]
+        },
+        {
+          "title_id": "Yesus menegakkan hukum Taurat",
+          "title_tp": "Jisas i strongim Lo bilong Moses",
+          "start": 17,
+          "end": 20,
+          "cross_refs": ["Mat. 5:5", "Mrk. 7:8"]
+        }
+      ]
+    },
+    "6": {
+      "theme_id": "Khotbah di Bukit",
+      "theme_tp": "Tok bilong Jisas long Maunten",
+      "theme_range": "Pasal 5-7",
+      "pericopes": [
+        {
+          "title_id": "Larangan berbuat baik untuk dipuji",
+          "title_tp": "No mekim gutpela samting bilong ol i lukim yu",
+          "start": 1,
+          "end": 4,
+          "cross_refs": []
+        }
+      ]
     }
+  },
+  "GEN": {
+    "1": {
+      "theme_id": "",
+      "theme_tp": "",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Penciptaan dunia",
+          "title_tp": "God i mekim olgeta samting",
+          "start": 1,
+          "end": 31,
+          "cross_refs": ["Yoh. 1:1-5", "Kol. 1:15-17"]
+        }
+      ]
+    }
+  }
 }
