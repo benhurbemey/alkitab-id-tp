@@ -1662,21 +1662,30 @@
 let currentPickerTab = 'old';
 
 function openBook(bookId, bookName, totalChapters) {
+    // ✅ Cari data kitab dari bibleData (bukan fetch file terpisah)
     const bookData = bibleData.find(b => b.id === bookId);
-    if (!bookData) return;
+    
+    if (!bookData) {
+        console.error('❌ Kitab tidak ditemukan:', bookId);
+        alert('Kitab tidak ditemukan: ' + bookId);
+        return;
+    }
 
+    // Simpan state kitab yang sedang dibuka
     currentBook = {
         id: bookId,
         name: bookName,
         name_tp: bookData.name_tp,
         chapters: totalChapters,
-        data: bookData // Simpan seluruh data kitab
+        data: bookData  // ✅ Simpan seluruh data kitab
     };
     currentChapter = 1;
 
+    // Tampilkan tombol back
     const backBtn = document.getElementById('back-btn');
     if (backBtn) backBtn.style.display = 'block';
 
+    // Generate daftar pasal
     const grid = document.getElementById('chapter-grid');
     if (grid) {
         grid.innerHTML = '';
@@ -1685,8 +1694,11 @@ function openBook(bookId, bookName, totalChapters) {
         }
     }
 
+    // Update floating nav & pindah ke halaman daftar pasal
     updateFloatingNav();
     showView('view-chapters');
+    
+    console.log('✅ Buka kitab:', bookName, '- Total pasal:', totalChapters);
 }
 
 
@@ -2267,7 +2279,12 @@ async function playChapterAudio() {
         function openChapter(num) {
     currentChapter = num;
     
-    // Cari data pasal di dalam kitab yang sedang dibuka
+    if (!currentBook || !currentBook.data) {
+        console.error('❌ currentBook.data tidak ada!');
+        return;
+    }
+
+    // ✅ Cari pasal dari data kitab yang sudah di-load
     const chapterData = currentBook.data.chapters.find(c => c.number === num);
 
     if (!chapterData) {
@@ -2276,14 +2293,17 @@ async function playChapterAudio() {
         return;
     }
 
-    // currentChapterData sekarang adalah array of verses: [{number: 1, id: "...", tp: "..."}]
+    // Simpan data ayat untuk render
     currentChapterData = chapterData.verses;
-    
+
+    // Render ayat & update UI
     renderVerses(currentChapterData);
     updateFloatingNav();
     window.scrollTo(0, 0);
     showView('view-reading');
-      }
+    
+    console.log('✅ Buka pasal:', num, '- Jumlah ayat:', chapterData.verses.length);
+}
 
 
         function renderVerses(verses) {
