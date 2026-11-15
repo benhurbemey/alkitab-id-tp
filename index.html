@@ -1957,47 +1957,63 @@ async function playChapterAudio() {
 
         // ============ INIT ============
         async function init() {
-            try {
-                console.log('🚀 Memulai inisialisasi aplikasi...');
-                
-                // Apply saved settings
-                document.documentElement.style.setProperty('--font-size', fontSize + 'px');
-                const fontLabel = document.getElementById('font-size-label');
-                if (fontLabel) fontLabel.innerText = fontSize;
-                
-                if (isDarkMode) {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    const darkToggle = document.getElementById('dark-toggle');
-                    if (darkToggle) darkToggle.checked = true;
-                }
-                
-                document.documentElement.setAttribute('data-color', colorTheme);
-                const dailyToggle = document.getElementById('daily-verse-toggle');
-                if (dailyToggle) dailyToggle.checked = showDailyVerse;
-                
-                renderColorPicker();
+    try {
+        console.log('🚀 Memulai inisialisasi aplikasi...');
         
-                // ✅ LOAD DATA DARI GITHUB
-                console.log('📚 Memuat database dari GitHub...');
-                const res = await fetch('https://raw.githubusercontent.com/benhurbemey/alkitab-id-tp/main/alkitab_bilingual.json');
-                if (!res.ok) throw new Error('Gagal memuat database');
-                
-                bibleData = await res.json();
-                console.log('✅ Database berhasil dimuat:', bibleData.length, 'kitab');
-                
-                // Render daftar kitab (mapping 'old' ke 'PL', 'new' ke 'PB')
-                renderBooks('old');
-                
-                renderBeranda();
-                setupContextMenu();
-                
-                console.log('✅ Aplikasi siap digunakan!');
-                
-            } catch (e) {
-                console.error('❌ Error saat init:', e);
-                alert('Gagal memuat data Alkitab. Periksa koneksi internet Anda.');
+        // 1. Apply saved settings (TIDAK DIUBAH)
+        document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+        const fontLabel = document.getElementById('font-size-label');
+        if (fontLabel) fontLabel.innerText = fontSize;
+        
+        if (isDarkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const darkToggle = document.getElementById('dark-toggle');
+            if (darkToggle) darkToggle.checked = true;
+        }
+        
+        document.documentElement.setAttribute('data-color', colorTheme);
+        const dailyToggle = document.getElementById('daily-verse-toggle');
+        if (dailyToggle) dailyToggle.checked = showDailyVerse;
+        
+        renderColorPicker();
+
+        // 2. Load Database Alkitab Utama (DARI GITHUB)
+        console.log('📚 Memuat Alkitab...');
+        const resBible = await fetch('https://raw.githubusercontent.com/benhurbemey/alkitab-id-tp/main/alkitab_bilingual.json');
+        if (!resBible.ok) throw new Error('Gagal memuat database Alkitab');
+        bibleData = await resBible.json();
+        console.log('✅ Alkitab dimuat:', bibleData.length, 'kitab');
+
+        // 3. Load Database Perikop (FILE TERPISAH)
+        console.log('📑 Memuat Data Perikop...');
+        let pericopeData = {}; 
+        try {
+            const resPericope = await fetch('https://raw.githubusercontent.com/benhurbemey/alkitab-id-tp/main/pericopes.json');
+            if (resPericope.ok) {
+                pericopeData = await resPericope.json();
+                console.log('✅ Data Perikop dimuat.');
+            } else {
+                console.warn('⚠️ pericopes.json tidak ditemukan, aplikasi lanjut tanpa perikop.');
             }
-          }
+        } catch (e) {
+            console.warn('⚠️ Gagal memuat pericopes.json, aplikasi lanjut tanpa perikop.');
+        }
+        
+        // Simpan ke global agar bisa dibaca oleh renderVerses()
+        window.pericopeData = pericopeData;
+
+        // 4. Render Tampilan Awal (TIDAK DIUBAH)
+        renderBooks('old');
+        renderBeranda();
+        setupContextMenu();
+        
+        console.log('✅ Aplikasi siap digunakan!');
+        
+    } catch (e) {
+        console.error('❌ Error saat init:', e);
+        alert('Gagal memuat data Alkitab. Periksa koneksi internet Anda.');
+    }
+        }
 
         // ============ CONTEXT MENU ============
         function setupContextMenu() {
