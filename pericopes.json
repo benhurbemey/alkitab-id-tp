@@ -1,4 +1,95 @@
 {
+
+  "GEN": {
+    "1": {
+      "theme_id": "Keadian 1",
+      "theme_tp": "Stat 1",
+      "theme_range": "1:1-2:7",
+      "pericopes": [
+        {
+          "title_id": "Allah menciptakan langit dan bumi serta isinya",
+          "title_tp": "God i mekim olgeta samting",
+          "start": 1,
+          "end": 31,
+          "cross_refs": []
+        }
+      ]
+    },
+    "2": {
+      "theme_id": "",
+      "theme_tp": "",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Manusia dan taman Eden",
+          "title_tp": "God i wokim gaden bilong Iden",
+          "start": 8,
+          "end": 25,
+          "cross_refs": ["Yoh. 1:1-5", "Kol. 1:15-17"]
+        }
+      ]
+    },
+    "3": {
+      "theme_id": "",
+      "theme_tp": "",
+      "theme_range": "3:1-24",
+      "pericopes": [
+        {
+          "title_id": "Manusia jatuh ke dalam dosa",
+          "title_tp": "Man na meri i sakim tok bilong God",
+          "start": 1,
+          "end": 24,
+          "cross_refs": []
+        }
+      ]
+    },
+    "4": {
+      "theme_id": "",
+      "theme_tp": "",
+      "theme_range": "4:7-25",
+      "pericopes": [
+        {
+          "title_id": "Kain dan Habel",
+          "title_tp": "Kein na Abel i mekim ofa long Bikpela",
+          "start": 1,
+          "end": 16,
+          "cross_refs": []
+        }
+      ]
+    }
+  },
+  "5": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "4:7-25",
+    "pericopes": [
+      {
+        "title_id": "Keturunan Kain, Set dan Enos",
+        "title_tp": "Kein na Abel i mekim ofa long Bikpela",
+        "start": 1,
+        "end": 16,
+        "cross_refs": []
+      }
+    ]
+  },
+  "6": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "4:17-25",
+    "pericopes": [
+      {
+        "title_id": "Kain dan Habel",
+        "title_tp": "Kein na Abel i mekim ofa long Bikpela",
+        "start": 1,
+        "end": 15,
+        "cross_refs": []
+      }
+    ]
+  },
+
+
+
+
   "MAT": {
     "5": {
       "theme_id": "Khotbah di Bukit",
@@ -42,21 +133,6 @@
         }
       ]
     }
-  },
-  "GEN": {
-    "1": {
-      "theme_id": "",
-      "theme_tp": "",
-      "theme_range": "",
-      "pericopes": [
-        {
-          "title_id": "Penciptaan dunia",
-          "title_tp": "God i mekim olgeta samting",
-          "start": 1,
-          "end": 31,
-          "cross_refs": ["Yoh. 1:1-5", "Kol. 1:15-17"]
-        }
-      ]
-    }
   }
+  
 }
