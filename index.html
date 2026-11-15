@@ -718,23 +718,96 @@
         /* ============ VERSES ============ */
 /* ============ VERSES ============ */
 
-/* ============ PERIKOP / HEADING ============ */
-
-      /*
-      .verse-heading {
-    font-weight: 800;
-    font-size: 1.15em;
-    color: var(--accent);
+/* ============ THEME (Judul Besar Lintas Pasal) ============ */
+.pericope-theme {
     text-align: center;
-    margin: 25px 0 12px 0;
-    padding: 10px 15px;
-    background: var(--bg-tertiary);
-    border-radius: 8px;
-    border-left: 4px solid var(--accent);
-    box-shadow: 0 2px 4px var(--shadow);
+    margin: 20px 0 16px 0;
+    padding: 16px 12px;
+    background: var(--bg-secondary);
+    border-top: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.pericope-theme-title {
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.pericope-theme-range {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 4px;
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-      */
+
+/* ============ PERIKOP HEADER ============ */
+.pericope-header {
+    margin: 22px 0 12px 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: left;
+    animation: fadeIn 0.4s ease-out;
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+}
+
+.pericope-title-id {
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.pericope-title-tp {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+.pericope-range {
+    font-size: 14px;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 6px;
+}
+
+.pericope-crossrefs {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Mode ID saja */
+.pericope-header.mode-id .pericope-title-tp {
+    display: none;
+}
+
+/* Mode TP saja */
+.pericope-header.mode-tp .pericope-title-id {
+    display: none;
+}
+
+.pericope-theme.mode-id .pericope-theme-title-tp {
+    display: none;
+}
+
+.pericope-theme.mode-tp .pericope-theme-title-id {
+    display: none;
+    }
       
 .verse {
     background: var(--verse-bg);
@@ -2290,31 +2363,65 @@ async function playChapterAudio() {
 }
 
 
-        function renderVerses(verses) {
+function renderVerses(verses) {
     const container = document.getElementById('verses-container');
     
-    // ✅ AMBIL DATA PERIKOP DARI FILE TERPISAH (pericopes.json)
-    const bookId = currentBook.id; // Contoh: "MAT"
-    const chapterKey = currentChapter.toString(); // Contoh: "5"
+    // ✅ Ambil data dari pericopes.json (struktur baru)
+    const bookId = currentBook.id;
+    const chapterKey = currentChapter.toString();
+    const chapterPericopes = (window.pericopeData[bookId] && window.pericopeData[bookId][chapterKey]) || null;
     
-    // Cek apakah ada data perikop untuk kitab & pasal ini
-    const pericopes = (window.pericopeData[bookId] && window.pericopeData[bookId][chapterKey]) || [];
+    const theme = chapterPericopes ? chapterPericopes : null;
+    const pericopes = chapterPericopes && chapterPericopes.pericopes ? chapterPericopes.pericopes : [];
+
+    // Tentukan mode bahasa untuk class CSS
+    const modeClass = currentLang === 'tp' ? 'mode-tp' : (currentLang === 'id' ? 'mode-id' : '');
+    
+    // Helper: buat HTML theme (judul besar lintas pasal)
+    function buildThemeHTML() {
+        if (!theme || !theme.theme_id) return '';
+        return `
+            <div class="pericope-theme ${modeClass}">
+                <div class="pericope-theme-title pericope-theme-title-id">${theme.theme_id || ''}</div>
+                <div class="pericope-theme-title pericope-theme-title-tp">${theme.theme_tp || ''}</div>
+                ${theme.theme_range ? `<div class="pericope-theme-range">${theme.theme_range}</div>` : ''}
+            </div>
+        `;
+    }
+    
+    // Helper: buat HTML perikop
+    function buildPericopeHTML(p) {
+        const rangeText = `${currentChapter}:${p.start}-${p.end}`;
+        const crossRefsText = (p.cross_refs && p.cross_refs.length > 0) 
+            ? `(${p.cross_refs.join(', ')})` 
+            : '';
+        
+        return `
+            <div class="pericope-header ${modeClass}">
+                <div class="pericope-title-id">${p.title_id || ''}</div>
+                <div class="pericope-title-tp">${p.title_tp || ''}</div>
+                <div class="pericope-range">${rangeText}</div>
+                ${crossRefsText ? `<div class="pericope-crossrefs">${crossRefsText}</div>` : ''}
+            </div>
+        `;
+    }
 
     if (currentLang === 'both') {
-        // ===== MODE KEDUANYA (ID & TP) =====
+        // ===== MODE KEDUANYA =====
         let html = '';
+        let themeShown = false;
         
         verses.forEach(v => {
-            // Cek apakah ayat ini adalah awal dari sebuah perikop
-            const pericope = pericopes.find(p => p.start === v.number);
+            // Tampilkan theme SEKALI di awal pasal
+            if (!themeShown && theme && theme.theme_id) {
+                html += buildThemeHTML();
+                themeShown = true;
+            }
             
+            // Tampilkan perikop jika ayat ini adalah awal perikop
+            const pericope = pericopes.find(p => p.start === v.number);
             if (pericope) {
-                html += `
-                    <div class="pericope-header">
-                        <div class="pericope-title-id">${pericope.title_id || ''}</div>
-                        <div class="pericope-title-tp">${pericope.title_tp || ''}</div>
-                    </div>
-                `;
+                html += buildPericopeHTML(pericope);
             }
             
             const ref = `${currentBook.name} ${currentChapter}:${v.number}`;
@@ -2337,29 +2444,25 @@ async function playChapterAudio() {
     } else {
         // ===== MODE ID ATAU TP SAJA =====
         const textKey = currentLang === 'tp' ? 'tp' : 'id';
-        const titleKey = currentLang === 'tp' ? 'title_tp' : 'title_id';
-        const modeClass = currentLang === 'tp' ? 'mode-tp' : 'mode-id';
         
         let html = '';
         let isFirstVerse = true;
+        let themeShown = false;
         
         verses.forEach(v => {
             const text = v[textKey] || '';
             if (!text) return;
             
-            // Cek apakah ayat ini adalah awal dari sebuah perikop
-            const pericope = pericopes.find(p => p.start === v.number);
+            // Tampilkan theme SEKALI di awal
+            if (!themeShown && theme && (currentLang === 'id' ? theme.theme_id : theme.theme_tp)) {
+                html += buildThemeHTML();
+                themeShown = true;
+            }
             
+            // Tampilkan perikop
+            const pericope = pericopes.find(p => p.start === v.number);
             if (pericope) {
-                const titleText = pericope[titleKey] || '';
-                if (titleText) {
-                    html += `
-                        <div class="pericope-header ${modeClass}">
-                            <div class="pericope-title-id">${pericope.title_id || ''}</div>
-                            <div class="pericope-title-tp">${pericope.title_tp || ''}</div>
-                        </div>
-                    `;
-                }
+                html += buildPericopeHTML(pericope);
             }
             
             if (isFirstVerse) {
