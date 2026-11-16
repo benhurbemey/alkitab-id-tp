@@ -4,9 +4,9 @@
     "1": {
       "theme_id": "Keadian 1",
       "theme_tp": "Stat 1",
+      "theme_range": "1:1-2:7",
       "pericopes": [
         {
-          "theme_range": "1:1-2:7",
           "title_id": "Allah menciptakan langit dan bumi serta isinya",
           "title_tp": "God i mekim olgeta samting",
           "start": 1,
@@ -18,9 +18,9 @@
      "2":{
       "theme_id": "Kejadian 2",
       "theme_tp": "Stat 2",
+      "theme_range": "2:1-7",
       "pericopes": [
         {
-          "theme_range": "",
           "title_id": "Manusia dan taman Eden",
           "title_tp": "God i wokim gaden bilong Iden",
           "start": 8,
@@ -32,12 +32,29 @@
     "3": {
       "theme_id": "Kejadian 3",
       "theme_tp": "Stat 3",
+      "theme_range": "",
       "pericopes": [
         {
-          "theme_range": "3:1-24",
           "title_id": "Manusia jatuh ke dalam dosa",
+          "start": 1,
+          "end": 24,
+          "cross_refs": []
+        },
+        {
           "title_tp": "Man na meri i sakim tok bilong God",
           "start": 1,
+          "end": 13,
+          "cross_refs": []
+        },
+        {
+          "title_tp": "God i mekim strongpela tok long man na meri na snek",
+          "start": 14,
+          "end": 21,
+          "cross_refs": []
+        },
+        {
+          "title_tp": "God i rausim Adam na Iv long gaden Iden",
+          "start": 22,
           "end": 24,
           "cross_refs": []
         }
@@ -46,9 +63,9 @@
     "4": {
       "theme_id": "Kejadian 4",
       "theme_tp": "Stat 4",
+      "theme_range": "",
       "pericopes": [
         {
-          "theme_range": "4:1-16",
           "title_id": "Kain dan Habel",
           "title_tp": "Kein na Abel i mekim ofa long Bikpela",
           "start": 1,
@@ -56,27 +73,31 @@
           "cross_refs": []
         },
         {
-          "theme_range": "4:17-26",
           "title_id": "Keturunan Kain, Set dan Enos",
-          "title_tp": "Nem bilong ol lain pikinini bilong Kein",
           "start": 17,
           "end": 26,
           "cross_refs": []
+          
         },
-      {
-        "theme_range": "25-26",
-        "title_id": "",
-        "title_tp": "Iv i karim narapela pikinini",
-        "start": 25,
-        "end": 26,
-        "cross_refs": []
-      }
+        {
+          "title_tp": "Nem bilong ol lain pikinini bilong Kein",
+          "start": 17,
+          "end": 24,
+          "cross_refs": []
+        },
+        {
+          "title_tp": "Iv i karim narapela pikinini",
+          "start": 24,
+          "end": 26,
+          "cross_refs": []
+          
+        }
     ]
   },
   "5": {
     "theme_id": "Kejadian 5",
     "theme_tp": "Stat 5",
-    "theme_range": "5:1-32",
+    "theme_range": "",
     "pericopes": [
       {
         "title_id": "Keturunan Adam",
@@ -88,28 +109,29 @@
     ]
   },
   "6": {
-      "theme_id": "Kejadian 6",
-      "theme_tp": "Stat 6",
-      "theme_range": "6:1-8",
+      "theme_id": "Kejadian",
+      "theme_tp": "Stat",
+      "theme_range": "",
       "pericopes": [
         {
           "title_id": "Kejahatan manusia",
-          "title_tp": "Pasin nogut bilong ol manmeri",
           "start": 1,
           "end": 8,
           "cross_refs": []
         },
         {
-          "theme_range": "6:9-22",
           "title_id": "Riwayat Nuh",
-          "title_tp": "",
           "start": 9,
           "end": 22,
           "cross_refs": []
         },
         {
-          "theme_range": "6:13-22",
-          "title_id": "",
+          "title_tp": "Pasin nogut bilong ol manmeri",
+          "start": 1,
+          "end": 12,
+          "cross_refs": []
+        },
+        {
           "title_tp": "Noa i wokim sip",
           "start": 13,
           "end": 22,
@@ -120,7 +142,7 @@
     "7": {
       "theme_id": "Kejadian 7",
       "theme_tp": "Stat 7",
-      "theme_range": "7:1-24",
+      "theme_range": "",
       "pericopes": [
         {
           "title_id": "Air bah",
@@ -144,8 +166,12 @@
           "cross_refs": []
         },
         {
-          "theme_range": "8:20-22",
-          "title_id": "",
+          "title_tp": "Tait i pinis",
+          "start": 1,
+          "end": 19,
+          "cross_refs": []
+        },
+        {
           "title_tp": "Noa i mekim ofa long Bikpela",
           "start": 20,
           "end": 22,
@@ -156,7 +182,7 @@
     "9": {
       "theme_id": "Kejadian 9",
       "theme_tp": "Stat 9",
-      "theme_range": "9:1-17",
+      "theme_range": "",
       "pericopes": [
         {
           "title_id": "Perjanjian Allah dengan Nuh",
@@ -166,7 +192,6 @@
           "cross_refs": []
         },
         {
-          "theme_range": "9:18-29",
           "title_id": "Nuh dan anak-anaknya",
           "title_tp": "Noa i kros long Ham, pikinini bilong en",
           "start": 18,
@@ -178,7 +203,7 @@
     "10": {
       "theme_id": "Kejadian 10",
       "theme_tp": "Stat 10",
-      "theme_range": "10:1-32",
+      "theme_range": "",
       "pericopes": [
         {
           "title_id": "Daftar bangsa-bangsa keturunan Sem, Ham dan Yafet",
@@ -269,4 +294,4 @@
     }
   }
   
-}
+    }
