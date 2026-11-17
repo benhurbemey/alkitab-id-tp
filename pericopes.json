@@ -36,25 +36,8 @@
       "pericopes": [
         {
           "title_id": "Manusia jatuh ke dalam dosa",
-          "start": 1,
-          "end": 24,
-          "cross_refs": []
-        },
-        {
           "title_tp": "Man na meri i sakim tok bilong God",
           "start": 1,
-          "end": 13,
-          "cross_refs": []
-        },
-        {
-          "title_tp": "God i mekim strongpela tok long man na meri na snek",
-          "start": 14,
-          "end": 21,
-          "cross_refs": []
-        },
-        {
-          "title_tp": "God i rausim Adam na Iv long gaden Iden",
-          "start": 22,
           "end": 24,
           "cross_refs": []
         }
@@ -74,20 +57,8 @@
         },
         {
           "title_id": "Keturunan Kain, Set dan Enos",
-          "start": 17,
-          "end": 26,
-          "cross_refs": []
-          
-        },
-        {
           "title_tp": "Nem bilong ol lain pikinini bilong Kein",
           "start": 17,
-          "end": 24,
-          "cross_refs": []
-        },
-        {
-          "title_tp": "Iv i karim narapela pikinini",
-          "start": 24,
           "end": 26,
           "cross_refs": []
           
@@ -115,25 +86,15 @@
       "pericopes": [
         {
           "title_id": "Kejahatan manusia",
+          "title_tp": "Pasin nogut bilong ol manmeri",
           "start": 1,
           "end": 8,
           "cross_refs": []
         },
         {
           "title_id": "Riwayat Nuh",
+          "title_tp": "Stori bilong noa",
           "start": 9,
-          "end": 22,
-          "cross_refs": []
-        },
-        {
-          "title_tp": "Pasin nogut bilong ol manmeri",
-          "start": 1,
-          "end": 12,
-          "cross_refs": []
-        },
-        {
-          "title_tp": "Noa i wokim sip",
-          "start": 13,
           "end": 22,
           "cross_refs": []
         }
@@ -164,18 +125,6 @@
           "start": 1,
           "end": 22,
           "cross_refs": []
-        },
-        {
-          "title_tp": "Tait i pinis",
-          "start": 1,
-          "end": 19,
-          "cross_refs": []
-        },
-        {
-          "title_tp": "Noa i mekim ofa long Bikpela",
-          "start": 20,
-          "end": 22,
-          "cross_refs": []
         }
       ]
     },
@@ -193,7 +142,7 @@
         },
         {
           "title_id": "Nuh dan anak-anaknya",
-          "title_tp": "Noa i kros long Ham, pikinini bilong en",
+          "title_tp": "Noa na ol pikinini bilong en",
           "start": 18,
           "end": 29,
           "cross_refs": []
@@ -214,34 +163,83 @@
         }
       ]
     },
-     "17": {
-      "theme_id": "",
-      "theme_tp": "",
+     "11": {
+      "theme_id": "Kejadian 11",
+      "theme_tp": "Stat 11",
       "theme_range": "",
       "pericopes": [
         {
-          "title_id": "",
-          "title_tp": "",
+          "title_id": "Menara Babel",
+          "title_tp": "Bikpela i paulim tok ples bilong ol manmeri",
           "start": 1,
-          "end": 8,
+          "end": 9,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Keturunan Sem",
+          "title_tp": "Nem bilong ol lain bilong Siem",
+          "start": 10,
+          "end": 26,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Daftar keturunan Terah",
+          "title_tp": "lista bilong ol tumbuna pikinini bilong Tera",
+          "start": 27,
+          "end": 32,
           "cross_refs": []
         }
       ]
     },
-    "#": {
-      "theme_id": "",
-      "theme_tp": "",
+    "12": {
+      "theme_id": "Kejadian 12",
+      "theme_tp": "Stat 12",
       "theme_range": "",
       "pericopes": [
         {
-          "title_id": "",
-          "title_tp": "",
+          "title_id": "Abram dipanggil Allah",
+          "title_tp": "God i singautim Abram",
           "start": 1,
-          "end": 8,
+          "end": 9,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Abram di Mesir",
+          "title_tp": "Abram i go i stap long Isip",
+          "start": 10,
+          "end": 20,
           "cross_refs": []
         }
       ]
     }
+  },
+  "13": {
+    "theme_id": "Kejadian 13",
+    "theme_tp": "Stat 13",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Abram dan Lot berpisah",
+        "title_tp": "Lot i lusim Abram",
+        "start": 1,
+        "end": 18,
+        "cross_refs": []
+      }      
+    ]
+  },
+  "#": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 8,
+        "cross_refs": []
+      }
+    ]
   },
 
 
@@ -294,4 +292,4 @@
     }
   }
   
-    }
+        }
