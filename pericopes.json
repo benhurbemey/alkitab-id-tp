@@ -80,8 +80,8 @@
     ]
   },
   "6": {
-      "theme_id": "Kejadian",
-      "theme_tp": "Stat",
+      "theme_id": "Kejadian 6",
+      "theme_tp": "Stat 6",
       "theme_range": "",
       "pericopes": [
         {
@@ -227,7 +227,287 @@
       }      
     ]
   },
-  "#": {
+  "14": {
+    "theme_id": "kejadian 14",
+    "theme_tp": "Stat 14",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Abram mengalahkan raja-raja di Timur dan menolong Lot",
+        "title_tp": "Bikpela pait i kamap namel long ol king",
+        "start": 1,
+        "end": 16,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Pertemuan Abram dengan Melkisedek",
+        "title_tp": "Melkisedek i givim blesing long Abram",
+        "start": 17,
+        "end": 24,
+        "cross_refs": []
+      }
+    ]
+  },
+  "15": {
+    "theme_id": "Kejadian 15",
+    "theme_tp": "Stat 15",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Perjanjian Allah dengan Abram; janji tentang keturunannya",
+        "title_tp": "God i mekim kontrak wantaim Abram",
+        "start": 1,
+        "end": 21,
+        "cross_refs": []
+      }
+    ]
+  },
+  "16": {
+    "theme_id": "Kejadian 16",
+    "theme_tp": "Stat 16",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Hagar dan Ismael",
+        "title_tp": "Hagar i kamap meri bilong Abram",
+        "start": 1,
+        "end": 16,
+        "cross_refs": []
+      }
+    ]
+  },
+  "17": {
+    "theme_id": "Kejadian 17",
+    "theme_tp": "Stat 17",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Sunat sebagai tanda perjanjian Allah dengan Abraham",
+        "title_tp": "Abram i kisim nupela nem",
+        "start": 1,
+        "end": 27,
+        "cross_refs": []
+      }
+    ]
+  },
+  "18": {
+    "theme_id": "Kejadian 18",
+    "theme_tp": "Stat 18",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Allah mengulangi menjanjikan seorang anak laki-laki kepada Abraham",
+        "title_tp": "Bikpela i tok, bai Sara i karim pikinini man",
+        "start": 1,
+        "end": 15,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Doa syafaat Abraham untuk Sodom",
+        "title_tp": "Bikpela i laik bagarapim taun Sodom",
+        "start": 16,
+        "end": 33,
+        "cross_refs": []
+      }
+    ]
+  },
+  "19": {
+    "theme_id": "Kejadian 19",
+    "theme_tp": "Stat 19",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Sodom dan Gomora dimusnahkan, Lot diselamatkan",
+        "title_tp": "Ol Sodom i mekim pasin nogut",
+        "start": 1,
+        "end": 29,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Lot dan kedua anaknya perempuan",
+        "title_tp": "Lot i lusim Sodom",
+        "start": 30,
+        "end": 38,
+        "cross_refs": []
+      }
+    ]
+  },
+  "20": {
+    "theme_id": "Kejadian 20",
+    "theme_tp": "Stat 20",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Abraham dan Abimelekh",
+        "title_tp": "Abraham na Abimelek",
+        "start": 1,
+        "end": 18,
+        "cross_refs": []
+      }
+    ]
+  },
+  "21": {
+    "theme_id": "Kejadian 21",
+    "theme_tp": "Stat 21",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Ishak lahir",
+        "title_tp": "Sara i karim Aisak",
+        "start": 1,
+        "end": 7,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Abraham mengusir Hagar dan Ismael",
+        "title_tp": "Abraham i rausim Hagar wantaim Ismael",
+        "start": 8,
+        "end": 21,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Perjanjian Abraham dengan Abimelekh",
+        "title_tp": "Abraham i mekim kontrak wantaim Abimelek",
+        "start": 22,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "22": {
+    "theme_id": "Kejadian 22",
+    "theme_tp": "Stat 22",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Kepercayaan Abraham diuji",
+        "title_tp": "God i tokim Abraham long ofaim Aisak",
+        "start": 1,
+        "end": 19,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Keturunan Nahor",
+        "title_tp": "Nem bilong ol lain bilong Nahor",
+        "start": 20,
+        "end": 24,
+        "cross_refs": []
+      }
+    ]
+  },
+  "23": {
+    "theme_id": "Kejadian 23",
+    "theme_tp": "Stat 23",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Sara mati dan dikuburkan",
+        "title_tp": "Sara i dai na Abraham i baim graun bilong matmat",
+        "start": 1,
+        "end": 20,
+        "cross_refs": []
+      }
+    ]
+  },
+  "24": {
+    "theme_id": "Kejadian 24",
+    "theme_tp": "Stat 24",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Ribka dipinang bagi Ishak",
+        "title_tp": "Abraham i painim meri bilong Aisak",
+        "start": 1,
+        "end": 67,
+        "cross_refs": []
+      }
+    ]
+  },
+  "25": {
+    "theme_id": "Kejadian 25",
+    "theme_tp": "Stat 25",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Keturunan Abraham dari Ketura",
+        "title_tp": "Ol arapela tumbuna pikinini bilong Abraham",
+        "start": 1,
+        "end": 6,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Abraham meninggal dan dikuburkan",
+        "title_tp": "Abraham i dai na ol i planim em",
+        "start": 7,
+        "end": 11,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Keturunan Ismael",
+        "title_tp": "Ol tumbuna pikinini bilong Ismael",
+        "start": 12,
+        "end": 18,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Esau dan Yakub",
+        "title_tp": "Rebeka i karim Iso na Jekop",
+        "start": 19,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "26": {
+    "theme_id": "Kejadian 26",
+    "theme_tp": "Stat 26",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Ishak di negeri orang Filistin",
+        "title_tp": "Aisak i stap long taun Gerar na Berseba",
+        "start": 1,
+        "end": 35,
+        "cross_refs": []
+      }
+    ]
+  },
+  "27": {
+    "theme_id": "Kejadian 27",
+    "theme_tp": "Stat 27",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub diberkati Ishak sebagai anak sulung",
+        "title_tp": "Jekop i giamanim papa na i kisim blesing bilong Iso",
+        "start": 1,
+        "end": 40,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yakub lari ke Mesopotamia",
+        "title_tp": "Aisak i salim Jekop i go long Laban",
+        "start": 41,
+        "end": "28:9",
+        "cross_refs": []
+      }
+    ]
+  },
+  "28": {
+    "theme_id": "Kejadian 28",
+    "theme_tp": "Stat 28",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "29": {
     "theme_id": "",
     "theme_tp": "",
     "theme_range": "",
@@ -236,60 +516,306 @@
         "title_id": "",
         "title_tp": "",
         "start": 1,
-        "end": 8,
+        "end": 0,
         "cross_refs": []
       }
     ]
   },
-
-
-
-
-
-
-  "MAT": {
-    "5": {
-      "theme_id": "Khotbah di Bukit",
-      "theme_tp": "Tok bilong Jisas long Maunten",
-      "theme_range": "Pasal 5-7",
-      "pericopes": [
-        {
-          "title_id": "Ucapan bahagia",
-          "title_tp": "Ol Man i Hapisi",
-          "start": 1,
-          "end": 12,
-          "cross_refs": ["Luk. 6:20-23"]
-        },
-        {
-          "title_id": "Garam dan terang dunia",
-          "title_tp": "Solt na Laet bilong Graun",
-          "start": 13,
-          "end": 16,
-          "cross_refs": ["Mrk. 9:50", "Luk. 14:34-35"]
-        },
-        {
-          "title_id": "Yesus menegakkan hukum Taurat",
-          "title_tp": "Jisas i strongim Lo bilong Moses",
-          "start": 17,
-          "end": 20,
-          "cross_refs": ["Mat. 5:5", "Mrk. 7:8"]
-        }
-      ]
-    },
-    "6": {
-      "theme_id": "Khotbah di Bukit",
-      "theme_tp": "Tok bilong Jisas long Maunten",
-      "theme_range": "Pasal 5-7",
-      "pericopes": [
-        {
-          "title_id": "Larangan berbuat baik untuk dipuji",
-          "title_tp": "No mekim gutpela samting bilong ol i lukim yu",
-          "start": 1,
-          "end": 4,
-          "cross_refs": []
-        }
-      ]
-    }
+  "30": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "31": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "32": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "33": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "34": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "35": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "36": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "37": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "38": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "39": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "40": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "41": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "42": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "43": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "44": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "45": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "46": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "47": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "48": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "49": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "50": {
+    "theme_id": "",
+    "theme_tp": "",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
   }
-  
-        }
+
+
+ 
+      }
