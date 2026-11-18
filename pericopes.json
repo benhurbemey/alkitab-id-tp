@@ -985,14 +985,14 @@
             "title_tp": "Nem bilong ol lain tumbuna bilong Jisas Krais",
             "start": 1,
             "end": 17,
-            "cross_refs": ["(Luk. 3:23-38)"]
+            "cross_refs": ["Luk. 3:23-38"]
           },
           {
             "title_id": "Kelahiran Yesus Kristus",
             "title_tp": "Maria i karim Jisas Krais",
             "start": 18,
             "end": 25,
-            "cross_refs": ["(Luk. 2:1-7)"]
+            "cross_refs": ["Luk. 2:1-7"]
           }
         ]
       },
@@ -1041,14 +1041,14 @@
             "title_tp": "Jon Bilong Baptais i autim tok",
             "start": 1,
             "end": 12,
-            "cross_refs": ["(Mrk. 1:1-8; Luk. 3:3-9, 15-17; Yoh. 1:19-28)"]
+            "cross_refs": ["Mrk. 1:1-8; Luk. 3:3-9, 15-17; Yoh. 1:19-28"]
           },
           {
             "title_id": "Yesus dibaptis Yohanes",
             "title_tp": "Jon i baptaisim Jisas",
             "start": 13,
             "end": 17,
-            "cross_refs": ["(Mrk. 1:9-11; Luk. 3:21-22; Yoh. 1:32-34)"]
+            "cross_refs": ["Mrk. 1:9-11; Luk. 3:21-22; Yoh. 1:32-34"]
           }
         ]
       },
@@ -1063,28 +1063,28 @@
             "theme_range": "",
             "start": 1,
             "end": 11,
-            "cross_refs": ["(Mrk. 1:12-13; Luk. 4:1-13)"]
+            "cross_refs": ["Mrk. 1:12-13; Luk. 4:1-13"]
           },
           {
             "title_id": "Yesus tampil di Galilea",
             "title_tp": "Jisas i statim wok long Galili",
             "start": 12,
             "end": 17,
-            "cross_refs": ["(Mrk. 1:14-15; Luk. 4:14-15)"]
+            "cross_refs": ["Mrk. 1:14-15; Luk. 4:14-15"]
           },
           {
             "title_id": "Yesus memanggil murid-murid yang pertama",
             "title_tp": "Jisas i singautim 4-pela man na ol i bihainim em",
             "start": 18,
             "end": 22,
-            "cross_refs": ["(Mrk. 1:16-20; Luk. 5:1-11)"]
+            "cross_refs": ["Mrk. 1:16-20; Luk. 5:1-11"]
           },
           {
             "title_id": "Yesus mengajar dan menyembuhkan banyak orang",
             "title_tp": "Jisas i autim tok na i mekim orait planti manmeri",
             "start": 23,
             "end": 25,
-            "cross_refs": ["(Luk. 6:17-19)"]
+            "cross_refs": ["Luk. 6:17-19"]
           }
       ]
     },
@@ -1099,21 +1099,21 @@
           "title_tp": "Jisas i autim tok antap long maunten",
           "start": 1,
           "end": 12,
-          "cross_refs": ["(Luk. 6:20-23)"]
+          "cross_refs": ["Luk. 6:20-23"]
         },
         {
           "title_id": "Garam dunia dan terang dunia",
           "title_tp": "Yupela i olsem sol na lait",
           "start": 13,
           "end": 16,
-          "cross_refs": ["(Mak 9.50 na Luk 14.34-35)"]
+          "cross_refs": ["Mak 9.50 na Luk 14.34-35"]
         },
         {
           "title_id": "Yesus dan hukum Taurat",
           "title_tp": "Tok bilong lo bilong God",
           "start": 17,
           "end": 48,
-          "cross_refs": ["(Luk. 6:27-36)"]
+          "cross_refs": ["Luk. 6:27-36"]
         }
       ]
     },
@@ -1134,7 +1134,7 @@
             "title_tp": "Jisas i tok long pasin bilong mekim prea",
             "start": 5,
             "end": 15,
-            "cross_refs": ["(Luk. 11:2-4)"]
+            "cross_refs": ["Luk. 11:2-4"]
           },
           {
             "title_id": "Hal berpuasa",
@@ -1148,14 +1148,14 @@
             "title_tp": "Pasin bilong bungim ol gutpela samting",
             "start": 19,
             "end": 24,
-            "cross_refs": ["(Luk 12.33-34)"]
+            "cross_refs": ["Luk 12.33-34"]
           },
           {
             "title_id": "Hal kekuatiran",
             "title_tp": "Pasin bilong wari na tingting planti",
             "start": 25,
             "end": 34,
-            "cross_refs": ["(Luk. 12:22-31)"]
+            "cross_refs": ["Luk. 12:22-31"]
           }
         ]
       },
