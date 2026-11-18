@@ -1089,14 +1089,13 @@
       ]
     },
     "5": {
-      "theme_id": "Matius 5",
+      "theme_id": "Matius 5\nKhotbah di bukit\NJisas i autim tok antap long maunten",
       "theme_tp": "Matyu 5",
       "theme_range": "Pasal 5–7 | Sapta 5-7",
       "pericopes": [
         {
-          "theme_id": "KHOTBAH DI BUKIT",
           "title_id": "Ucapan bahagia",
-          "title_tp": "Jisas i autim tok antap long maunten",
+          "title_tp": "Jisas i tok long ol lain man i ken amamas",
           "start": 1,
           "end": 12,
           "cross_refs": ["Luk. 6:20-23"]
