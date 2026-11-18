@@ -920,18 +920,19 @@
     ]
   }
 },
-
+  
+  
   "HAG": {
       "1": {
         "theme_id": "Hagai 1",
         "theme_tp": "Hagai 1",
-        "theme_range": "",
+        "theme_range": "1:1-2:1a",
         "pericopes": [
           {
             "title_id": "Ajakan untuk membangun kembali Bait Suci",
             "title_tp": "God i hariapim ol manmeri long wokim haus bilong en gen",
             "start": 1,
-            "end": "2:1a",
+            "end": 14,
             "cross_refs": []
           }
         ]
