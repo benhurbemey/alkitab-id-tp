@@ -920,6 +920,58 @@
     ]
   }
 }
+
+  "HAG": {
+      "1": {
+        "theme_id": "Hagai 1",
+        "theme_tp": "Hagai 1",
+        "theme_range": "",
+        "pericopes": [
+          {
+            "title_id": "Ajakan untuk membangun kembali Bait Suci",
+            "title_tp": "God i hariapim ol manmeri long wokim haus bilong en gen",
+            "start": 1,
+            "end": "2:1a",
+            "cross_refs": []
+          }
+        ]
+      },
+       "2":{
+        "theme_id": "Hagai 2",
+        "theme_tp": "Hagai 2",
+        "theme_range": "",
+        "pericopes": [
+          {
+            "title_id": "Kemegahan Bait Suci yang baru",
+            "title_tp": "Nupela haus bilong God bai i gutpela tru",
+            "start": "1b",
+            "end": 10,
+            "cross_refs": []
+          },
+          {
+            "title_id": "Pembangunan Bait Suci terancam oleh ikut sertanya orang-orang najis",
+            "title_tp": "Pasin doti i bagarapim ol ofa bilong ol manmeri",
+            "start": 11,
+            "end": 15,
+            "cross_refs": []
+          },
+          {
+            "title_id": "Pembangunan Bait Suci mendatangkan berkat",
+            "title_tp": "Pasin doti i bagarapim ol ofa bilong ol manmeriPembangunan Bait Suci terancam oleh ikut sertanya orang-orang najis",
+            "start": 16,
+            "end": 20,
+            "cross_refs": []
+          },
+          {
+            "title_id": "Janji kepada Zerubabel",
+            "title_tp": "Bikpela i tok long givim namba long Serubabel",
+            "start": 21,
+            "end": 24,
+            "cross_refs": []
+          }
+        ]
+      }
+  }
 }
 
 
