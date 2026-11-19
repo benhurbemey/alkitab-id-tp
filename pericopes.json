@@ -1,0 +1,1617 @@
+{
+
+  "GEN": {
+    "1": {
+      "theme_id": "Kejadian 1",
+      "theme_tp": "Stat 1",
+      "theme_range": "1:1-2:7",
+      "pericopes": [
+        {
+          "title_id": "Allah menciptakan langit dan bumi serta isinya",
+          "title_tp": "God i mekim olgeta samting",
+          "start": 1,
+          "end": 31,
+          "cross_refs": []
+        }
+      ]
+    },
+     "2":{
+      "theme_id": "Kejadian 2",
+      "theme_tp": "Stat 2",
+      "theme_range": "2:1-7",
+      "pericopes": [
+        {
+          "title_id": "Manusia dan taman Eden",
+          "title_tp": "God i wokim gaden bilong Iden",
+          "start": 8,
+          "end": 25,
+          "cross_refs": []
+        }
+      ]
+    },
+    "3": {
+      "theme_id": "Kejadian 3",
+      "theme_tp": "Stat 3",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Manusia jatuh ke dalam dosa",
+          "title_tp": "Man na meri i sakim tok bilong God",
+          "start": 1,
+          "end": 24,
+          "cross_refs": []
+        }
+      ]
+    },
+    "4": {
+      "theme_id": "Kejadian 4",
+      "theme_tp": "Stat 4",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Kain dan Habel",
+          "title_tp": "Kein na Abel i mekim ofa long Bikpela",
+          "start": 1,
+          "end": 16,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Keturunan Kain, Set dan Enos",
+          "title_tp": "Nem bilong ol lain pikinini bilong Kein",
+          "start": 17,
+          "end": 26,
+          "cross_refs": []
+          
+        }
+    ]
+  },
+  "5": {
+    "theme_id": "Kejadian 5",
+    "theme_tp": "Stat 5",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Keturunan Adam",
+        "title_tp": "Nem bilong ol lain pikinini bilong Adam",
+        "start": 1,
+        "end": 32,
+        "cross_refs": ["1 Tawarik 1:1-4, 1 Stori 1.1-4"]
+      }
+    ]
+  },
+  "6": {
+      "theme_id": "Kejadian 6",
+      "theme_tp": "Stat 6",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Kejahatan manusia",
+          "title_tp": "Pasin nogut bilong ol manmeri",
+          "start": 1,
+          "end": 8,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Riwayat Nuh",
+          "title_tp": "Stori bilong noa",
+          "start": 9,
+          "end": 22,
+          "cross_refs": []
+        }
+      ]
+    },
+    "7": {
+      "theme_id": "Kejadian 7",
+      "theme_tp": "Stat 7",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Air bah",
+          "title_tp": "Bikpela tait i kamap",
+          "start": 1,
+          "end": 24,
+          "cross_refs": []
+        }
+      ]
+    },
+    "8": {
+      "theme_id": "Kejadian 8",
+      "theme_tp": "Stat 8",
+      "theme_range": "8:1-22",
+      "pericopes": [
+        {
+          "title_id": "Air bah surut",
+          "title_tp": "Tait i pinis",
+          "start": 1,
+          "end": 22,
+          "cross_refs": []
+        }
+      ]
+    },
+    "9": {
+      "theme_id": "Kejadian 9",
+      "theme_tp": "Stat 9",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Perjanjian Allah dengan Nuh",
+          "title_tp": "God i mekim kontrak wantaim Noa",
+          "start": 1,
+          "end": 17,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Nuh dan anak-anaknya",
+          "title_tp": "Noa na ol pikinini bilong en",
+          "start": 18,
+          "end": 29,
+          "cross_refs": []
+        }
+      ]
+    },
+    "10": {
+      "theme_id": "Kejadian 10",
+      "theme_tp": "Stat 10",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Daftar bangsa-bangsa keturunan Sem, Ham dan Yafet",
+          "title_tp": "Nem bilong ol lain tumbuna pikinini bilong Noa",
+          "start": 1,
+          "end": 32,
+          "cross_refs": []
+        }
+      ]
+    },
+     "11": {
+      "theme_id": "Kejadian 11",
+      "theme_tp": "Stat 11",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Menara Babel",
+          "title_tp": "Bikpela i paulim tok ples bilong ol manmeri",
+          "start": 1,
+          "end": 9,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Keturunan Sem",
+          "title_tp": "Nem bilong ol lain bilong Siem",
+          "start": 10,
+          "end": 26,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Daftar keturunan Terah",
+          "title_tp": "lista bilong ol tumbuna pikinini bilong Tera",
+          "start": 27,
+          "end": 32,
+          "cross_refs": []
+        }
+      ]
+    },
+    "12": {
+      "theme_id": "Kejadian 12",
+      "theme_tp": "Stat 12",
+      "theme_range": "",
+      "pericopes": [
+        {
+          "title_id": "Abram dipanggil Allah",
+          "title_tp": "God i singautim Abram",
+          "start": 1,
+          "end": 9,
+          "cross_refs": []
+        },
+        {
+          "title_id": "Abram di Mesir",
+          "title_tp": "Abram i go i stap long Isip",
+          "start": 10,
+          "end": 20,
+          "cross_refs": []
+        }
+      ]
+  },
+  "13": {
+    "theme_id": "Kejadian 13",
+    "theme_tp": "Stat 13",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Abram dan Lot berpisah",
+        "title_tp": "Lot i lusim Abram",
+        "start": 1,
+        "end": 18,
+        "cross_refs": []
+      }      
+    ]
+  },
+  "14": {
+    "theme_id": "kejadian 14",
+    "theme_tp": "Stat 14",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Abram mengalahkan raja-raja di Timur dan menolong Lot",
+        "title_tp": "Bikpela pait i kamap namel long ol king",
+        "start": 1,
+        "end": 16,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Pertemuan Abram dengan Melkisedek",
+        "title_tp": "Melkisedek i givim blesing long Abram",
+        "start": 17,
+        "end": 24,
+        "cross_refs": []
+      }
+    ]
+  },
+  "15": {
+    "theme_id": "Kejadian 15",
+    "theme_tp": "Stat 15",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Perjanjian Allah dengan Abram; janji tentang keturunannya",
+        "title_tp": "God i mekim kontrak wantaim Abram",
+        "start": 1,
+        "end": 21,
+        "cross_refs": []
+      }
+    ]
+  },
+  "16": {
+    "theme_id": "Kejadian 16",
+    "theme_tp": "Stat 16",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Hagar dan Ismael",
+        "title_tp": "Hagar i kamap meri bilong Abram",
+        "start": 1,
+        "end": 16,
+        "cross_refs": []
+      }
+    ]
+  },
+  "17": {
+    "theme_id": "Kejadian 17",
+    "theme_tp": "Stat 17",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Sunat sebagai tanda perjanjian Allah dengan Abraham",
+        "title_tp": "Abram i kisim nupela nem",
+        "start": 1,
+        "end": 27,
+        "cross_refs": []
+      }
+    ]
+  },
+  "18": {
+    "theme_id": "Kejadian 18",
+    "theme_tp": "Stat 18",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Allah mengulangi menjanjikan seorang anak laki-laki kepada Abraham",
+        "title_tp": "Bikpela i tok, bai Sara i karim pikinini man",
+        "start": 1,
+        "end": 15,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Doa syafaat Abraham untuk Sodom",
+        "title_tp": "Bikpela i laik bagarapim taun Sodom",
+        "start": 16,
+        "end": 33,
+        "cross_refs": []
+      }
+    ]
+  },
+  "19": {
+    "theme_id": "Kejadian 19",
+    "theme_tp": "Stat 19",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Sodom dan Gomora dimusnahkan, Lot diselamatkan",
+        "title_tp": "Ol Sodom i mekim pasin nogut",
+        "start": 1,
+        "end": 29,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Lot dan kedua anaknya perempuan",
+        "title_tp": "Lot i lusim Sodom",
+        "start": 30,
+        "end": 38,
+        "cross_refs": []
+      }
+    ]
+  },
+  "20": {
+    "theme_id": "Kejadian 20",
+    "theme_tp": "Stat 20",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Abraham dan Abimelekh",
+        "title_tp": "Abraham na Abimelek",
+        "start": 1,
+        "end": 18,
+        "cross_refs": []
+      }
+    ]
+  },
+  "21": {
+    "theme_id": "Kejadian 21",
+    "theme_tp": "Stat 21",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Ishak lahir",
+        "title_tp": "Sara i karim Aisak",
+        "start": 1,
+        "end": 7,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Abraham mengusir Hagar dan Ismael",
+        "title_tp": "Abraham i rausim Hagar wantaim Ismael",
+        "start": 8,
+        "end": 21,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Perjanjian Abraham dengan Abimelekh",
+        "title_tp": "Abraham i mekim kontrak wantaim Abimelek",
+        "start": 22,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "22": {
+    "theme_id": "Kejadian 22",
+    "theme_tp": "Stat 22",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Kepercayaan Abraham diuji",
+        "title_tp": "God i tokim Abraham long ofaim Aisak",
+        "start": 1,
+        "end": 19,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Keturunan Nahor",
+        "title_tp": "Nem bilong ol lain bilong Nahor",
+        "start": 20,
+        "end": 24,
+        "cross_refs": []
+      }
+    ]
+  },
+  "23": {
+    "theme_id": "Kejadian 23",
+    "theme_tp": "Stat 23",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Sara mati dan dikuburkan",
+        "title_tp": "Sara i dai na Abraham i baim graun bilong matmat",
+        "start": 1,
+        "end": 20,
+        "cross_refs": []
+      }
+    ]
+  },
+  "24": {
+    "theme_id": "Kejadian 24",
+    "theme_tp": "Stat 24",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Ribka dipinang bagi Ishak",
+        "title_tp": "Abraham i painim meri bilong Aisak",
+        "start": 1,
+        "end": 67,
+        "cross_refs": []
+      }
+    ]
+  },
+  "25": {
+    "theme_id": "Kejadian 25",
+    "theme_tp": "Stat 25",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Keturunan Abraham dari Ketura",
+        "title_tp": "Ol arapela tumbuna pikinini bilong Abraham",
+        "start": 1,
+        "end": 6,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Abraham meninggal dan dikuburkan",
+        "title_tp": "Abraham i dai na ol i planim em",
+        "start": 7,
+        "end": 11,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Keturunan Ismael",
+        "title_tp": "Ol tumbuna pikinini bilong Ismael",
+        "start": 12,
+        "end": 18,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Esau dan Yakub",
+        "title_tp": "Rebeka i karim Iso na Jekop",
+        "start": 19,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "26": {
+    "theme_id": "Kejadian 26",
+    "theme_tp": "Stat 26",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Ishak di negeri orang Filistin",
+        "title_tp": "Aisak i stap long taun Gerar na Berseba",
+        "start": 1,
+        "end": 35,
+        "cross_refs": []
+      }
+    ]
+  },
+  "27": {
+    "theme_id": "Kejadian 27",
+    "theme_tp": "Stat 27",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub diberkati Ishak sebagai anak sulung",
+        "title_tp": "Jekop i giamanim papa na i kisim blesing bilong Iso",
+        "start": 1,
+        "end": 40,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yakub lari ke Mesopotamia",
+        "title_tp": "Aisak i salim Jekop i go long Laban",
+        "start": 41,
+        "end": "28:9",
+        "cross_refs": []
+      }
+    ]
+  },
+  "28": {
+    "theme_id": "Kejadian 28",
+    "theme_tp": "Stat 28",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Mimpi Yakub di Betel",
+        "title_tp": "Jekop i driman",
+        "start": 10,
+        "end": 22,
+        "cross_refs": []
+      }
+    ]
+  },
+  "29": {
+    "theme_id": "Kejadian 29",
+    "theme_tp": "Stat 29",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub di rumah Laban",
+        "title_tp": "Jekop i kamap long ples bilong Laban",
+        "start": 1,
+        "end": 30,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Anak-anak Yakub",
+        "title_tp": "Nem bilong ol pikinini bilong Jekop",
+        "start": 31,
+        "end": "30:24",
+        "cross_refs": []
+      }
+    ]
+  },
+  "30": {
+    "theme_id": "Kejadian 30",
+    "theme_tp": "Stat 30",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub memperoleh ternak",
+        "title_tp": "Jekop i stretim tok bilong wok bisnis wantaim Laban",
+        "start": 25,
+        "end": 43,
+        "cross_refs": []
+      }
+    ]
+  },
+  "31": {
+    "theme_id": "Kejadian 31",
+    "theme_tp": "Stat 31",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub lari meninggalkan Laban",
+        "titl21e_tp": "Jekop i ranawe long Laban",
+        "start": 1,
+        "end": 21,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Laban mengejar Yakub",
+        "title_tp": "Laban i bihainim Jekop",
+        "start": 22,
+        "end": 42,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Perjanjian antara Yakub dan Laban",
+        "title_tp": "Jekop na Laban i mekim kontrak",
+        "start": 43,
+        "end": 55,
+        "cross_refs": []
+      }
+    ]
+  },
+  "32": {
+    "theme_id": "Kejadian 32",
+    "theme_tp": "Stat 32",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub takut bertemu dengan Esau",
+        "title_tp": "Jekop i redi long lukim Iso",
+        "start": 1,
+        "end": 21,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Pergumulan Yakub dengan Allah",
+        "title_tp": "Jekop i pait long God",
+        "start": 22,
+        "end": 32,
+        "cross_refs": []
+      }
+    ]
+  },
+  "33": {
+    "theme_id": "Kejadian 33",
+    "theme_tp": "Stat 33",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub berbaik kembali dengan Esau",
+        "title_tp": "Jekop i bungim Iso",
+        "start": 1,
+        "end": 20,
+        "cross_refs": []
+      }
+    ]
+  },
+  "34": {
+    "theme_id": "Kejadian 34",
+    "theme_tp": "Stat 34",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Dina dan Sikhem",
+        "title_tp": "Sekem i mekim pasin nogut long Daina",
+        "start": 1,
+        "end": 31,
+        "cross_refs": []
+      }
+    ]
+  },
+  "35": {
+    "theme_id": "Kejadian 35",
+    "theme_tp": "Stat 35",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub di Betel untuk kedua kalinya",
+        "title_tp": "Jekop i stap long Betel na God i givim blesing long em",
+        "start": 1,
+        "end": 15,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Kelahiran Benyamin – Rahel mati",
+        "title_tp": "Nem bilong ol pikinini bilong Jekop",
+        "start": 16,
+        "end": "35:16-22a",
+        "cross_refs": []
+      },
+      {
+        "title_id": "Anak-anak Yakub – Ishak mati",
+        "title_tp": "Aisak i dai",
+        "start": "22a",
+        "end": "35:22b-29",
+        "cross_refs": []
+      }
+    ]
+  },
+  "36": {
+    "theme_id": "Kejadian 36",
+    "theme_tp": "Stat 36",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Keturunan Esau",
+        "title_tp": "Nem bilong ol lain bilong Iso",
+        "start": 1,
+        "end": 19,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Keturunan Seir",
+        "title_tp": "Nem bilong ol lain bilong Seir",
+        "start": 20,
+        "end": 30,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Raja-raja Edom",
+        "title_tp": "Nem bilong ol king bilong Idom",
+        "start": 31,
+        "end": 43,
+        "cross_refs": []
+      }
+    ]
+  },
+  "37": {
+    "theme_id": "Kejadian 37",
+    "theme_tp": "Stat 37",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yusuf dan saudara-saudaranya",
+        "title_tp": "Ol brata bilong Josep i bel nogut long em",
+        "start": 1,
+        "end": 11,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yusuf dijual ke tanah Mesir",
+        "title_tp": "Ol Ismael i kisim Josep i go long Isip",
+        "start": 12,
+        "end": 26,
+        "cross_refs": []
+      }
+    ]
+  },
+  "38": {
+    "theme_id": "Kejadian 38",
+    "theme_tp": "Stat 38",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yehuda dan Tamar",
+        "title_tp": "Tamar i trikim Juda",
+        "start": 1,
+        "end": 30,
+        "cross_refs": []
+      }
+    ]
+  },
+  "39": {
+    "theme_id": "Kejadian 39",
+    "theme_tp": "Stat 39",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yusuf di rumah Potifar",
+        "title_tp": "Josep i stap long haus bilong Potifar",
+        "start": 1,
+        "end": 23,
+        "cross_refs": []
+      }
+    ]
+  },
+  "40": {
+    "theme_id": "Kejadian 40",
+    "theme_tp": "Stat 40",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Mimpi juru minuman dan juru roti",
+        "title_tp": "Josep i kamapim as bilong driman",
+        "start": 1,
+        "end": 23,
+        "cross_refs": []
+      }
+    ]
+  },
+  "41": {
+    "theme_id": "Kejadian 41",
+    "theme_tp": "Stat 41",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Mimpi Firaun",
+        "title_tp": "Josep i autim as bilong driman bilong king bilong Isip",
+        "start": 1,
+        "end": 36,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yusuf di Mesir sebagai penguasa",
+        "title_tp": "King i makim Josep olsem namba wan gavman bilong Isip",
+        "start": 37,
+        "end": 57,
+        "cross_refs": []
+      }
+    ]
+  },
+  "42": {
+    "theme_id": "Kejadian 42",
+    "theme_tp": "Stat 42",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Saudara-saudara Yusuf pergi ke Mesir",
+        "title_tp": "Ol brata bilong Josep i kam baim wit long Isip",
+        "start": 1,
+        "end": 38,
+        "cross_refs": []
+      }
+    ]
+  },
+  "43": {
+    "theme_id": "Kejadian 43",
+    "theme_tp": "Stat 43",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Saudara-saudara Yusuf pergi ke Mesir untuk kedua kalinya",
+        "title_tp": "Ol brata bilong Josep i bringim Benjamin i go long Isip",
+        "start": 1,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "44": {
+    "theme_id": "Kejadian 44",
+    "theme_tp": "Stat 44",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Piala Yusuf hilang dan didapati",
+        "title_tp": "Kap bilong Josep i lus",
+        "start": 1,
+        "end": 17,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yehuda membela Benyamin",
+        "title_tp": "Juda i laik kisim ples bilong Benjamin",
+        "start": 18,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "45": {
+    "theme_id": "Kejadian 45",
+    "theme_tp": "Stat 45",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yusuf memperkenalkan dirinya kepada saudara-saudaranya",
+        "title_tp": "Josep i tokim ol brata long em i husat",
+        "start": 1,
+        "end": 28,
+        "cross_refs": []
+      }
+    ]
+  },
+  "46": {
+    "theme_id": "Kejadian 46",
+    "theme_tp": "Stat 46",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub pindah ke Mesir",
+        "title_tp": "Jekop wantaim ol lain bilong en i go long Isip",
+        "start": 1,
+        "end": 34,
+        "cross_refs": []
+      }
+    ]
+  },
+  "47": {
+    "theme_id": "Kejadian 47",
+    "theme_tp": "Stat 47",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub dan Firaun",
+        "title_tp": "Jekop na Fero",
+        "start": 1,
+        "end": 12,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Tindakan Yusuf",
+        "title_tp": "Bikpela hangre i bagarapim tru ol Isip",
+        "start": 13,
+        "end": 26,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yakub pada akhir hidupnya",
+        "title_tp": "Josep i promis long planim Jekop long Kenan",
+        "start": 27,
+        "end": 31,
+        "cross_refs": []
+      }
+    ]
+  },
+  "48": {
+    "theme_id": "Kejadian 48",
+    "theme_tp": "Stat 48",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yakub memberkati Manasye dan Efraim",
+        "title_tp": "Jekop i givim blesing long Efraim na Manase",
+        "start": 1,
+        "end": 22,
+        "cross_refs": []
+      }
+    ]
+  },
+  "49": {
+    "theme_id": "Kejadian 49",
+    "theme_tp": "Stat 49",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Perkataan Yakub yang penghabisan kepada anak-anaknya",
+        "title_tp": "Jekop i givim blesing long ol pikinini bilong en",
+        "start": 1,
+        "end": 28,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yakub meninggal dan dikuburkan",
+        "title_tp": "Jekop i dai na ol i planim em",
+        "start": 29,
+        "end": "50:14",
+        "cross_refs": []
+      }
+    ]
+  },
+  "50": {
+    "theme_id": "Kejadian 50",
+    "theme_tp": "Stat 50",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yusuf menghiburkan hati saudara-saudaranya",
+        "title_tp": "Josep i lusim rong bilong ol brata",
+        "start": 15,
+        "end": 21,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yusuf meninggal",
+        "title_tp": "Josep i dai",
+        "start": 22,
+        "end": 26,
+        "cross_refs": []
+      }
+    ]
+  }
+},
+
+
+"MAT": {
+  "1": {
+    "theme_id": "Matius 1",
+    "theme_tp": "Matyu 1",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Silsilah Yesus Kristus",
+        "title_tp": "Nem bilong ol lain tumbuna bilong Jisas Krais",
+        "start": 1,
+        "end": 17,
+        "cross_refs": ["Luk. 3:23-38"]
+      },
+      {
+        "title_id": "Kelahiran Yesus Kristus",
+        "title_tp": "Maria i karim Jisas Krais",
+        "start": 18,
+        "end": 25,
+        "cross_refs": ["Luk. 2:1-7"]
+      }
+    ]
+  },
+   "2":{
+    "theme_id": "Matius 2",
+    "theme_tp": "Matyu 2",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Orang-orang majus dari Timur",
+        "title_tp": "Ol saveman bilong ol haiden i kam lukim Jisas",
+        "start": 1,
+        "end": 12,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Penyingkiran ke Mesir",
+        "title_tp": "Josep wantaim meri na pikinini i go long Isip",
+        "start": 13,
+        "end": 15,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Pembunuhan anak-anak di Betlehem",
+        "title_tp": "King Herot i tok na ol i kilim planti pikinini i dai",
+        "start": 16,
+        "end": 18,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Kembali dari Mesir",
+        "title_tp": "Josep wantaim meri na pikinini i kam bek",
+        "start": 19,
+        "end": 23,
+        "cross_refs": []
+      }
+    ]
+  },
+  "3": {
+    "theme_id": "Matius 3",
+    "theme_tp": "Matyu 3",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Yohanes Pembaptis",
+        "title_tp": "Jon Bilong Baptais i autim tok",
+        "start": 1,
+        "end": 12,
+        "cross_refs": ["Mrk. 1:1-8; Luk. 3:3-9, 15-17; Yoh. 1:19-28"]
+      },
+      {
+        "title_id": "Yesus dibaptis Yohanes",
+        "title_tp": "Jon i baptaisim Jisas",
+        "start": 13,
+        "end": 17,
+        "cross_refs": ["(Mrk. 1:9-11; Luk. 3:21-22; Yoh. 1:32-34)"]
+      }
+    ]
+  },
+  "4": {
+    "theme_id": "Matius 4",
+    "theme_tp": "Matyu 4",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Pencobaan di padang gurun",
+        "title_tp": "Satan i traim Jisas",
+        "theme_range": "",
+        "start": 1,
+        "end": 11,
+        "cross_refs": ["Mrk. 1:12-13; Luk. 4:1-13"]
+      },
+
+      {
+        "title_id": "Yesus tampil di Galilea",
+        "title_tp": "",
+        "start": 12,
+        "end": 17,
+        "cross_refs": ["Mrk. 1:14-15; Luk. 4:14-15"]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Jisas i statim wok long Galili",
+        "start": 12,
+        "end": 16,
+        "cross_refs": ["Mrk. 1:14-15; Luk. 4:14-15"]
+      },
+
+      {
+        "title_id": "Yesus memanggil murid-murid yang pertama",
+        "title_tp": "",
+        "start": 18,
+        "end": 22,
+        "cross_refs": ["Mrk. 1:16-20; Luk. 5:1-11"]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Jisas i singautim 4-pela man na ol i bihainim em",
+        "start": 17,
+        "end": 22,
+        "cross_refs": ["Mrk. 1:16-20; Luk. 5:1-11"]
+      },
+
+      {
+        "title_id": "Yesus mengajar dan menyembuhkan banyak orang",
+        "title_tp": "Jisas i autim tok na i mekim orait planti manmeri",
+        "start": 23,
+        "end": 25,
+        "cross_refs": ["Luk. 6:17-19"]
+      }
+  ]
+},
+"5": {
+  "theme_id": "Matius 5",
+  "theme_tp": "Matyu 5",
+  "theme_range": "Pasal 5–7 | Sapta 5-7",
+  "pericopes": [
+    {
+      "theme_id": "KHOTBAH DI BUKIT",
+      "title_id": "Ucapan bahagia",
+      "title_tp": "",
+      "start": 1,
+      "end": 12,
+      "cross_refs": ["Luk. 6:20-23"]
+    },
+    {
+      "theme_id": "",
+      "title_id": "",
+      "title_tp": "Jisas i autim tok antap long maunten",
+      "start": 1,
+      "end": 1,
+      "cross_refs": ["Luk. 6:20-23"]
+    },
+    {
+      "theme_id": "",
+      "title_id": "",
+      "title_tp": "Jisas i tok long ol lain man i ken amamas",
+      "start": 2,
+      "end": 12,
+      "cross_refs": ["Luk. 6:20-23"]
+    },
+
+    {
+      "title_id": "Garam dunia dan terang dunia",
+      "title_tp": "Yupela i olsem sol na lait",
+      "start": 13,
+      "end": 16,
+      "cross_refs": ["Mak 9.50 na Luk 14.34-35"]
+    },
+    {
+      "title_id": "Yesus dan hukum Taurat",
+      "title_tp": "",
+      "start": 17,
+      "end": 48,
+      "cross_refs": ["Luk. 6:27-36"]
+    },
+
+    {
+      "title_id": "",
+      "title_tp": "Tok bilong lo bilong God",
+      "start": 17,
+      "end": 20,
+      "cross_refs": []
+    },
+    {
+      "title_id": "",
+      "title_tp": "Jisas i tok long pasin bilong stretim tok",
+      "start": 21,
+      "end": 27,
+      "cross_refs": ["Luk 12.57-59"]
+    },
+    {
+      "title_id": "",
+      "title_tp": "Jisas i tok long man i mekim pasin pamuk",
+      "start": 27,
+      "end": 30,
+      "cross_refs": [""]
+    },
+    {
+      "title_id": "",
+      "title_tp": "Jisas i tok long man i rausim meri",
+      "start": 31,
+      "end": 32,
+      "cross_refs": ["Matyu 19.9 na Mak 10.11-12 na Luk 16.18"]
+    },
+    {
+      "title_id": "",
+      "title_tp": "Yupela i no ken tok tru antap",
+      "start": 33,
+      "end": 37,
+      "cross_refs": [""]
+    },
+    {
+      "title_id": "",
+      "title_tp": "Yupela i no ken bekim rong",
+      "start": 38,
+      "end": 42,
+      "cross_refs": ["Luk 6.29-30"]
+    },
+    {
+      "title_id": "",
+      "title_tp": "Jisas i tok long pasin bilong laikim ol birua",
+      "start": 43,
+      "end": 48,
+      "cross_refs": ["Luk 6.27-28 na 6.32-36"]
+    }
+  ]
+},
+"6": {
+    "theme_id": "Matius 6",
+    "theme_tp": "Matyu 6",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Hal memberi sedekah",
+        "title_tp": "Jisas i tok long pasin bilong helpim ol arapela",
+        "start": 1,
+        "end": 4,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Hal berdoa",
+        "title_tp": "Jisas i tok long pasin bilong mekim prea",
+        "start": 5,
+        "end": 15,
+        "cross_refs": ["Luk. 11:2-4)"]
+      },
+      {
+        "title_id": "Hal berpuasa",
+        "title_tp": "Jisas i tok long pasin bilong tambu long kaikai",
+        "start": 16,
+        "end": 18,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Hal mengumpulkan harta",
+        "title_tp": "",
+        "start": 19,
+        "end": 24,
+        "cross_refs": [""]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Pasin bilong bungim ol gutpela samting",
+        "start": 19,
+        "end": 21,
+        "cross_refs": ["Luk 12.33-34"]
+      },
+      {
+        "title_id": "Hal kekuatiran",
+        "title_tp": "",
+        "start": 25,
+        "end": 34,
+        "cross_refs": ["Luk. 12:22-31"]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Ai em i lam bilong bodi",
+        "start": 22,
+        "end": 23,
+        "cross_refs": ["Luk 11.34-36"]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Man i no inap holim wok bilong tupela bosman wantaim",
+        "start": 24,
+        "end": 24,
+        "cross_refs": ["Luk 16.13"]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Pasin bilong wari na tingting planti",
+        "start": 25,
+        "end": 34,
+        "cross_refs": ["Luk 12.22-31"]
+      }
+    ]
+  },
+  "7": {
+    "theme_id": "Matius 7",
+    "theme_tp": "Matyu 7",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "Hal menghakimi",
+        "title_tp": "",
+        "start": 1,
+        "end": 5,
+        "cross_refs": ["Luk 6.37-38 na 6.41-42"]
+      },
+      {
+        "title_id": "",
+        "title_tp": "Yupela i no ken skelim pasin bilong ol arapela man",
+        "start": 1,
+        "end": 6,
+        "cross_refs": ["Luk 6.37-38 na 6.41-42"]
+      },
+
+      {
+        "title_id": "Hal yang kudus dan berharga",
+        "title_tp": "",
+        "start": 6,
+        "end": 6,
+        "cross_refs": []
+      },
+      {
+        "title_id": "",
+        "title_tp": "God bai i givim ol gutpela samting long ol man i prea long em",
+        "start": 7,
+        "end": 12,
+        "cross_refs": ["Luk 11.9-13"]
+      },
+      {
+        "title_id": "Hal pengabulan doa",
+        "title_tp": "",
+        "start": 7,
+        "end": 11,
+        "cross_refs": ["Luk. 11:9-13"]
+      },
+
+      {
+        "title_id": "Jalan yang benar",
+        "title_tp": "",
+        "start": 12,
+        "end": 14,
+        "cross_refs": []
+      },
+      {
+        "title_id": "Yupela i mas i go insait long liklik dua",
+        "title_tp": "",
+        "start": 13,
+        "end": 14,
+        "cross_refs": ["Luk 13.24"]
+      },
+
+      {
+        "title_id": "Hal pengajaran yang sesat",
+        "title_tp": "",
+        "start": 15,
+        "end": 23,
+        "cross_refs": []
+      },
+      {
+        "title_id": "",
+        "title_tp": "Yumi mas lukaut long ol giaman profet",
+        "start": 15,
+        "end": 23,
+        "cross_refs": ["Luk 6.43-44 na 13.25-27"]
+      },
+
+      {
+        "title_id": "Dua macam dasar",
+        "title_tp": "",
+        "start": 24,
+        "end": 27,
+        "cross_refs": []
+      },
+      {
+        "title_id": "",
+        "title_tp": "Tupela pasin bilong wokim haus",
+        "start": 24,
+        "end": 29,
+        "cross_refs": []
+      },
+
+      {
+        "title_id": "Kesan pendengar",
+        "title_tp": "",
+        "start": 28,
+        "end": 29,
+        "cross_refs": []
+      }
+    ]
+  },
+  "8": {
+    "theme_id": "Matius 8",
+    "theme_tp": "Matyu 8",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "9": {
+    "theme_id": "Matius 9",
+    "theme_tp": "Matyu 9",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "10": {
+    "theme_id": "Matius 10",
+    "theme_tp": "Matyu 10",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+   "11": {
+    "theme_id": "Matius 11",
+    "theme_tp": "Matyu 11",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  },
+  "12": {
+    "theme_id": "Matius 12",
+    "theme_tp": "Matyu 12",
+    "theme_range": "",
+    "pericopes": [
+      {
+        "title_id": "",
+        "title_tp": "",
+        "start": 1,
+        "end": 0,
+        "cross_refs": []
+      }
+    ]
+  }
+},
+"13": {
+  "theme_id": "Matius 13",
+  "theme_tp": "Matyu 13",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }      
+  ]
+},
+"14": {
+  "theme_id": "Matius 14",
+  "theme_tp": "Matyu 14",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"15": {
+  "theme_id": "Matius 15",
+  "theme_tp": "Matyu 15",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"16": {
+  "theme_id": "Matius 16",
+  "theme_tp": "Matyu 16",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"17": {
+  "theme_id": "Matius 17",
+  "theme_tp": "Matyu 17",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"18": {
+  "theme_id": "Matius 18",
+  "theme_tp": "Matyu 18",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"19": {
+  "theme_id": "Matius 19",
+  "theme_tp": "Matyu 19",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"20": {
+  "theme_id": "Matius 20",
+  "theme_tp": "",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"21": {
+  "theme_id": "Matius 21",
+  "theme_tp": "Matyu 21",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"22": {
+  "theme_id": "Matius 22",
+  "theme_tp": "Matyu 22",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"23": {
+  "theme_id": "Matius 23",
+  "theme_tp": "Matyu 23",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"24": {
+  "theme_id": "Matius 24",
+  "theme_tp": "Matyu 24",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"25": {
+  "theme_id": "Matius 25",
+  "theme_tp": "Matyu 25",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"26": {
+  "theme_id": "Matius 26",
+  "theme_tp": "Matyu 26",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"27": {
+  "theme_id": "Matius 27",
+  "theme_tp": "Matyu 27",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+},
+"28": {
+  "theme_id": "Matius 28",
+  "theme_tp": "Matyu 28",
+  "theme_range": "",
+  "pericopes": [
+    {
+      "title_id": "",
+      "title_tp": "",
+      "start": 1,
+      "end": 0,
+      "cross_refs": []
+    }
+  ]
+}
+
+
+}
+
+
