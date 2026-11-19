@@ -1377,10 +1377,17 @@
     "theme_range": "",
     "pericopes": [
       {
-        "title_id": "",
+        "title_id": "Yesus menyembuhkan orang pada hari Sabat",
         "title_tp": "",
-        "start": 1,
-        "end": 0,
+        "start": 9,
+        "end": "15a",
+        "cross_refs": ["Mrk. 3:1-6; Luk. 6:6-11"]
+      },
+      {
+        "title_id": "Yesus Hamba Tuhan",
+        "title_tp": "",
+        "start": "15b",
+        "end": 21,
         "cross_refs": []
       }
     ]
