@@ -2384,9 +2384,9 @@
       ]
     },
     "24": {
-      "theme_id": "Matius 24\nKHOTBAH TENTANG AKHIR ZAMAN",
+      "theme_id": "KHOTBAH TENTANG AKHIR ZAMAN",
       "theme_range": "PASAL 24-25 | SAPTA 24-25",
-      "theme_tp": "Matyu 24",
+      "theme_tp": "",
       "pericopes": [
         {
           "title_id": "Bait Allah akan diruntuhkan",
@@ -2470,8 +2470,8 @@
       ]
     },
     "25": {
-      "theme_id": "Matius 25",
-      "theme_tp": "Matyu 25",
+      "theme_id": "",
+      "theme_tp": "",
       "theme_range": "",
       "pericopes": [
         {
@@ -2500,8 +2500,8 @@
       ]
     },
     "26": {
-      "theme_id": "Jisas i karim pen na i dai na i kirap bek",
-      "theme_tp": "Matyu 26",
+      "theme_id": "",
+      "theme_tp": "Jisas i karim pen na i dai na i kirap bek",
       "theme_range": "",
       "pericopes": [
         {
