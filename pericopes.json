@@ -1017,7 +1017,7 @@
           "title_id": "",
           "title_tp": "Jisas i autim gutnius bilong kingdom bilong God na em i mekim orait ol manmeri i gat sik",
           "verse_start": 17,
-          "range_display": "Sapta 4.17-9.34"
+          "range_display_tp": "Sapta 4.17-9.34"
         }
       ],
       "pericopes": [
@@ -1027,9 +1027,8 @@
           "theme_range": "",
           "start": 1,
           "end": 11,
-          "cross_refs": [
-            "Mrk. 1:12-13; Luk. 4:1-13"
-          ]
+          "cross_refs_id": ["Mrk. 1:12-13; Luk. 4:1-13"]
+          "cross_refs_tp": ["Mak 1.12-13 na Luk 4.1-13"]
         },
         {
           "title_id": "Yesus tampil di Galilea",
