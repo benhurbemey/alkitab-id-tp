@@ -1,0 +1,3382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkitab ID & Tok Pisin</title>
+    <style>
+        /* ============ CSS VARIABLES (THEMING) ============ */
+        :root {
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #eef2f7;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --accent: #1e3a8a;
+            --accent-light: #3b82f6;
+            --accent-rgb: 30, 58, 138;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-strong: rgba(0, 0, 0, 0.15);
+            --verse-bg: #ffffff;
+            --verse-tp: #555555;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --font-size: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-strong: rgba(0, 0, 0, 0.5);
+            --verse-bg: #1e293b;
+            --verse-tp: #cbd5e1;
+        }
+
+        /* Tema Warna */
+        [data-color="green"]  { --accent: #047857; --accent-light: #10b981; --accent-rgb: 4, 120, 87; }
+        [data-color="red"]    { --accent: #b91c1c; --accent-light: #ef4444; --accent-rgb: 185, 28, 28; }
+        [data-color="purple"] { --accent: #6d28d9; --accent-light: #8b5cf6; --accent-rgb: 109, 40, 217; }
+        [data-color="orange"] { --accent: #c2410c; --accent-light: #f97316; --accent-rgb: 194, 65, 12; }
+        [data-color="teal"]   { --accent: #0f766e; --accent-light: #14b8a6; --accent-rgb: 15, 118, 110; }
+        [data-color="sepia"]  {
+            --bg-primary: #f4ecd8; --bg-secondary: #fbf6e9; --bg-tertiary: #e8dfc4;
+            --text-primary: #5b4636; --text-secondary: #6b5847; --verse-bg: #fbf6e9;
+            --accent: #8b6f47; --accent-light: #a68560; --accent-rgb: 139, 111, 71;
+            --border: #d4c5a0;
+        }
+
+        /* ============ RESET & BASE ============ */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-bottom: 80px;
+            font-size: var(--font-size);
+            transition: background 0.3s, color 0.3s;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        /* ============ SPLASH SCREEN ============ */
+        .splash {
+            position: fixed; inset: 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 9999; color: white;
+            animation: fadeOut 0.5s ease-out 2s forwards;
+        }
+        .splash-icon { font-size: 80px; margin-bottom: 20px; animation: bounce 1s ease-in-out infinite; }
+        .splash h1 { font-size: 28px; margin-bottom: 8px; }
+        .splash p { opacity: 0.9; font-size: 14px; }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* ============ APP BAR ============ */
+        .app-bar {
+            background: var(--accent); color: white;
+            padding: 14px 16px; position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 8px var(--shadow-strong);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .app-bar h1 { font-size: 17px; flex: 1; font-weight: 600; }
+        .icon-btn {
+            background: none; border: none; color: white;
+            font-size: 22px; cursor: pointer; padding: 6px 10px;
+            border-radius: 6px; transition: background 0.2s;
+        }
+        .icon-btn:active { background: rgba(255,255,255,0.2); }
+
+        /* ============ VIEWS ============ */
+        .view { display: none; padding: 15px; animation: fadeIn 0.3s; }
+        .view.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        /* ============ BERANDA / DASHBOARD ============ */
+        .beranda-section {
+            margin-bottom: 20px;
+        }
+        
+        .beranda-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+        
+        /* Quick Access Grid */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .quick-card {
+            background: var(--bg-secondary);
+            padding: 14px 8px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 2px 6px var(--shadow);
+            transition: transform 0.15s, box-shadow 0.15s;
+            border: 1px solid var(--border);
+        }
+        
+        .quick-card:active {
+            transform: scale(0.95);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+        
+        .quick-icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        
+        .quick-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+        
+        /* Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            padding: 16px 10px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 12px var(--shadow-strong);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        /* Start Reading Button */
+        .start-reading-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px var(--shadow-strong);
+            transition: transform 0.15s;
+            font-family: inherit;
+        }
+        
+        .start-reading-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Daily Verse di Beranda */
+        .beranda-daily-card {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .beranda-daily-card::before {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 80px;
+            opacity: 0.15;
+        }
+        
+        .beranda-daily-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .beranda-daily-text {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        
+        .beranda-daily-ref {
+            font-weight: 700;
+            font-size: 13px;
+            text-align: right;
+            opacity: 0.95;
+        }
+        
+        /* Reading Plan di Beranda */
+        .beranda-plan-item {
+            background: var(--bg-secondary);
+            padding: 12px 14px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px var(--shadow);
+            cursor: pointer;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .beranda-plan-item.done {
+            opacity: 0.6;
+            border-left-color: var(--success);
+        }
+        
+        .beranda-plan-item.done .plan-ref {
+            text-decoration: line-through;
+        }
+        
+        .plan-ref {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        .plan-check {
+            font-size: 18px;
+        }
+
+      
+
+        /* ============ DAILY VERSE CARD ============ */
+        .daily-verse-card {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white; padding: 18px; border-radius: 14px;
+            margin-bottom: 15px; box-shadow: 0 4px 12px var(--shadow-strong);
+            position: relative; overflow: hidden;
+        }
+        .daily-verse-card::before {
+            content: '✨'; position: absolute; top: -10px; right: -10px;
+            font-size: 80px; opacity: 0.15;
+        }
+        .daily-verse-label {
+            font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+            opacity: 0.9; margin-bottom: 8px; font-weight: 600;
+        }
+        .daily-verse-text { font-size: 15px; line-height: 1.5; margin-bottom: 10px; font-style: italic; }
+        .daily-verse-ref { font-weight: 700; font-size: 13px; text-align: right; }
+        .daily-verse-card button {
+            background: rgba(255,255,255,0.25); color: white; border: none;
+            padding: 6px 12px; border-radius: 6px; font-size: 12px;
+            margin-top: 10px; cursor: pointer; font-weight: 600;
+        }
+
+        /* ============ TABS ============ */
+        .tabs {
+            display: flex; background: var(--bg-secondary);
+            border-radius: 10px; overflow: hidden; margin-bottom: 15px;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+        .tab {
+            flex: 1; padding: 12px; text-align: center; cursor: pointer;
+            font-weight: 600; color: var(--text-secondary);
+            transition: all 0.2s; font-size: 14px;
+        }
+        .tab.active { background: var(--accent); color: white; }
+
+        /* ============ SEARCH BAR ============ */
+        .search-bar {
+            display: flex; background: var(--bg-secondary);
+            border-radius: 10px; padding: 8px 12px; margin-bottom: 15px;
+            box-shadow: 0 1px 3px var(--shadow); align-items: center; gap: 8px;
+        }
+        .search-bar input {
+            flex: 1; border: none; background: none; outline: none;
+            color: var(--text-primary); font-size: 15px;
+        }
+        .search-bar input::placeholder { color: var(--text-muted); }
+
+        /* ============ BOOK LIST ============ */
+        .book-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        /* ============ BOOK ITEM DWIBAHASA ============ */
+        .book-item {
+            background: var(--bg-secondary);
+            padding: 14px 10px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 1px 3px var(--shadow);
+            transition: transform 0.1s;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .book-item:active {
+            transform: scale(0.97);
+        }
+        
+        /* Nama Indonesia (utama, lebih besar) */
+        .book-name-id {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+        
+        /* Nama Tok Pisin (sekunder, lebih kecil & italic) */
+        .book-name-tp {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.2;
+        }
+        
+        /* Pemisah visual antara ID dan TP */
+        .book-name-id::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--border);
+            margin: 3px auto 0 auto;
+        }
+
+      .book-item {
+            min-height: 60px; /* Tinggi minimum agar seragam */
+            justify-content: center;
+        }
+        
+        .book-name-id, .book-name-tp {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+      
+        /* ============ CHAPTER GRID ============ */
+        .chapter-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        .chapter-item {
+            background: var(--bg-secondary); padding: 15px 5px;
+            border-radius: 10px; text-align: center; cursor: pointer;
+            box-shadow: 0 1px 3px var(--shadow); font-weight: 600;
+            transition: transform 0.1s;
+        }
+        .chapter-item:active { transform: scale(0.95); }
+
+        /* ============ JUMP BOX ============ */
+        .jump-box {
+            background: var(--bg-secondary); padding: 12px;
+            border-radius: 10px; margin-bottom: 15px;
+            box-shadow: 0 1px 3px var(--shadow);
+            display: flex; gap: 8px; align-items: center;
+        }
+        .jump-box input {
+            flex: 1; padding: 8px 10px; border: 1px solid var(--border);
+            border-radius: 6px; background: var(--bg-primary);
+            color: var(--text-primary); font-size: 14px; outline: none;
+        }
+        .jump-box button {
+            padding: 8px 14px; background: var(--accent); color: white;
+            border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
+        }
+
+        /* ============ LANGUAGE TOGGLE ============ */
+        .lang-toggle {
+            background: var(--bg-secondary); padding: 10px;
+            border-radius: 10px; margin-bottom: 15px;
+            display: flex; gap: 8px; box-shadow: 0 1px 3px var(--shadow);
+         
+          /* STICKY POSITIONING */
+    position: sticky;
+    top: 60px; /* Sesuaikan dengan tinggi app bar Anda */
+    z-index: 90;
+        }
+
+/* ============ NAVIGATION CHAPTER (STICKY) ============ */
+.nav-chapter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+    
+    /* STICKY POSITIONING */
+    position: sticky;
+    bottom: 70px; /* Sesuaikan dengan tinggi bottom navigation */
+    z-index: 90;
+    padding: 10px 0;
+    background: var(--bg-primary); /* Penting: agar konten tidak "tembus" */
+}
+
+/* Efek bayangan saat sticky aktif */
+.lang-toggle.sticky-active,
+.nav-chapter.sticky-active {
+    box-shadow: 0 4px 12px var(--shadow-strong);
+}
+      
+        .lang-btn {
+            flex: 1; padding: 8px 4px; border: 2px solid var(--accent);
+            background: transparent; color: var(--accent);
+            border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 12px;
+            transition: all 0.2s;
+        }
+        .lang-btn.active { background: var(--accent); color: white; }
+
+
+/* ============ FLOATING NAVIGATION BAR ============ */
+.floating-nav {
+    position: sticky;
+    bottom: 75px; /* Di atas bottom navigation */
+    z-index: 90;
+    margin: 20px 12px 10px 12px;
+    background: var(--bg-secondary);
+    border-radius: 50px; /* Pill shape */
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 8px 24px var(--shadow-strong), 0 2px 8px var(--shadow);
+    border: 1px solid var(--border);
+    transition: bottom 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    
+    /* ✅ TAMBAHKAN CLASS INI untuk posisi saat bottom nav hilang */
+    .floating-nav.at-bottom {
+        bottom: 10px; /* Turun ke paling bawah layar */
+    }
+
+.float-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--text-primary);
+    font-family: inherit;
+}
+
+.float-btn:active {
+    transform: scale(0.92);
+}
+
+/* Tombol Play */
+.play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 18px;
+    box-shadow: 0 2px 8px var(--shadow);
+    flex-shrink: 0;
+}
+.play-btn:active {
+    background: var(--accent-light);
+}
+
+/* Tombol Panah */
+.nav-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text-primary);
+    flex-shrink: 0;
+}
+.nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+.nav-arrow:active:not(:disabled) {
+    background: var(--bg-tertiary);
+}
+
+/* Tombol Nama Kitab (Tengah) */
+.book-selector {
+    flex: 1;
+    height: 44px;
+    border-radius: 25px;
+    background: var(--bg-tertiary);
+    padding: 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 0;
+}
+.book-selector span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.book-selector:active {
+    background: var(--border);
+}
+
+/* ============ BOOK PICKER MODAL (BOTTOM SHEET) ============ */
+#book-picker-modal {
+    align-items: flex-end; /* Muncul dari bawah */
+    justify-content: flex-end;
+}
+
+.book-picker-sheet {
+    background: var(--bg-secondary);
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    box-shadow: 0 -4px 20px var(--shadow-strong);
+    animation: slideUp 0.3s ease-out;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.sheet-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.close-sheet {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-sheet:active {
+    background: var(--border);
+}
+
+/* Tabs di dalam sheet */
+.sheet-tabs {
+    display: flex;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 12px;
+}
+
+.sheet-tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sheet-tab.active {
+    background: var(--bg-secondary);
+    color: var(--accent);
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+/* Search di dalam sheet */
+.sheet-search {
+    margin-bottom: 12px;
+}
+
+.sheet-search input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+}
+
+.sheet-search input:focus {
+    border-color: var(--accent);
+}
+
+/* Grid kitab di dalam sheet */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding-bottom: 20px;
+}
+
+.book-grid-item {
+    padding: 12px 8px;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.15s;
+    border: 2px solid transparent;
+
+  /* ✅ Tambahan untuk dukung teks 2 baris */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+    line-height: 1.3;
+}
+
+.book-grid-item:active {
+    transform: scale(0.95);
+}
+
+.book-grid-item.current {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    font-weight: 700;
+}
+
+.book-grid-item:hover {
+    background: var(--border);
+}
+
+
+      @media (max-width: 360px) {
+    .floating-nav {
+        margin: 15px 8px 8px 8px;
+        padding: 6px;
+        gap: 4px;
+    }
+    .play-btn, .book-selector {
+        height: 40px;
+    }
+    .nav-arrow {
+        width: 36px;
+        height: 36px;
+    }
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+      }
+
+      
+        /* ============ VERSES ============ */
+/* ============ VERSES ============ */
+
+/* ============ THEME (Judul Besar Lintas Pasal) ============ */
+.pericope-theme {
+    text-align: center;
+    margin: 20px 0 16px 0;
+    padding: 16px 12px;
+    background: var(--bg-secondary);
+    border-top: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.pericope-theme-title {
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.pericope-theme-range {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============ PERIKOP HEADER ============ */
+.pericope-header {
+    margin: 22px 0 12px 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: left;
+    animation: fadeIn 0.4s ease-out;
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+}
+
+.pericope-title-id {
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.pericope-title-tp {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+.pericope-range {
+    font-size: 14px;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 6px;
+}
+
+.pericope-crossrefs {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Mode ID saja */
+.pericope-header.mode-id .pericope-title-tp {
+    display: none;
+}
+
+/* Mode TP saja */
+.pericope-header.mode-tp .pericope-title-id {
+    display: none;
+}
+
+.pericope-theme.mode-id .pericope-theme-title-tp {
+    display: none;
+}
+
+.pericope-theme.mode-tp .pericope-theme-title-id {
+    display: none;
+    }
+      
+.verse {
+    background: var(--verse-bg);
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--shadow);
+    position: relative;
+    transition: transform 0.2s;
+    
+    /* Tambahkan ini agar nomor & teks sejajar */
+    display: flex;
+    align-items: flex-start;
+}
+      
+.verse.bookmarked { border-left: 4px solid var(--success); }
+.verse.has-note { border-right: 4px solid var(--warning); }
+
+
+/* ============ MODE SINGLE LANGUAGE (ID atau TP saja) ============ */
+.verse-flow-container {
+    background: var(--verse-bg);
+    padding: 20px 16px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px var(--shadow);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.8;
+    font-size: calc(var(--font-size, 16px) + 2px); /* Sedikit lebih besar */
+    color: var(--text-primary);
+    text-align: left;
+    word-spacing: 0.5px;
+}
+
+/* Nomor ayat besar di awal paragraf (setinggi 2 baris teks) */
+.verse-drop-cap {
+    float: left;
+    font-size: 2.5em;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 0.85;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: -8px;
+    font-family: inherit;
+    padding-top: 4px;
+}
+
+/* Nomor ayat sup (kecil) untuk ayat biasa */
+.verse-sup-num {
+    font-size: 0.75em;
+    font-weight: 700;
+    color: var(--accent);
+    vertical-align: super;
+    margin-right: 3px;
+    line-height: 0;
+}
+
+/* Pastikan container teks mengalir dengan baik di samping drop cap */
+.verse-flow-text {
+    line-height: 1.6;
+}
+
+.verse-flow-container {
+    line-height: 1.6;
+    overflow: hidden; /* Clear float */
+  }
+
+/* Heading perikop untuk mode single */
+.verse-heading-flow {
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.4em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+/* Sub-heading (bahasa kedua) */
+.verse-heading-flow .sub-heading {
+    display: block;
+    font-size: 0.75em;
+    color: var(--text-muted);
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 4px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+      
+/* Nomor ayat: sejajar dengan teks */
+.verse-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    min-width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-right: 10px; /* Ganti margin-bottom menjadi margin-right */
+    margin-bottom: 0;   /* Hilangkan margin bawah */
+    box-shadow: 0 2px 4px var(--shadow);
+    flex-shrink: 0;     /* Agar nomor tidak mengecil */
+  }
+      
+/* Container teks ayat */
+.verse-text {
+    line-height: 1.6;
+    margin-bottom: 6px;
+    font-size: var(--font-size);
+}
+
+/* Teks Indonesia */
+.verse-id-text {
+    color: var(--text-primary);
+}
+
+/* Teks Tok Pisin: italic & sedikit berbeda warna */
+.verse-tp-text {
+    color: var(--verse-tp);
+    font-style: italic;
+    padding-top: 8px;
+    margin-top: 4px;
+    border-top: 1px dashed var(--border);
+}
+
+/* Kelas show/hide untuk kontrol bahasa */
+.verse-text.show { display: block; }
+.verse-text.hide { display: none; }
+
+/* Indikator catatan */
+.verse-note-indicator {
+    font-size: 11px;
+    color: var(--warning);
+    margin-top: 6px;
+    font-weight: 600;
+          }
+
+      /* Container teks di sebelah kanan nomor ayat */
+.verse-content {
+    flex: 1;
+    min-width: 0;
+    padding-top: 2px; /* Sedikit penyesuaian agar sejajar dengan nomor */
+          }
+
+
+/* ============ PERIKOP / HEADING ============ */
+.verse-heading {
+    font-weight: 800;
+    font-size: 1.1em;
+    color: var(--accent);
+    text-align: center;
+    margin: 25px 0 12px 0;
+    padding: 10px 15px;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 2px 4px var(--shadow);
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* Badge penanda bahasa jika menggunakan fallback */
+.lang-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-weight: 700;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+.badge-id { background: #dbeafe; color: #1e40af; }
+.badge-tp { background: #fef3c7; color: #92400e; }
+[data-theme="dark"] .badge-id { background: #1e3a8a; color: #93c5fd; }
+[data-theme="dark"] .badge-tp { background: #78350f; color: #fcd34d; }
+
+/* Sub-heading untuk mode "Keduanya" */
+.sub-heading {
+    display: block;
+    font-size: 0.9em;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 4px;
+    border-top: 1px dashed var(--border);
+    padding-top: 4px;
+}
+.missing-trans {
+    display: block;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 4px;
+}
+
+      
+
+        /* ============ CONTEXT MENU ============ */
+        .context-menu {
+            position: fixed;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px var(--shadow-strong);
+            padding: 8px;
+            z-index: 1000;
+            min-width: 180px;
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+            transition: opacity 0.15s, transform 0.15s;
+            border: 1px solid var(--border);
+        }
+        .context-menu.show {
+            opacity: 1; transform: scale(1); pointer-events: auto;
+        }
+        .context-menu-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 12px; border-radius: 8px;
+            cursor: pointer; color: var(--text-primary);
+            font-size: 14px; font-weight: 500;
+            transition: background 0.15s;
+            border: none; background: none; width: 100%; text-align: left;
+        }
+        .context-menu-item:hover,
+        .context-menu-item:active { background: var(--bg-tertiary); }
+        .context-menu-item .icon { font-size: 18px; width: 22px; text-align: center; }
+        .context-menu-divider {
+            height: 1px; background: var(--border); margin: 4px 0;
+        }
+
+        /* ============ NAVIGATION ============ */
+    /*    .nav-chapter {
+            display: flex; justify-content: space-between;
+            margin-top: 20px; gap: 10px;
+        }
+        .nav-btn {
+            flex: 1; padding: 12px; background: var(--accent);
+            color: white; border: none; border-radius: 10px;
+            font-weight: 600; cursor: pointer; transition: opacity 0.2s;
+        }
+        .nav-btn:disabled { background: var(--border); cursor: not-allowed; opacity: 0.6; }
+*/
+        /* ============ BOTTOM NAV ============ */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--bg-secondary); display: flex;
+            justify-content: space-around; padding: 8px 0;
+            box-shadow: 0 -2px 10px var(--shadow); z-index: 100;
+            border-top: 1px solid var(--border);
+            /* TAMBAHKAN INI untuk animasi smooth */
+            transition: transform 0.3s ease-in-out;                       
+        }
+
+      /* Class untuk menyembunyikan bottom nav */
+        .bottom-nav.hidden {
+            transform: translateY(100%);
+        }
+        .nav-item {
+            flex: 1; text-align: center; padding: 6px;
+            cursor: pointer; color: var(--text-muted);
+            transition: color 0.2s; border: none; background: none;
+        }
+        .nav-item.active { color: var(--accent); }
+        .nav-item-icon { font-size: 22px; display: block; }
+        .nav-item-label { font-size: 11px; font-weight: 600; margin-top: 2px; }
+
+        /* ============ SETTINGS ============ */
+        .settings-panel {
+            background: var(--bg-secondary); padding: 16px;
+            border-radius: 10px; box-shadow: 0 1px 3px var(--shadow);
+            margin-bottom: 15px;
+        }
+        .settings-panel h3 { margin-bottom: 10px; font-size: 15px; }
+        .setting-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid var(--border);
+        }
+        .setting-row:last-child { border-bottom: none; }
+        .setting-label { font-weight: 500; font-size: 14px; }
+        .setting-control { display: flex; gap: 8px; align-items: center; }
+        .font-btn {
+            width: 36px; height: 36px; border-radius: 8px;
+            border: 1px solid var(--border); background: var(--bg-primary);
+            color: var(--text-primary); cursor: pointer; font-weight: bold;
+        }
+        .switch { position: relative; width: 50px; height: 26px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; inset: 0; background: var(--border);
+            border-radius: 26px; cursor: pointer; transition: 0.3s;
+        }
+        .slider:before {
+            content: ''; position: absolute; width: 20px; height: 20px;
+            left: 3px; bottom: 3px; background: white; border-radius: 50%;
+            transition: 0.3s;
+        }
+        .switch input:checked + .slider { background: var(--accent); }
+        .switch input:checked + .slider:before { transform: translateX(24px); }
+
+        /* Color theme picker */
+        .color-picker { display: flex; gap: 8px; flex-wrap: wrap; }
+        .color-dot {
+            width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; border: 3px solid transparent;
+            transition: transform 0.2s;
+        }
+        .color-dot.active { border-color: var(--text-primary); transform: scale(1.1); }
+        .color-dot[data-color="blue"]   { background: #1e3a8a; }
+        .color-dot[data-color="green"]  { background: #047857; }
+        .color-dot[data-color="red"]    { background: #b91c1c; }
+        .color-dot[data-color="purple"] { background: #6d28d9; }
+        .color-dot[data-color="orange"] { background: #c2410c; }
+        .color-dot[data-color="teal"]   { background: #0f766e; }
+        .color-dot[data-color="sepia"]  { background: #8b6f47; }
+
+        /* ============ BOOKMARK LIST ============ */
+        .bookmark-item, .note-item {
+            background: var(--bg-secondary); padding: 14px;
+            border-radius: 10px; margin-bottom: 10px;
+            box-shadow: 0 1px 3px var(--shadow); cursor: pointer;
+        }
+        .bookmark-item { border-left: 4px solid var(--success); }
+        .note-item { border-left: 4px solid var(--warning); }
+        .bookmark-ref, .note-ref {
+            font-weight: 700; color: var(--accent);
+            margin-bottom: 6px; font-size: 14px;
+        }
+        .bookmark-text, .note-text { font-size: 14px; color: var(--text-secondary); }
+        .note-content {
+            background: var(--bg-tertiary); padding: 8px 10px;
+            border-radius: 6px; margin-top: 6px; font-size: 13px;
+            font-style: italic;
+        }
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+        .empty-state-icon { font-size: 60px; margin-bottom: 12px; }
+
+
+/* ============ SEARCH LANGUAGE FILTER ============ */
+.search-lang-filter {
+    display: flex;
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 6px;
+    margin-bottom: 12px;
+    gap: 6px;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+.search-lang-btn {
+    flex: 1;
+    padding: 8px 4px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+.search-lang-btn.active {
+    background: var(--accent);
+    color: white;
+}
+.search-lang-btn:active {
+    transform: scale(0.95);
+}
+
+/* Tampilan hasil pencarian dengan 2 bahasa */
+.search-result-text-id {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+.search-result-text-tp {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.4;
+    padding-top: 6px;
+    border-top: 1px dashed var(--border);
+}
+.search-result-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.badge-id { background: #dbeafe; color: #1e40af; }
+.badge-tp { background: #fef3c7; color: #92400e; }
+[data-theme="dark"] .badge-id { background: #1e3a8a; color: #93c5fd; }
+[data-theme="dark"] .badge-tp { background: #78350f; color: #fcd34d; }
+      
+        /* ============ SEARCH RESULTS ============ */
+        .search-result {
+            background: var(--bg-secondary); padding: 14px;
+            border-radius: 10px; margin-bottom: 10px;
+            box-shadow: 0 1px 3px var(--shadow); cursor: pointer;
+        }
+        .search-result-ref {
+            font-weight: 700; color: var(--accent);
+            margin-bottom: 6px; font-size: 13px;
+        }
+        .search-result-text { font-size: 14px; color: var(--text-secondary); }
+        .highlight {
+            background: #fef08a; color: #000;
+            padding: 0 2px; border-radius: 3px;
+        }
+        [data-theme="dark"] .highlight { background: #ca8a04; color: #000; }
+
+        /* ============ READING PLAN ============ */
+        .plan-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .plan-card {
+            background: var(--bg-secondary); padding: 16px;
+            border-radius: 12px; box-shadow: 0 1px 3px var(--shadow);
+            cursor: pointer; text-align: center;
+            transition: transform 0.1s;
+        }
+        .plan-card:active { transform: scale(0.97); }
+        .plan-card.active-plan { border: 2px solid var(--accent); }
+        .plan-card-icon { font-size: 32px; margin-bottom: 6px; }
+        .plan-card-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+        .plan-card-desc { font-size: 12px; color: var(--text-muted); }
+
+        .plan-progress {
+            background: var(--bg-secondary); padding: 16px;
+            border-radius: 12px; box-shadow: 0 1px 3px var(--shadow);
+            margin-bottom: 15px;
+        }
+        .plan-progress-header {
+            display: flex; justify-content: space-between;
+            align-items: center; margin-bottom: 10px;
+        }
+        .plan-progress-bar {
+            height: 8px; background: var(--bg-tertiary);
+            border-radius: 4px; overflow: hidden; margin-bottom: 10px;
+        }
+        .plan-progress-fill {
+            height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transition: width 0.3s;
+        }
+        .plan-today-reading {
+            background: var(--bg-tertiary); padding: 12px;
+            border-radius: 8px; margin-top: 10px;
+        }
+        .plan-today-label {
+            font-size: 12px; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 6px; font-weight: 600;
+        }
+        .plan-reading-item {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .plan-reading-item:last-child { border-bottom: none; }
+        .plan-reading-item button {
+            background: var(--accent); color: white; border: none;
+            padding: 6px 12px; border-radius: 6px; font-size: 12px;
+            cursor: pointer; font-weight: 600;
+        }
+        .plan-reading-item.done { opacity: 0.5; }
+        .plan-reading-item.done .reading-ref { text-decoration: line-through; }
+
+        /* ============ MODAL (untuk notes) ============ */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: none; align-items: center; justify-content: center;
+            z-index: 2000; padding: 20px;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: var(--bg-secondary); border-radius: 14px;
+            padding: 20px; width: 100%; max-width: 400px;
+            box-shadow: 0 10px 30px var(--shadow-strong);
+            animation: modalIn 0.2s;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal h3 { margin-bottom: 12px; color: var(--accent); }
+        .modal textarea {
+            width: 100%; min-height: 120px; padding: 10px;
+            border: 1px solid var(--border); border-radius: 8px;
+            background: var(--bg-primary); color: var(--text-primary);
+            font-family: inherit; font-size: 14px; resize: vertical;
+            outline: none; margin-bottom: 12px;
+        }
+        .modal textarea:focus { border-color: var(--accent); }
+        .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+        .modal-btn {
+            padding: 8px 16px; border: none; border-radius: 8px;
+            font-weight: 600; cursor: pointer; font-size: 14px;
+        }
+        .modal-btn.primary { background: var(--accent); color: white; }
+        .modal-btn.secondary { background: var(--bg-tertiary); color: var(--text-primary); }
+        .modal-btn.danger { background: var(--danger); color: white; }
+
+        /* ============ TOAST ============ */
+        .toast {
+            position: fixed; bottom: 90px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-primary); color: var(--bg-primary);
+            padding: 10px 20px; border-radius: 20px;
+            font-size: 14px; z-index: 1000; opacity: 0;
+            transition: opacity 0.3s; pointer-events: none;
+        }
+        .toast.show { opacity: 1; }
+
+        /* ============ LOADING ============ */
+        .loading { text-align: center; padding: 40px; color: var(--text-muted); }
+
+        /* ============ AUDIO PLAYING INDICATOR ============ */
+        .audio-indicator {
+            position: fixed; bottom: 80px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent); color: white;
+            padding: 8px 16px; border-radius: 20px;
+            font-size: 13px; z-index: 500;
+            display: none; align-items: center; gap: 8px;
+            box-shadow: 0 4px 12px var(--shadow-strong);
+        }
+        .audio-indicator.show { display: flex; }
+        .audio-indicator button {
+            background: rgba(255,255,255,0.2); border: none;
+            color: white; width: 28px; height: 28px;
+            border-radius: 50%; cursor: pointer; font-size: 14px;
+        }
+
+/* ============ TOAST NOTIFICATION ============ */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    15% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    85% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+
+      /* ============ MID-THEME (Theme di Tengah Pasal) ============ */
+.mid-theme {
+    text-align: center;
+    margin: 28px 0 20px 0;
+    padding: 20px 16px;
+    background: var(--bg-secondary);
+    border-top: 4px solid var(--accent);
+    border-bottom: 4px solid var(--accent);
+    animation: fadeIn 0.4s ease-out;
+}
+
+.mid-theme-title-id {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.mid-theme-title-tp {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.mid-theme-range {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    font-style: italic;
+}
+
+/* Mode ID saja */
+.mid-theme.mode-id .mid-theme-title-tp {
+    display: none;
+}
+
+/* Mode TP saja */
+.mid-theme.mode-tp .mid-theme-title-id {
+    display: none;
+}
+      
+    </style>
+</head>
+<body>
+
+    <!-- SPLASH -->
+    <div class="splash">
+        <div class="splash-icon">📖</div>
+        <h1>Alkitab</h1>
+        <p>Indonesia & Tok Pisin</p>
+    </div>
+
+    <!-- APP BAR -->
+    <div class="app-bar">
+        <button class="icon-btn" id="back-btn" onclick="goBack()" style="display:none;">←</button>
+        <h1 id="app-title">Alkitab</h1>
+        <button class="icon-btn" onclick="toggleSearch()">🔍</button>
+        <button class="icon-btn" onclick="toggleSettings()">⚙️</button>
+    </div>
+
+    <!-- VIEW: BERANDA (DASHBOARD) -->
+    <div id="view-beranda" class="view">
+        <!-- Ayat Harian -->
+        <div id="beranda-daily-verse"></div>
+    
+        <!-- Quick Access Menu -->
+        <div class="beranda-section">
+            <h3 class="beranda-title">⚡ Akses Cepat</h3>
+            <div class="quick-grid">
+                <div class="quick-card" onclick="quickOpen('psalms', 23)">
+                    <div class="quick-icon">🎵</div>
+                    <div class="quick-label">Mazmur 23</div>
+                </div>
+                <div class="quick-card" onclick="quickOpen('john', 1)">
+                    <div class="quick-icon">❤️</div>
+                    <div class="quick-label">Yohanes 1</div>
+                </div>
+                <div class="quick-card" onclick="quickOpen('genesis', 1)">
+                    <div class="quick-icon">🌅</div>
+                    <div class="quick-label">Kejadian 1</div>
+                </div>
+                <div class="quick-card" onclick="quickOpen('matthew', 5)">
+                    <div class="quick-icon">⛰️</div>
+                    <div class="quick-label">Khotbah di Bukit</div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Statistik Bacaan -->
+        <div class="beranda-section">
+            <h3 class="beranda-title">📊 Statistik Anda</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-bookmarks">0</div>
+                    <div class="stat-label">Markah</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-notes">0</div>
+                    <div class="stat-label">Catatan</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-chapters">0</div>
+                    <div class="stat-label">Pasal Dibaca</div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Rencana Baca Hari Ini -->
+        <div class="beranda-section" id="beranda-plan-section" style="display:none;">
+            <h3 class="beranda-title">📖 Rencana Baca Hari Ini</h3>
+            <div id="beranda-plan-content"></div>
+        </div>
+    
+        <!-- Tombol Mulai Baca -->
+        <div class="beranda-section">
+            <button class="start-reading-btn" onclick="navTo('view-home', document.querySelectorAll('.nav-item')[1])">
+                📖 Mulai Membaca
+            </button>
+        </div>
+    </div>
+
+
+  
+
+    <!-- VIEW: HOME -->
+    <div id="view-home" class="view active">
+        <div id="daily-verse-container"></div>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('old', this)">Old Testament</div>
+            <div class="tab" onclick="switchTab('new', this)">New Testament</div>
+        </div>
+   
+        <div id="book-list" class="book-list"></div>
+    </div>
+
+    <!-- VIEW: CHAPTERS -->
+    <div id="view-chapters" class="view">
+        <div class="jump-box">
+            <input type="number" id="jump-input" placeholder="Lompat ke pasal..." min="1">
+            <button onclick="jumpToChapter()">Pergi</button>
+        </div>
+        <div id="chapter-grid" class="chapter-grid"></div>
+    </div>
+
+    <!-- VIEW: READING -->
+    <div id="view-reading" class="view">
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('id', this)">🇮🇩 ID</button>
+            <button class="lang-btn" onclick="setLang('tp', this)">🇵🇬 TP</button>
+            <button class="lang-btn" onclick="setLang('both', this)">Keduanya</button>
+        </div>
+        <div id="verses-container"></div>
+        
+      
+      <!-- Floating Navigation Bar -->
+<div class="floating-nav" id="floating-nav">
+    <button class="float-btn nav-arrow" onclick="changeChapter(-1)" id="float-prev-btn">
+        ‹
+    </button>
+    
+    <button class="float-btn book-selector" onclick="openBookPicker()">
+        <span id="float-book-title">Matius 1</span>
+    </button>
+    
+    <button class="float-btn nav-arrow" onclick="changeChapter(1)" id="float-next-btn">
+        ›
+    </button>
+</div>
+
+<!-- Book Picker Modal (Bottom Sheet) -->
+<div class="modal-overlay" id="book-picker-modal">
+    <div class="book-picker-sheet">
+        <div class="sheet-header">
+            <h3>Pilih Kitab</h3>
+            <button class="close-sheet" onclick="closeBookPicker()">✕</button>
+        </div>
+        
+       <div class="sheet-tabs">
+            <button class="sheet-tab active" onclick="switchPickerTab('old', this)">Old Testament</button>
+            <button class="sheet-tab" onclick="switchPickerTab('new', this)">New Testament</button>
+        </div>
+
+   
+        <div class="sheet-search">
+            <input type="text" id="picker-search" placeholder="Cari kitab..." oninput="filterBooks()">
+        </div>
+        
+        <div class="book-grid" id="picker-book-list"></div>
+    </div>
+</div>   
+    </div>
+
+    <!-- VIEW: SEARCH -->
+    <div id="view-search" class="view">
+        <div class="search-bar">
+            <span>🔍</span>
+            <input type="text" id="search-input" placeholder="Cari kata di Alkitab..." oninput="doSearch()">
+        </div>
+
+      <!-- Filter Bahasa Baru -->
+    <div class="search-lang-filter">
+        <button class="search-lang-btn active" data-lang="all" onclick="setSearchLang('all', this)">🌐 Semua</button>
+        <button class="search-lang-btn" data-lang="id" onclick="setSearchLang('id', this)">🇮🇩 Indonesia</button>
+        <button class="search-lang-btn" data-lang="tp" onclick="setSearchLang('tp', this)">🇵🇬 Tok Pisin</button>
+    </div>
+      
+    <div id="search-stats" style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px; padding: 0 4px;"></div>
+    <div id="search-results"></div>
+    </div>
+
+    <!-- VIEW: BOOKMARKS -->
+    <div id="view-bookmarks" class="view">
+        <div id="bookmarks-list"></div>
+    </div>
+
+    <!-- VIEW: NOTES -->
+    <div id="view-notes" class="view">
+        <div id="notes-list"></div>
+    </div>
+
+    <!-- VIEW: READING PLAN -->
+    <div id="view-plan" class="view">
+        <h3 style="margin-bottom: 12px;">📅 Rencana Baca</h3>
+        <div class="plan-cards">
+            <div class="plan-card" onclick="setPlan(30)">
+                <div class="plan-card-icon">⚡</div>
+                <div class="plan-card-title">30 Hari</div>
+                <div class="plan-card-desc">~40 pasal/hari</div>
+            </div>
+            <div class="plan-card" onclick="setPlan(60)">
+                <div class="plan-card-icon">🔥</div>
+                <div class="plan-card-title">60 Hari</div>
+                <div class="plan-card-desc">~20 pasal/hari</div>
+            </div>
+            <div class="plan-card" onclick="setPlan(90)">
+                <div class="plan-card-icon">📖</div>
+                <div class="plan-card-title">90 Hari</div>
+                <div class="plan-card-desc">~13 pasal/hari</div>
+            </div>
+            <div class="plan-card" onclick="setPlan(365)">
+                <div class="plan-card-icon">🌟</div>
+                <div class="plan-card-title">365 Hari</div>
+                <div class="plan-card-desc">~3 pasal/hari</div>
+            </div>
+        </div>
+        <div id="plan-progress-container"></div>
+    </div>
+
+    <!-- VIEW: SETTINGS -->
+    <div id="view-settings" class="view">
+        <div class="settings-panel">
+            <h3>🎨 Tampilan</h3>
+            <div class="setting-row">
+                <span class="setting-label">🌙 Mode Gelap</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-toggle" onchange="toggleDarkMode()">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">🎨 Warna Tema</span>
+                <div class="color-picker" id="color-picker"></div>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">🔤 Ukuran Font</span>
+                <div class="setting-control">
+                    <button class="font-btn" onclick="changeFontSize(-1)">A-</button>
+                    <span id="font-size-label">16</span>
+                    <button class="font-btn" onclick="changeFontSize(1)">A+</button>
+                </div>
+            </div>
+        </div>
+        <div class="settings-panel">
+            <h3>🔔 Notifikasi</h3>
+            <div class="setting-row">
+                <span class="setting-label">📜 Ayat Harian di Beranda</span>
+                <label class="switch">
+                    <input type="checkbox" id="daily-verse-toggle" onchange="toggleDailyVerse()" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="settings-panel">
+            <h3>ℹ️ Tentang</h3>
+            <div class="setting-row">
+                <span class="setting-label">Versi</span>
+                <span style="color: var(--text-muted);">v3.0 Ultimate</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">Bahasa</span>
+                <span style="color: var(--text-muted);">ID & Tok Pisin</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">🗑️ Hapus Cache Pasal</span>
+                <button class="font-btn" onclick="clearChapterCache()" style="width:auto; padding:0 12px;">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+        <button class="nav-item active" onclick="navTo('view-beranda', this)">
+            <span class="nav-item-icon">🏠</span>
+            <span class="nav-item-label">Beranda</span>
+        </button>
+        <button class="nav-item" onclick="navTo('view-home', this)">
+            <span class="nav-item-icon">📚</span>
+            <span class="nav-item-label">Kitab</span>
+        </button>
+        <button class="nav-item" onclick="navTo('view-plan', this)">
+            <span class="nav-item-icon">📅</span>
+            <span class="nav-item-label">Rencana</span>
+        </button>
+        <button class="nav-item" onclick="navTo('view-bookmarks', this)">
+            <span class="nav-item-icon">🔖</span>
+            <span class="nav-item-label">Markah</span>
+        </button>
+        <button class="nav-item" onclick="navTo('view-notes', this)">
+            <span class="nav-item-icon">📝</span>
+            <span class="nav-item-label">Catatan</span>
+        </button>
+    </div>
+  
+    <!-- CONTEXT MENU -->
+    <div class="context-menu" id="context-menu">
+        <button class="context-menu-item" onclick="ctxAction('play')">
+            <span class="icon">🔊</span><span>Dengarkan</span>
+        </button>
+        <button class="context-menu-item" onclick="ctxAction('bookmark')">
+            <span class="icon">⭐</span><span id="ctx-bookmark-label">Tandai</span>
+        </button>
+        <div class="context-menu-divider"></div>
+        <button class="context-menu-item" onclick="ctxAction('copy')">
+            <span class="icon">📋</span><span>Salin</span>
+        </button>
+        <button class="context-menu-item" onclick="ctxAction('share')">
+            <span class="icon">📤</span><span>Bagikan</span>
+        </button>
+        <div class="context-menu-divider"></div>
+        <button class="context-menu-item" onclick="ctxAction('note')">
+            <span class="icon">📝</span><span id="ctx-note-label">Tambah Catatan</span>
+        </button>
+    </div>
+
+    <!-- NOTE MODAL -->
+    <div class="modal-overlay" id="note-modal">
+        <div class="modal">
+            <h3>📝 Catatan Pribadi</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;" id="note-modal-ref"></p>
+            <textarea id="note-textarea" placeholder="Tulis catatan Anda di sini..."></textarea>
+            <div class="modal-actions">
+                <button class="modal-btn danger" id="note-delete-btn" onclick="deleteNote()" style="display:none;">Hapus</button>
+                <button class="modal-btn secondary" onclick="closeNoteModal()">Batal</button>
+                <button class="modal-btn primary" onclick="saveNote()">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO INDICATOR -->
+    <div class="audio-indicator" id="audio-indicator">
+        <span>🔊 Sedang memutar...</span>
+        <button onclick="stopAudio()">⏹</button>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ============ STATE ============
+        let bibleData = []; // Menyimpan seluruh data dari alkitab_bilingual.json
+        let booksData = null;
+        let currentBook = null;
+        let currentChapter = 1;
+        let currentLang = 'id';
+        let currentTestament = 'old';
+        let currentChapterData = null;
+        let bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+        let notes = JSON.parse(localStorage.getItem('notes') || '{}');
+        let fontSize = parseInt(localStorage.getItem('fontSize') || '16');
+        let isDarkMode = localStorage.getItem('darkMode') === 'true';
+        let colorTheme = localStorage.getItem('colorTheme') || 'blue';
+        let showDailyVerse = localStorage.getItem('showDailyVerse') !== 'false';
+        let readingPlan = JSON.parse(localStorage.getItem('readingPlan') || 'null');
+        let planProgress = JSON.parse(localStorage.getItem('planProgress') || '{}');
+
+        // Context menu state
+        let contextTarget = null;
+        let longPressTimer = null;
+        let isLongPress = false;
+
+        // ============ CACHE ============
+        let chapterCache = {}; // Menyimpan data pasal yang sudah di-load
+
+        let previousViewBeforeSettings = 'view-home';
+        let previousViewBeforeSearch = 'view-home';
+
+// ============ FLOATING NAV UPDATE ============
+    function updateFloatingNav() {
+    if (!currentBook) return;
+    
+    // ✅ LOGIKA NAMA SESUAI MODE BAHASA
+    let bookDisplayName = '';
+    if (currentLang === 'id') {
+        bookDisplayName = currentBook.name;
+    } else if (currentLang === 'tp') {
+        bookDisplayName = currentBook.name_tp || currentBook.name;
+    } else if (currentLang === 'both') {
+        bookDisplayName = currentBook.name_tp 
+            ? `${currentBook.name} | ${currentBook.name_tp}` 
+            : currentBook.name;
+    } else {
+        bookDisplayName = currentBook.name;
+    }
+    
+    const fullTitle = `${bookDisplayName} ${currentChapter}`;
+    
+    // ✅ Update judul di floating nav
+    const titleEl = document.getElementById('float-book-title');
+    if (titleEl) {
+        titleEl.innerText = fullTitle;
+    }
+    
+    // ✅ UPDATE APP BAR (judul di header biru)
+    const appTitle = document.getElementById('app-title');
+    if (appTitle) {
+        // Hanya update jika sedang di halaman baca
+        const activeView = document.querySelector('.view.active');
+        if (activeView && activeView.id === 'view-reading') {
+            appTitle.innerText = fullTitle;
+        }
+    }
+    
+    // ✅ LOGIKA BARU: Disable hanya jika benar-benar di ujung Alkitab
+const prevBtn = document.getElementById('float-prev-btn');
+const nextBtn = document.getElementById('float-next-btn');
+
+if (prevBtn) {
+    const prevBook = getPrevBook();
+    // Disable hanya jika di pasal 1 DAN kitab pertama (Kejadian)
+    prevBtn.disabled = (currentChapter <= 1 && !prevBook);
+}
+
+if (nextBtn) {
+    const nextBook = getNextBook();
+    // Disable hanya jika di pasal terakhir DAN kitab terakhir (Wahyu)
+    nextBtn.disabled = (currentChapter >= currentBook.chapters && !nextBook);
+}
+}
+
+// Panggil updateFloatingNav() di dalam fungsi openChapter()
+// Tambahkan baris ini di akhir fungsi openChapter():
+// updateFloatingNav();
+
+// ============ BOOK PICKER MODAL ============
+let currentPickerTab = 'old';
+
+function openBook(bookId, bookName, totalChapters) {
+    // ✅ Cari data kitab dari bibleData (bukan fetch file terpisah)
+    const bookData = bibleData.find(b => b.id === bookId);
+    
+    if (!bookData) {
+        console.error('❌ Kitab tidak ditemukan:', bookId);
+        alert('Kitab tidak ditemukan: ' + bookId);
+        return;
+    }
+
+    // Simpan state kitab yang sedang dibuka
+    currentBook = {
+        id: bookId,
+        name: bookName,
+        name_tp: bookData.name_tp,
+        chapters: totalChapters,
+        data: bookData  // ✅ Simpan seluruh data kitab
+    };
+    currentChapter = 1;
+
+    // Tampilkan tombol back
+    const backBtn = document.getElementById('back-btn');
+    if (backBtn) backBtn.style.display = 'block';
+
+    // Generate daftar pasal
+    const grid = document.getElementById('chapter-grid');
+    if (grid) {
+        grid.innerHTML = '';
+        for (let i = 1; i <= totalChapters; i++) {
+            grid.innerHTML += `<div class="chapter-item" onclick="openChapter(${i})">${i}</div>`;
+        }
+    }
+
+    // Update floating nav & pindah ke halaman daftar pasal
+    updateFloatingNav();
+    showView('view-chapters');
+    
+    console.log('✅ Buka kitab:', bookName, '- Total pasal:', totalChapters);
+}
+
+
+function openBookPicker() {
+    const modal = document.getElementById('book-picker-modal');
+    if (!modal) {
+        console.error('❌ Modal book-picker tidak ditemukan!');
+        return;
+    }
+    modal.classList.add('show');
+    renderPickerBooks(currentPickerTab);
+    
+    setTimeout(() => {
+        const searchInput = document.getElementById('picker-search');
+        if (searchInput) searchInput.focus();
+    }, 300);
+}
+      
+
+function closeBookPicker() {
+    document.getElementById('book-picker-modal').classList.remove('show');
+    document.getElementById('picker-search').value = '';
+}
+
+function switchPickerTab(tab, el) {
+    currentPickerTab = tab;
+    document.querySelectorAll('.sheet-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    renderPickerBooks(tab);
+}
+
+function renderPickerBooks(testament, filter = '') {
+    if (!bibleData) return;
+    
+    const targetTestament = testament === 'old' ? 'PL' : 'PB';
+    const books = bibleData.filter(b => b.testament === targetTestament);
+    const container = document.getElementById('picker-book-list');
+    if (!container) return;
+
+    const filteredBooks = filter
+        ? books.filter(b =>
+            b.name_id.toLowerCase().includes(filter.toLowerCase()) ||
+            (b.name_tp && b.name_tp.toLowerCase().includes(filter.toLowerCase()))
+          )
+        : books;
+
+    if (filteredBooks.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted);">Kitab tidak ditemukan</div>';
+        return;
+    }
+
+    container.innerHTML = filteredBooks.map(b => {
+        const isCurrent = currentBook && currentBook.id === b.id;
+        const displayName = b.name_tp
+            ? `${b.name_id}<br><small style="font-size:10px; opacity:0.7; font-style:italic;">${b.name_tp}</small>`
+            : b.name_id;
+
+        return `
+            <div class="book-grid-item ${isCurrent ? 'current' : ''}"
+                 onclick="selectBookFromPicker('${b.id}', '${b.name_id}', ${b.chapters.length})">
+                ${displayName}
+            </div>
+        `;
+    }).join('');
+  }
+
+function filterBooks() {
+    const query = document.getElementById('picker-search').value;
+    renderPickerBooks(currentPickerTab, query);
+}
+
+function selectBookFromPicker(bookId, bookName, totalChapters) {
+    // 1. Tutup modal picker
+    closeBookPicker();
+    
+    // 2. Buka kitab (langsung tampilkan daftar pasal, tanpa await)
+    openBook(bookId, bookName, totalChapters);
+}
+
+// Tutup modal saat klik di luar sheet
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('book-picker-modal');
+    if (e.target === modal) {
+        closeBookPicker();
+    }
+});
+
+// ============ AUDIO CHAPTER ============
+async function playChapterAudio() {
+    if (!currentChapterData) {
+        showToast('Memuat data pasal...');
+        return;
+    }
+    
+    // Kumpulkan semua ayat di pasal ini
+    const verseNums = Object.keys(currentChapterData).sort((a, b) => parseInt(a) - parseInt(b));
+    const fullText = verseNums.map(n => {
+        const v = currentChapterData[n];
+        if (currentLang === 'tp') return v.tp;
+        if (currentLang === 'both') return `${v.id}. ${v.tp}`;
+        return v.id;
+    }).join(' ');
+    
+    if (!fullText.trim()) {
+        showToast('Tidak ada teks untuk diputar');
+        return;
+    }
+    
+    // Gunakan Web Speech API
+    if ('speechSynthesis' in window) {
+        stopAudio();
+        
+        const utterance = new SpeechSynthesisUtterance(fullText);
+        utterance.lang = currentLang === 'tp' ? 'en-US' : 'id-ID';
+        utterance.rate = 0.9;
+        utterance.pitch = 1;
+        
+        const voices = speechSynthesis.getVoices();
+        const targetLang = currentLang === 'tp' ? 'en' : 'id';
+        const matchVoice = voices.find(v => v.lang.startsWith(targetLang));
+        if (matchVoice) utterance.voice = matchVoice;
+        
+        utterance.onend = () => {
+            document.getElementById('audio-indicator').classList.remove('show');
+            showToast('✅ Selesai memutar');
+        };
+        
+        utterance.onerror = () => {
+            document.getElementById('audio-indicator').classList.remove('show');
+            showToast('❌ Gagal memutar audio');
+        };
+        
+        speechSynthesis.speak(utterance);
+        document.getElementById('audio-indicator').classList.add('show');
+        showToast('🔊 Memutar seluruh pasal...');
+    } else {
+        showToast('Browser tidak mendukung audio');
+    }
+      }
+
+
+
+      // ============ BERANDA FUNCTIONS ============
+      function renderBeranda() {
+          renderBerandaDailyVerse();
+          renderBerandaStats();
+          renderBerandaPlan();
+      }
+      
+      function renderBerandaDailyVerse() {
+          const container = document.getElementById('beranda-daily-verse');
+          if (!showDailyVerse || !booksData) {
+              container.innerHTML = '';
+              return;
+          }
+      
+          const today = new Date();
+          const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+      
+          const popularVerses = [
+              { bookId: 'john', ch: 3, v: 16 },
+              { bookId: 'psalms', ch: 23, v: 1 },
+              { bookId: 'philippians', ch: 4, v: 13 },
+              { bookId: 'proverbs', ch: 3, v: 5 },
+              { bookId: 'romans', ch: 8, v: 28 },
+              { bookId: 'isaiah', ch: 40, v: 31 },
+              { bookId: 'jeremiah', ch: 29, v: 11 },
+              { bookId: 'matthew', ch: 6, v: 33 },
+              { bookId: 'genesis', ch: 1, v: 1 },
+              { bookId: 'revelation', ch: 21, v: 4 }
+          ];
+
+          const pick = popularVerses[dayOfYear % popularVerses.length];
+          const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+          const book = allBooks.find(b => b.id === pick.bookId);
+          if (!book) return;
+      
+          fetch(`bible/${pick.bookId}.json`)
+              .then(r => r.json())
+              .then(data => {
+                  const verse = data[pick.ch] && data[pick.ch][pick.v];
+                  if (!verse) return;
+                  const ref = `${book.name_id} ${pick.ch}:${pick.v}`;
+                  container.innerHTML = `
+                      <div class="beranda-daily-card">
+                          <div class="beranda-daily-label">✨ Ayat Hari Ini</div>
+                          <div class="beranda-daily-text">"${verse.id}"</div>
+                          <div class="beranda-daily-ref">— ${ref}</div>
+                      </div>
+                  `;
+              })
+              .catch(() => {});
+      }
+      
+      function renderBerandaStats() {
+          document.getElementById('stat-bookmarks').innerText = bookmarks.length;
+          document.getElementById('stat-notes').innerText = Object.keys(notes).length;
+          document.getElementById('stat-chapters').innerText = Object.keys(planProgress).length;
+      }
+      
+      function renderBerandaPlan() {
+          const section = document.getElementById('beranda-plan-section');
+          const content = document.getElementById('beranda-plan-content');
+          
+          if (!readingPlan) {
+              section.style.display = 'none';
+              return;
+          }
+
+          section.style.display = 'block';
+          const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+          const totalChapters = allBooks.reduce((sum, b) => sum + b.chapters, 0);
+          const chaptersPerDay = Math.ceil(totalChapters / readingPlan.days);
+      
+          const start = new Date(readingPlan.startDate);
+          const today = new Date();
+          const daysElapsed = Math.floor((today - start) / 86400000) + 1;
+          const currentDay = Math.min(daysElapsed, readingPlan.days);
+      
+          const startChapter = (currentDay - 1) * chaptersPerDay + 1;
+          const todayReadings = [];
+          let accumulated = 0;
+          for (const book of allBooks) {
+              for (let ch = 1; ch <= book.chapters; ch++) {
+                  accumulated++;
+                  if (accumulated >= startChapter && accumulated < startChapter + chaptersPerDay) {
+                      todayReadings.push({ bookId: book.id, bookName: book.name_id, chapter: ch });
+                  }
+                  if (accumulated >= startChapter + chaptersPerDay) break;
+              }
+              if (accumulated >= startChapter + chaptersPerDay) break;
+          }
+      
+          content.innerHTML = todayReadings.map(r => {
+              const key = `${r.bookId}_${r.chapter}`;
+              const done = planProgress[key];
+              return `
+                  <div class="beranda-plan-item ${done ? 'done' : ''}" onclick="quickOpen('${r.bookId}', ${r.chapter})">
+                      <span class="plan-ref">${r.bookName} ${r.chapter}</span>
+                      <span class="plan-check">${done ? '✅' : '⬜'}</span>
+                  </div>
+              `;
+          }).join('');
+      }
+      
+      function quickOpen(bookId, chapter) {
+          const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+          const book = allBooks.find(b => b.id === bookId);
+          if (book) {
+              openBook(bookId, book.name_id, book.chapters).then(() => {
+                  openChapter(chapter);
+              });
+          }
+      }
+
+
+        // ============ INIT ============
+        async function init() {
+    try {
+        console.log('🚀 Memulai inisialisasi aplikasi...');
+        
+        // 1. Apply saved settings (TIDAK DIUBAH)
+        document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+        const fontLabel = document.getElementById('font-size-label');
+        if (fontLabel) fontLabel.innerText = fontSize;
+        
+        if (isDarkMode) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const darkToggle = document.getElementById('dark-toggle');
+            if (darkToggle) darkToggle.checked = true;
+        }
+        
+        document.documentElement.setAttribute('data-color', colorTheme);
+        const dailyToggle = document.getElementById('daily-verse-toggle');
+        if (dailyToggle) dailyToggle.checked = showDailyVerse;
+        
+        renderColorPicker();
+
+        // 2. Load Database Alkitab Utama (DARI GITHUB)
+        console.log('📚 Memuat Alkitab...');
+        const resBible = await fetch('https://raw.githubusercontent.com/benhurbemey/alkitab-id-tp/main/alkitab_bilingual.json');
+        if (!resBible.ok) throw new Error('Gagal memuat database Alkitab');
+        bibleData = await resBible.json();
+        console.log('✅ Alkitab dimuat:', bibleData.length, 'kitab');
+
+        // 3. Load Database Perikop (FILE TERPISAH)
+        console.log('📑 Memuat Data Perikop...');
+        let pericopeData = {}; 
+        try {
+            const resPericope = await fetch('https://raw.githubusercontent.com/benhurbemey/alkitab-id-tp/main/pericopes.json');
+            if (resPericope.ok) {
+                pericopeData = await resPericope.json();
+                console.log('✅ Data Perikop dimuat.');
+            } else {
+                console.warn('⚠️ pericopes.json tidak ditemukan, aplikasi lanjut tanpa perikop.');
+            }
+        } catch (e) {
+            console.warn('⚠️ Gagal memuat pericopes.json, aplikasi lanjut tanpa perikop.');
+        }
+        
+        // Simpan ke global agar bisa dibaca oleh renderVerses()
+        window.pericopeData = pericopeData;
+
+        // 4. Render Tampilan Awal (TIDAK DIUBAH)
+        renderBooks('old');
+        renderBeranda();
+        setupContextMenu();
+        
+        console.log('✅ Aplikasi siap digunakan!');
+        
+    } catch (e) {
+        console.error('❌ Error saat init:', e);
+        alert('Gagal memuat data Alkitab. Periksa koneksi internet Anda.');
+    }
+        }
+
+        // ============ CONTEXT MENU ============
+        function setupContextMenu() {
+            // Desktop: right click
+            document.addEventListener('contextmenu', (e) => {
+                const verse = e.target.closest('.verse');
+                if (verse) {
+                    e.preventDefault();
+                    showContextMenu(e.clientX, e.clientY, verse);
+                }
+            });
+
+            // Mobile: long press
+            document.addEventListener('touchstart', (e) => {
+                const verse = e.target.closest('.verse');
+                if (verse) {
+                    isLongPress = false;
+                    const touch = e.touches[0];
+                    longPressTimer = setTimeout(() => {
+                        isLongPress = true;
+                        showContextMenu(touch.clientX, touch.clientY, verse);
+                        if (navigator.vibrate) navigator.vibrate(50);
+                    }, 500);
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', () => {
+                clearTimeout(longPressTimer);
+                setTimeout(() => { isLongPress = false; }, 100);
+            });
+
+            document.addEventListener('touchmove', () => {
+                clearTimeout(longPressTimer);
+            });
+
+            // Click outside to close
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.context-menu')) {
+                    hideContextMenu();
+                }
+            });
+
+            // Prevent text selection menu on long press
+            document.addEventListener('selectstart', (e) => {
+                if (isLongPress) e.preventDefault();
+            });
+        }
+
+        function showContextMenu(x, y, verseEl) {
+            contextTarget = verseEl.dataset.ref;
+            const menu = document.getElementById('context-menu');
+
+            // Update labels
+            const isBookmarked = bookmarks.some(b => b.ref === contextTarget);
+            document.getElementById('ctx-bookmark-label').innerText = isBookmarked ? 'Hapus Markah' : 'Tandai';
+            const hasNote = notes[contextTarget];
+            document.getElementById('ctx-note-label').innerText = hasNote ? 'Edit Catatan' : 'Tambah Catatan';
+
+            // Position
+            const menuWidth = 200;
+            const menuHeight = 280;
+            let posX = x;
+            let posY = y;
+
+            if (x + menuWidth > window.innerWidth) posX = window.innerWidth - menuWidth - 10;
+            if (y + menuHeight > window.innerHeight) posY = window.innerHeight - menuHeight - 10;
+            if (posX < 10) posX = 10;
+            if (posY < 10) posY = 10;
+
+            menu.style.left = posX + 'px';
+            menu.style.top = posY + 'px';
+            menu.classList.add('show');
+        }
+
+        function hideContextMenu() {
+            document.getElementById('context-menu').classList.remove('show');
+        }
+
+        function ctxAction(action) {
+            hideContextMenu();
+            if (!contextTarget) return;
+
+            const [bookNameChapter, verseNum] = contextTarget.split(':');
+            const bookName = bookNameChapter.split(' ').slice(0, -1).join(' ');
+            const chapter = parseInt(bookNameChapter.split(' ').pop());
+            const verse = currentChapterData[verseNum];
+
+            switch(action) {
+                case 'play':
+                    playVerseAudio(verse);
+                    break;
+                case 'bookmark':
+                    toggleBookmark(contextTarget, verse.id, verse.tp, bookName, chapter);
+                    break;
+                case 'copy':
+                    copyVerse(contextTarget, verse.id);
+                    break;
+                case 'share':
+                    shareVerse(contextTarget, verse.id);
+                    break;
+                case 'note':
+                    openNoteModal(contextTarget);
+                    break;
+            }
+        }
+
+        // ============ AUDIO (Web Speech API) ============
+        function playVerseAudio(verse) {
+            if (!('speechSynthesis' in window)) {
+                showToast('Browser tidak mendukung audio');
+                return;
+            }
+            stopAudio();
+
+            const textToSpeak = currentLang === 'tp' ? verse.tp :
+                               currentLang === 'both' ? `${verse.id}. ${verse.tp}` :
+                               verse.id;
+
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.lang = currentLang === 'tp' ? 'en-US' : 'id-ID';
+            utterance.rate = 0.9;
+            utterance.pitch = 1;
+
+            // Try to find matching voice
+            const voices = speechSynthesis.getVoices();
+            const targetLang = currentLang === 'tp' ? 'en' : 'id';
+            const matchVoice = voices.find(v => v.lang.startsWith(targetLang));
+            if (matchVoice) utterance.voice = matchVoice;
+
+            utterance.onend = () => {
+                document.getElementById('audio-indicator').classList.remove('show');
+            };
+
+            speechSynthesis.speak(utterance);
+            document.getElementById('audio-indicator').classList.add('show');
+            showToast('🔊 Memutar ayat...');
+        }
+
+        function stopAudio() {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+            }
+            document.getElementById('audio-indicator').classList.remove('show');
+        }
+
+        // Load voices (some browsers load async)
+        if ('speechSynthesis' in window) {
+            speechSynthesis.onvoiceschanged = () => {};
+        }
+
+        // ============ DAILY VERSE ============
+        function renderDailyVerse() {
+            const container = document.getElementById('daily-verse-container');
+            if (!showDailyVerse || !booksData) {
+                container.innerHTML = '';
+                return;
+            }
+
+            // Deterministic based on date
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+
+            // Popular verses pool
+            const popularVerses = [
+                { bookId: 'john', ch: 3, v: 16 },
+                { bookId: 'psalms', ch: 23, v: 1 },
+                { bookId: 'philippians', ch: 4, v: 13 },
+                { bookId: 'proverbs', ch: 3, v: 5 },
+                { bookId: 'romans', ch: 8, v: 28 },
+                { bookId: 'isaiah', ch: 40, v: 31 },
+                { bookId: 'jeremiah', ch: 29, v: 11 },
+                { bookId: 'matthew', ch: 6, v: 33 },
+                { bookId: 'genesis', ch: 1, v: 1 },
+                { bookId: 'revelation', ch: 21, v: 4 }
+            ];
+
+            const pick = popularVerses[dayOfYear % popularVerses.length];
+            const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+            const book = allBooks.find(b => b.id === pick.bookId);
+            if (!book) return;
+
+            fetch(`bible/${pick.bookId}.json`)
+                .then(r => r.json())
+                .then(data => {
+                    const verse = data[pick.ch] && data[pick.ch][pick.v];
+                    if (!verse) return;
+                    const ref = `${book.name_id} ${pick.ch}:${pick.v}`;
+                    container.innerHTML = `
+                        <div class="daily-verse-card">
+                            <div class="daily-verse-label">✨ Ayat Hari Ini</div>
+                            <div class="daily-verse-text">"${verse.id}"</div>
+                            <div class="daily-verse-ref">— ${ref}</div>
+                            <button onclick="goToBookmark('${pick.bookId}', ${pick.ch})">Baca Selengkapnya →</button>
+                        </div>
+                    `;
+                })
+                .catch(() => {});
+        }
+
+        function toggleDailyVerse() {
+            showDailyVerse = document.getElementById('daily-verse-toggle').checked;
+            localStorage.setItem('showDailyVerse', showDailyVerse);
+            renderDailyVerse();
+        }
+
+        // ============ TABS ============
+        function switchTab(tab, el) {
+            currentTestament = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+            renderBooks(tab);
+        }
+
+        function renderBooks(testament) {
+            if (!bibleData || bibleData.length === 0) return;
+            
+            // Map 'old'/'new' ke 'PL'/'PB' sesuai data JSON
+            const targetTestament = testament === 'old' ? 'PL' : 'PB';
+            const books = bibleData.filter(b => b.testament === targetTestament);
+            
+            const container = document.getElementById('book-list');
+            if (!container) return;
+            
+            container.innerHTML = books.map(b => `
+                <div class="book-item" onclick="openBook('${b.id}', '${b.name_id}', ${b.chapters.length})">
+                    <div class="book-name-id">${b.name_id}</div>
+                    <div class="book-name-tp">${b.name_tp}</div>
+                </div>
+            `).join('');
+            
+            console.log(`✅ Rendered ${books.length} kitab untuk ${testament}`);
+          }
+
+
+        function jumpToChapter() {
+            const input = document.getElementById('jump-input');
+            const num = parseInt(input.value);
+            if (num && num >= 1 && num <= currentBook.chapters) {
+                openChapter(num);
+                input.value = '';
+            } else {
+                showToast('Pasal tidak valid');
+            }
+        }
+
+        // ============ OPEN CHAPTER ============
+        function openChapter(num) {
+    currentChapter = num;
+    
+    if (!currentBook || !currentBook.data) {
+        console.error('❌ currentBook.data tidak ada!');
+        return;
+    }
+
+    // ✅ Cari pasal dari data kitab yang sudah di-load
+    const chapterData = currentBook.data.chapters.find(c => c.number === num);
+
+    if (!chapterData) {
+        document.getElementById('verses-container').innerHTML = '<div class="loading">Pasal tidak ditemukan</div>';
+        updateFloatingNav();
+        return;
+    }
+
+    // Simpan data ayat untuk render
+    currentChapterData = chapterData.verses;
+
+    // Render ayat & update UI
+    renderVerses(currentChapterData);
+    updateFloatingNav();
+    window.scrollTo(0, 0);
+    showView('view-reading');
+    
+    console.log('✅ Buka pasal:', num, '- Jumlah ayat:', chapterData.verses.length);
+}
+
+
+      
+function renderVerses(verses) {
+    const container = document.getElementById('verses-container');
+    
+    // Ambil data perikop dari pericopes.json
+    const bookId = currentBook.id;
+    const chapterKey = currentChapter.toString();
+    const chapterPericopes = (window.pericopeData[bookId] && window.pericopeData[bookId][chapterKey]) || null;
+    
+    const theme = chapterPericopes || null;
+    const midThemes = chapterPericopes && chapterPericopes.mid_themes ? chapterPericopes.mid_themes : [];
+    const pericopes = chapterPericopes && chapterPericopes.pericopes ? chapterPericopes.pericopes : [];
+    
+    const modeClass = currentLang === 'tp' ? 'mode-tp' : (currentLang === 'id' ? 'mode-id' : '');
+    
+    // Filter perikop berdasarkan mode bahasa
+    function shouldShowPericope(p) {
+        if (currentLang === 'both') {
+            return (p.title_id && p.title_id.trim() !== '') || (p.title_tp && p.title_tp.trim() !== '');
+        } else if (currentLang === 'tp') {
+            return p.title_tp && p.title_tp.trim() !== '';
+        } else if (currentLang === 'id') {
+            return p.title_id && p.title_id.trim() !== '';
+        }
+        return true;
+    }
+    
+    // Filter theme berdasarkan mode bahasa
+    function shouldShowTheme() {
+        if (!theme) return false;
+        if (currentLang === 'both') {
+            return (theme.theme_id && theme.theme_id.trim() !== '') || (theme.theme_tp && theme.theme_tp.trim() !== '');
+        } else if (currentLang === 'tp') {
+            return theme.theme_tp && theme.theme_tp.trim() !== '';
+        } else if (currentLang === 'id') {
+            return theme.theme_id && theme.theme_id.trim() !== '';
+        }
+        return false;
+    }
+    
+    // Filter mid-theme berdasarkan mode bahasa
+    function shouldShowMidTheme(mt) {
+        if (currentLang === 'both') {
+            return (mt.title_id && mt.title_id.trim() !== '') || (mt.title_tp && mt.title_tp.trim() !== '');
+        } else if (currentLang === 'tp') {
+            return mt.title_tp && mt.title_tp.trim() !== '';
+        } else if (currentLang === 'id') {
+            return mt.title_id && mt.title_id.trim() !== '';
+        }
+        return true;
+    }
+    
+    // Helper: buat HTML theme awal pasal
+    function buildThemeHTML() {
+        if (!shouldShowTheme()) return '';
+        return `
+            <div class="pericope-theme ${modeClass}">
+                <div class="pericope-theme-title pericope-theme-title-id">${theme.theme_id || ''}</div>
+                <div class="pericope-theme-title pericope-theme-title-tp">${theme.theme_tp || ''}</div>
+                ${theme.theme_range ? `<div class="pericope-theme-range">${theme.theme_range}</div>` : ''}
+            </div>
+        `;
+    }
+    
+    // Helper: buat HTML mid-theme
+    function buildMidThemeHTML(mt) {
+        if (!shouldShowMidTheme(mt)) return '';
+        return `
+            <div class="mid-theme ${modeClass}">
+                <div class="mid-theme-title-id">${mt.title_id || ''}</div>
+                <div class="mid-theme-title-tp">${mt.title_tp || ''}</div>
+                ${mt.range_display ? `<div class="mid-theme-range">(${mt.range_display})</div>` : ''}
+            </div>
+        `;
+    }
+    
+    // Helper: buat HTML perikop
+    function buildPericopeHTML(p) {
+        const rangeText = `${currentChapter}:${p.start}-${p.end}`;
+        const crossRefsText = (p.cross_refs && p.cross_refs.length > 0) 
+            ? `(${p.cross_refs.join(', ')})` 
+            : '';
+        
+        return `
+            <div class="pericope-header ${modeClass}">
+                <div class="pericope-title-id">${p.title_id || ''}</div>
+                <div class="pericope-title-tp">${p.title_tp || ''}</div>
+                <div class="pericope-range">${rangeText}</div>
+                ${crossRefsText ? `<div class="pericope-crossrefs">${crossRefsText}</div>` : ''}
+            </div>
+        `;
+    }
+
+    if (currentLang === 'both') {
+        // ===== MODE KEDUANYA =====
+        let html = '';
+        let themeShown = false;
+        const shownMidThemes = new Set();
+        
+        verses.forEach(v => {
+            if (!themeShown && shouldShowTheme()) {
+                html += buildThemeHTML();
+                themeShown = true;
+            }
+            
+            // Tampilkan mid-theme jika ayat ini adalah verse_start
+            midThemes.forEach(mt => {
+                if (mt.verse_start === v.number && !shownMidThemes.has(mt.verse_start)) {
+                    html += buildMidThemeHTML(mt);
+                    shownMidThemes.add(mt.verse_start);
+                }
+            });
+            
+            const pericope = pericopes.find(p => p.start === v.number && shouldShowPericope(p));
+            if (pericope) {
+                html += buildPericopeHTML(pericope);
+            }
+            
+            const ref = `${currentBook.name} ${currentChapter}:${v.number}`;
+            const isBookmarked = bookmarks.some(b => b.ref === ref);
+            const hasNote = notes[ref];
+            
+            html += `
+                <div class="verse ${isBookmarked ? 'bookmarked' : ''} ${hasNote ? 'has-note' : ''}" data-ref="${ref}">
+                    <div class="verse-number">${v.number}</div>
+                    <div class="verse-content">
+                        <div class="verse-text verse-id-text show">${v.id || ''}</div>
+                        <div class="verse-text verse-tp-text show">${v.tp || ''}</div>
+                        ${hasNote ? `<div class="verse-note-indicator">📝 Ada catatan</div>` : ''}
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+
+    } else {
+        // ===== MODE ID ATAU TP SAJA =====
+        const textKey = currentLang === 'tp' ? 'tp' : 'id';
+        
+        let html = '';
+        let isFirstVerse = true;
+        let themeShown = false;
+        const shownMidThemes = new Set();
+        
+        verses.forEach(v => {
+            const text = v[textKey] || '';
+            if (!text) return;
+            
+            if (!themeShown && shouldShowTheme()) {
+                html += buildThemeHTML();
+                themeShown = true;
+            }
+            
+            // Tampilkan mid-theme jika ayat ini adalah verse_start
+            midThemes.forEach(mt => {
+                if (mt.verse_start === v.number && !shownMidThemes.has(mt.verse_start)) {
+                    html += buildMidThemeHTML(mt);
+                    shownMidThemes.add(mt.verse_start);
+                }
+            });
+            
+            const pericope = pericopes.find(p => p.start === v.number && shouldShowPericope(p));
+            if (pericope) {
+                html += buildPericopeHTML(pericope);
+            }
+            
+            if (isFirstVerse) {
+                const firstChar = text.charAt(0);
+                const restText = text.slice(1);
+                html += `<span class="verse-drop-cap">${v.number}</span><span class="verse-flow-text">${text}</span> `;
+                isFirstVerse = false;
+            } else {
+                html += `<span class="verse-sup-num">${v.number}</span><span class="verse-flow-text">${text}</span> `;
+            }
+        });
+        
+        container.innerHTML = `<div class="verse-flow-container">${html}</div>`;
+    }
+                          }
+
+      
+
+        // =========== LANGUAGE ============
+        function setLang(lang, btn) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            
+            // Re-render ayat dengan bahasa baru
+            if (currentChapterData) {
+                renderVerses(currentChapterData);
+            }
+            
+            // ✅ PENTING: Update floating bar agar nama kitab ikut berubah
+            updateFloatingNav();
+          }
+
+
+
+        // ============ NAVIGATION ============
+    function changeChapter(delta) {
+    let newChapter = currentChapter + delta;
+    
+    // ✅ LOGIKA: Jika melewati batas pasal, pindah ke kitab berikutnya/sebelumnya
+    if (newChapter > currentBook.chapters) {
+        // Sudah di pasal terakhir → pindah ke kitab BERIKUTNYA
+        const nextBook = getNextBook();
+        if (nextBook) {
+            console.log('➡️ Pindah ke kitab berikutnya:', nextBook.name_id);
+            openBook(nextBook.id, nextBook.name_id, nextBook.chapters.length);
+            // Tunggu sebentar agar openBook selesai, baru buka pasal 1
+            setTimeout(() => openChapter(1), 100);
+        } else {
+            // Sudah di kitab terakhir (Wahyu) → tidak ada lagi
+            console.log('⚠️ Sudah di kitab terakhir (Wahyu)');
+            showToast('Anda sudah di kitab terakhir');
+        }
+    } else if (newChapter < 1) {
+        // Sudah di pasal 1 → pindah ke kitab SEBELUMNYA
+        const prevBook = getPrevBook();
+        if (prevBook) {
+            console.log('⬅️ Pindah ke kitab sebelumnya:', prevBook.name_id);
+            openBook(prevBook.id, prevBook.name_id, prevBook.chapters.length);
+            // Buka pasal TERAKHIR dari kitab sebelumnya
+            setTimeout(() => openChapter(prevBook.chapters.length), 100);
+        } else {
+            // Sudah di kitab pertama (Kejadian) → tidak ada lagi
+            console.log('⚠️ Sudah di kitab pertama (Kejadian)');
+            showToast('Anda sudah di kitab pertama');
+        }
+    } else {
+        // Masih dalam range pasal kitab yang sama → pindah pasal biasa
+        openChapter(newChapter);
+    }
+  }
+
+        function updateNavButtons() {
+            document.getElementById('prev-btn').disabled = (currentChapter <= 1);
+            document.getElementById('next-btn').disabled = (currentChapter >= currentBook.chapters);
+        }
+
+// ✅ Dapatkan kitab berikutnya berdasarkan urutan
+function getNextBook() {
+    if (!currentBook || !bibleData) return null;
+    
+    const currentIndex = bibleData.findIndex(b => b.id === currentBook.id);
+    if (currentIndex === -1 || currentIndex >= bibleData.length - 1) return null;
+    
+    return bibleData[currentIndex + 1];
+}
+
+// ✅ Dapatkan kitab sebelumnya berdasarkan urutan
+function getPrevBook() {
+    if (!currentBook || !bibleData) return null;
+    
+    const currentIndex = bibleData.findIndex(b => b.id === currentBook.id);
+    if (currentIndex <= 0) return null;
+    
+    return bibleData[currentIndex - 1];
+}
+
+// ✅ Fungsi toast notification sederhana (opsional, untuk feedback user)
+function showToast(message) {
+    // Hapus toast lama jika ada
+    const oldToast = document.getElementById('toast-notification');
+    if (oldToast) oldToast.remove();
+    
+    const toast = document.createElement('div');
+    toast.id = 'toast-notification';
+    toast.innerText = message;
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px var(--shadow-strong);
+        z-index: 9999;
+        animation: fadeInOut 2.5s ease-in-out;
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.remove(), 2500);
+}
+
+      
+
+        // ============ BOOKMARKS ============
+        function toggleBookmark(ref, idText, tpText, bookName, chapter) {
+            const idx = bookmarks.findIndex(b => b.ref === ref);
+            const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+            const book = allBooks.find(b => b.name_id === bookName);
+            const bookId = book ? book.id : (currentBook ? currentBook.id : '');
+
+            if (idx >= 0) {
+                bookmarks.splice(idx, 1);
+                showToast('Markah dihapus');
+            } else {
+                bookmarks.push({ ref, id: idText, tp: tpText, bookId, chapter });
+                showToast('⭐ Ayat ditandai');
+            }
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            if (currentChapterData) renderVerses(currentChapterData);
+        }
+
+        function renderBookmarks() {
+            const container = document.getElementById('bookmarks-list');
+            if (bookmarks.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔖</div>
+                        <p>Belum ada ayat yang ditandai</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Tekan lama pada ayat untuk menandai</p>
+                    </div>
+                `;
+                return;
+            }
+            container.innerHTML = bookmarks.map(b => `
+                <div class="bookmark-item" onclick="goToBookmark('${b.bookId}', ${b.chapter})">
+                    <div class="bookmark-ref">📖 ${b.ref}</div>
+                    <div class="bookmark-text">${b.id.substring(0, 120)}${b.id.length > 120 ? '...' : ''}</div>
+                </div>
+            `).join('');
+        }
+
+        async function goToBookmark(bookId, chapter) {
+            const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+            const book = allBooks.find(b => b.id === bookId);
+            if (book) {
+                await openBook(bookId, book.name_id, book.chapters);
+                await openChapter(chapter);
+            }
+        }
+
+        // ============ NOTES ============
+        let currentNoteRef = null;
+        function openNoteModal(ref) {
+            currentNoteRef = ref;
+            document.getElementById('note-modal-ref').innerText = ref;
+            document.getElementById('note-textarea').value = notes[ref] || '';
+            document.getElementById('note-delete-btn').style.display = notes[ref] ? 'inline-block' : 'none';
+            document.getElementById('note-modal').classList.add('show');
+        }
+
+        function closeNoteModal() {
+            document.getElementById('note-modal').classList.remove('show');
+            currentNoteRef = null;
+        }
+
+        function saveNote() {
+            const text = document.getElementById('note-textarea').value.trim();
+            if (text) {
+                notes[currentNoteRef] = text;
+                showToast('📝 Catatan disimpan');
+            } else {
+                delete notes[currentNoteRef];
+                showToast('Catatan dihapus');
+            }
+            localStorage.setItem('notes', JSON.stringify(notes));
+            closeNoteModal();
+            if (currentChapterData) renderVerses(currentChapterData);
+        }
+
+        function deleteNote() {
+            if (confirm('Hapus catatan ini?')) {
+                delete notes[currentNoteRef];
+                localStorage.setItem('notes', JSON.stringify(notes));
+                closeNoteModal();
+                if (currentChapterData) renderVerses(currentChapterData);
+                showToast('Catatan dihapus');
+            }
+        }
+
+        function renderNotes() {
+            const container = document.getElementById('notes-list');
+            const noteKeys = Object.keys(notes);
+            if (noteKeys.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📝</div>
+                        <p>Belum ada catatan</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Tekan lama pada ayat → "Tambah Catatan"</p>
+                    </div>
+                `;
+                return;
+            }
+            container.innerHTML = noteKeys.map(ref => {
+                // Parse ref to get bookId
+                const [bookChapter, verse] = ref.split(':');
+                const bookName = bookChapter.split(' ').slice(0, -1).join(' ');
+                const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+                const book = allBooks.find(b => b.name_id === bookName);
+                const bookId = book ? book.id : '';
+                const chapter = parseInt(bookChapter.split(' ').pop());
+                return `
+                    <div class="note-item" onclick="goToBookmark('${bookId}', ${chapter})">
+                        <div class="note-ref">📖 ${ref}</div>
+                        <div class="note-content">${notes[ref]}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ============ READING PLAN ============
+        function setPlan(days) {
+            readingPlan = { days, startDate: new Date().toISOString().split('T')[0] };
+            planProgress = {};
+            localStorage.setItem('readingPlan', JSON.stringify(readingPlan));
+            localStorage.setItem('planProgress', JSON.stringify(planProgress));
+            showToast(`📅 Rencana ${days} hari dimulai!`);
+            renderPlanProgress();
+
+            // Highlight active card
+            document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('active-plan'));
+            event.currentTarget.classList.add('active-plan');
+        }
+
+        function renderPlanProgress() {
+            const container = document.getElementById('plan-progress-container');
+            if (!readingPlan) {
+                container.innerHTML = '<div class="empty-state"><p>Pilih rencana baca di atas untuk memulai</p></div>';
+                return;
+            }
+
+            const allBooks = [...booksData.old_testament, ...booksData.new_testament];
+            const totalChapters = allBooks.reduce((sum, b) => sum + b.chapters, 0); // 1189
+            const chaptersPerDay = Math.ceil(totalChapters / readingPlan.days);
+
+            // Calculate current day
+            const start = new Date(readingPlan.startDate);
+            const today = new Date();
+            const daysElapsed = Math.floor((today - start) / 86400000) + 1;
+            const currentDay = Math.min(daysElapsed, readingPlan.days);
+
+            // Generate today's readings
+            const startChapter = (currentDay - 1) * chaptersPerDay + 1;
+            const todayReadings = [];
+            let accumulated = 0;
+            for (const book of allBooks) {
+                for (let ch = 1; ch <= book.chapters; ch++) {
+                    accumulated++;
+                    if (accumulated >= startChapter && accumulated < startChapter + chaptersPerDay) {
+                        todayReadings.push({ bookId: book.id, bookName: book.name_id, chapter: ch, globalIdx: accumulated });
+                    }
+                    if (accumulated >= startChapter + chaptersPerDay) break;
+                }
+                if (accumulated >= startChapter + chaptersPerDay) break;
+            }
+
+            const progress = Math.min(100, Math.round((daysElapsed / readingPlan.days) * 100));
+
+            container.innerHTML = `
+                <div class="plan-progress">
+                    <div class="plan-progress-header">
+                        <strong>📖 Hari ke-${currentDay} dari ${readingPlan.days}</strong>
+                        <span style="color: var(--text-muted); font-size: 13px;">${progress}%</span>
+                    </div>
+                    <div class="plan-progress-bar">
+                        <div class="plan-progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                    <div class="plan-today-reading">
+                        <div class="plan-today-label">Bacaan Hari Ini</div>
+                        ${todayReadings.map(r => {
+                            const key = `${r.bookId}_${r.chapter}`;
+                            const done = planProgress[key];
+                            return `
+                                <div class="plan-reading-item ${done ? 'done' : ''}">
+                                    <span class="reading-ref">${r.bookName} ${r.chapter}</span>
+                                    <button onclick="markReadingDone('${key}', '${r.bookId}', ${r.chapter})">${done ? '✓' : 'Baca'}</button>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
+            // Highlight active plan card
+            document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('active-plan'));
+        }
+
+        async function markReadingDone(key, bookId, chapter) {
+            planProgress[key] = !planProgress[key];
+            localStorage.setItem('planProgress', JSON.stringify(planProgress));
+            renderPlanProgress();
+            if (planProgress[key]) {
+                await goToBookmark(bookId, chapter);
+            }
+        }
+
+        // ============ SEARCH (dengan filter bahasa) ============
+let searchTimeout;
+let searchLang = 'all'; // 'all', 'id', 'tp'
+
+function setSearchLang(lang, btn) {
+    searchLang = lang;
+    document.querySelectorAll('.search-lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Trigger ulang pencarian
+    const input = document.getElementById('search-input');
+    if (input.value.trim().length >= 3) {
+        doSearch();
+    }
+}
+
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlightText(text, query) {
+    if (!query) return text;
+    const escaped = escapeRegex(query);
+    const regex = new RegExp(`(${escaped})`, 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+}
+
+
+async function doSearch() {
+    clearTimeout(searchTimeout);
+    const query = document.getElementById('search-input').value.trim();
+    const container = document.getElementById('search-results');
+    const statsEl = document.getElementById('search-stats');
+
+    // ✅ UBAH: Minimal 1 karakter (bukan 3 lagi)
+    if (query.length < 1) {
+        container.innerHTML = '<div class="loading">Ketik minimal 1 huruf untuk mencari...</div>';
+        if (statsEl) statsEl.innerText = '';
+        return;
+    }
+
+    // Tampilkan loading
+    container.innerHTML = '<div class="loading">🔍 Mencari ayat...</div>';
+
+    const results = [];
+    const lowerQuery = query.toLowerCase();
+    const escapedQuery = escapeRegex(query);
+
+    // ✅ TAMBAHKAN DEBOUNCE LEBIH PANJANG (500ms) agar tidak terlalu berat
+    searchTimeout = setTimeout(() => {
+        bibleData.forEach(book => {
+            book.chapters.forEach(chapter => {
+                chapter.verses.forEach(verse => {
+                    const textId = (verse.id || '');
+                    const textTp = (verse.tp || '');
+
+                    let match = false;
+                    let displayText = '';
+
+                    // Filter berdasarkan searchLang (all/id/tp)
+                    if (searchLang === 'id' || searchLang === 'all') {
+                        if (textId.toLowerCase().includes(lowerQuery)) {
+                            match = true;
+                            displayText = highlightText(textId, escapedQuery);
+                        }
+                    }
+                    if (!match && (searchLang === 'tp' || searchLang === 'all')) {
+                        if (textTp.toLowerCase().includes(lowerQuery)) {
+                            match = true;
+                            displayText = highlightText(textTp, escapedQuery);
+                        }
+                    }
+
+                    if (match) {
+                        results.push({
+                            bookId: book.id,
+                            bookName: book.name_id,
+                            chapter: chapter.number,
+                            verseNum: verse.number,
+                            text: displayText,
+                            ref: `${book.name_id} ${chapter.number}:${verse.number}`
+                        });
+                    }
+                });
+            });
+        });
+
+        // Tampilkan statistik hasil
+        if (statsEl) {
+            statsEl.innerText = results.length > 0 
+                ? `✅ Ditemukan ${results.length} ayat` 
+                : '';
+        }
+
+        // Tampilkan hasil
+        if (results.length === 0) {
+            container.innerHTML = '<div class="loading">😕 Tidak ada ayat yang ditemukan.</div>';
+            return;
+        }
+
+        // ✅ BATASI 50 HASIL (lebih sedikit dari sebelumnya agar HP tidak berat)
+        const limited = results.slice(0, 50);
+        container.innerHTML = limited.map(r => `
+            <div class="search-result-item" onclick="goToVerse('${r.bookId}', ${r.chapter}, ${r.verseNum})">
+                <div class="search-ref">📖 ${r.ref}</div>
+                <div class="search-text">${r.text}</div>
+            </div>
+        `).join('');
+
+        if (results.length > 50) {
+            container.innerHTML += `<div class="loading" style="margin-top:10px;">⚠️ Menampilkan 50 dari ${results.length} hasil. Persempit kata kunci Anda.</div>`;
+        }
+    }, 500); // ✅ DEBOUNCE 500ms (lebih lama dari sebelumnya)
+    }
+    
+
+
+      async function goToVerse(bookId, chapter, verseNum) {
+    const bookData = bibleData.find(b => b.id === bookId);
+    if (!bookData) return;
+
+    // Buka kitab & pasal
+    openBook(bookId, bookData.name_id, bookData.chapters.length);
+    openChapter(chapter);
+
+    // Scroll otomatis ke ayat + highlight
+    setTimeout(() => {
+        const targetRef = `${bookData.name_id} ${chapter}:${verseNum}`;
+        const el = document.querySelector(`.verse[data-ref="${targetRef}"]`);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.style.transition = 'background 0.3s';
+            el.style.background = 'var(--accent-light)';
+            setTimeout(() => { el.style.background = ''; }, 1500);
+        }
+    }, 500);
+      }
+        
+
+        // ============ COPY & SHARE ============
+        function copyVerse(ref, text) {
+            const fullText = `${ref}\n${text}`;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(fullText).then(() => showToast('📋 Disalin'));
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = fullText;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast('📋 Disalin');
+            }
+        }
+
+        function shareVerse(ref, text) {
+            const fullText = `${ref}\n${text}\n\n— Alkitab ID & Tok Pisin`;
+            if (navigator.share) {
+                navigator.share({ title: ref, text: fullText });
+            } else {
+                copyVerse(ref, text);
+                showToast('Disalin (share tidak tersedia)');
+            }
+        }
+
+        // ============ SETTINGS ============
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : '');
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        function changeFontSize(delta) {
+            fontSize = Math.max(12, Math.min(24, fontSize + delta));
+            document.documentElement.style.setProperty('--font-size', fontSize + 'px');
+            document.getElementById('font-size-label').innerText = fontSize;
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        function renderColorPicker() {
+            const colors = ['blue', 'green', 'red', 'purple', 'orange', 'teal', 'sepia'];
+            const picker = document.getElementById('color-picker');
+            picker.innerHTML = colors.map(c => `
+                <div class="color-dot ${c === colorTheme ? 'active' : ''}"
+                     data-color="${c}"
+                     onclick="setColorTheme('${c}')"></div>
+            `).join('');
+        }
+
+        function setColorTheme(color) {
+            colorTheme = color;
+            document.documentElement.setAttribute('data-color', color);
+            localStorage.setItem('colorTheme', color);
+            renderColorPicker();
+        }
+
+        // ============ VIEW MANAGEMENT ============
+        function showView(id) {
+        // Kembalikan floating bar ke posisi normal saat pindah view
+            const floatingNav = document.querySelector('.floating-nav');
+            if (floatingNav) {
+                floatingNav.classList.remove('at-bottom');
+            }
+        // Pastikan bottom nav muncul saat pindah view
+            const bottomNav = document.querySelector('.bottom-nav');
+            if (bottomNav && isBottomNavHidden) {
+                bottomNav.classList.remove('hidden');
+                isBottomNavHidden = false;
+              }
+          
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        
+            const isMain = ['view-home', 'view-search', 'view-bookmarks', 'view-notes', 'view-plan', 'view-settings'].includes(id);
+            const isReading = (id === 'view-reading');
+            const isChapters = (id === 'view-chapters');
+            
+            // Update back button
+            document.getElementById('back-btn').style.display = isMain ? 'none' : 'block';
+        
+            // Update title & konten
+            if (id === 'view-home') {
+                document.getElementById('app-title').innerText = 'Alkitab';
+                if (showDailyVerse) renderDailyVerse();
+            }
+            else if (id === 'view-search') {
+                document.getElementById('app-title').innerText = 'Pencarian';
+            }
+            else if (id === 'view-bookmarks') {
+                document.getElementById('app-title').innerText = 'Markah';
+                renderBookmarks();
+            }
+            else if (id === 'view-notes') {
+                document.getElementById('app-title').innerText = 'Catatan';
+                renderNotes();
+            }
+            else if (id === 'view-plan') {
+                document.getElementById('app-title').innerText = 'Rencana Baca';
+                renderPlanProgress();
+            }
+            else if (id === 'view-settings') {
+                document.getElementById('app-title').innerText = 'Setelan';
+            }
+            else if (id === 'view-chapters') {
+                if (currentBook) {
+                    document.getElementById('app-title').innerText = currentBook.name;
+                }
+            }
+            else if (id === 'view-reading') {
+                if (currentBook) {
+                    document.getElementById('app-title').innerText = `${currentBook.name} ${currentChapter}`;
+                    // 🔑 KUNCI: Re-render ayat agar tidak hilang
+                    if (currentChapterData) {
+                        renderVerses(currentChapterData);
+                        updateFloatingNav();
+                    }
+                }
+            }
+            else if (id === 'view-beranda') {
+                document.getElementById('app-title').innerText = 'Beranda';
+                document.getElementById('back-btn').style.display = 'none';
+                renderBeranda();
+                    }
+
+    // Update bottom navigation
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const navMap = { 
+          'view-beranda': 0, 
+          'view-home': 1, 
+          'view-plan': 2, 
+          'view-bookmarks': 3, 
+          'view-notes': 4 
+    };
+    
+    if (navMap[id] !== undefined) {
+        document.querySelectorAll('.nav-item')[navMap[id]].classList.add('active');
+    }
+    else if (isReading || isChapters) {
+        document.querySelectorAll('.nav-item')[0].classList.add('active');
+    }
+      }
+
+      // ============ TOGGLE SEARCH ============
+      function toggleSearch() {
+          const currentView = document.querySelector('.view.active');
+          const currentViewId = currentView ? currentView.id : 'view-home';
+          
+          if (currentViewId === 'view-search') {
+              showView(previousViewBeforeSearch);
+          } else {
+              previousViewBeforeSearch = currentViewId;
+              showView('view-search');
+            }
+      }
+
+      // ============ TOGGLE SETTINGS ============
+        function toggleSettings() {
+            const currentView = document.querySelector('.view.active');
+            const currentViewId = currentView ? currentView.id : 'view-home';
+            
+            if (currentViewId === 'view-settings') {
+                showView(previousViewBeforeSettings);
+            } else {
+                previousViewBeforeSettings = currentViewId;
+                showView('view-settings');
+            }
+      }
+
+      // Variabel untuk menyimpan riwayat halaman sebelum klik bottom nav
+// let previousViewBeforeNav = 'view-home';
+
+// ============ NAVIGASI BOTTOM NAVBAR (TOGGLE) ============
+    let previousViewBeforeNav = 'view-beranda';
+
+function navTo(viewId, el) {
+    const currentView = document.querySelector('.view.active');
+    const currentViewId = currentView ? currentView.id : 'view-beranda';
+
+    if (currentViewId === viewId) {
+        showView(previousViewBeforeNav);
+    } else {
+        previousViewBeforeNav = currentViewId;
+        
+        if (viewId === 'view-home') {
+            currentBook = null;
+            currentChapter = 1;
+            currentChapterData = null;
+        }
+        
+        showView(viewId);
+    }
+      }
+
+
+      // ============ AUTO-HIDE BOTTOM NAV (DENGAN BUFFER) ============
+      let lastScrollY = 0;
+      let scrollThreshold = 100;
+      let scrollBuffer = 20; // Buffer 20px untuk mencegah flicker
+      let isBottomNavHidden = false;
+      
+      function handleScrollForBottomNav() {
+          try {
+              const currentScrollY = window.scrollY;
+              const bottomNav = document.querySelector('.bottom-nav');
+              const floatingNav = document.querySelector('.floating-nav');
+              const currentView = document.querySelector('.view.active');
+              
+              // Hanya aktifkan di halaman baca
+              if (!currentView || currentView.id !== 'view-reading') {
+                  // Di halaman lain, kembalikan ke posisi normal
+                  if (isBottomNavHidden) {
+                      if (bottomNav) bottomNav.classList.remove('hidden');
+                      if (floatingNav) floatingNav.classList.remove('at-bottom');
+                      isBottomNavHidden = false;
+                  }
+                  lastScrollY = currentScrollY;
+                  return;
+            }
+            // Scroll ke bawah & melewati threshold
+              if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                  if (!isBottomNavHidden) {
+                      // Sembunyikan bottom nav
+                      if (bottomNav) bottomNav.classList.add('hidden');
+                      // Turunkan floating bar ke bawah
+                      if (floatingNav) floatingNav.classList.add('at-bottom');
+                      isBottomNavHidden = true;
+                  }
+              }
+              // Scroll ke atas
+              else if (currentScrollY < lastScrollY) {
+                  if (isBottomNavHidden) {
+                      // Munculkan bottom nav
+                      if (bottomNav) bottomNav.classList.remove('hidden');
+                      // Kembalikan floating bar ke posisi semula
+                      if (floatingNav) floatingNav.classList.remove('at-bottom');
+                      isBottomNavHidden = false;
+                  }
+              }
+              
+              lastScrollY = currentScrollY;
+          } catch (e) {
+              console.error('Error scroll:', e);
+          }
+      }
+      
+      window.addEventListener('scroll', handleScrollForBottomNav, { passive: true });
+
+      
+        function goBack() {
+            const currentView = document.querySelector('.view.active');
+            if (!currentView) return;
+            
+            const currentViewId = currentView.id;
+            
+            if (currentViewId === 'view-reading') {
+                showView('view-chapters');
+                if (currentBook) {
+                    document.getElementById('app-title').innerText = currentBook.name;
+                }
+            } 
+            else if (currentViewId === 'view-chapters') {
+                showView('view-home');
+                document.getElementById('app-title').innerText = 'Alkitab';
+            }
+            else if (currentViewId === 'view-settings') {
+                toggleSettings();
+            }
+            else if (currentViewId === 'view-search') {
+                toggleSearch();
+            }
+        }
+
+        // ============ TOAST ============
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+// ============= membersihkan chace / sampah riwayat ======= 
+      function clearChapterCache() {
+    chapterCache = {};
+    showToast('🗑️ Cache dibersihkan');
+      }
+
+        // ============ START ============
+        init();
+    </script>
+</body>
+</html>
