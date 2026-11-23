@@ -4,7 +4,6 @@
       "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "", "title_tp": "", "start": 1, "end": 10, "cross_refs_id": [], "cross_refs_tp": [] },
         { "title_id": "Pelayanan untuk pendamaian", "title_tp": "Yumi gat wok bilong helpim ol man long kamap wanbel wantaim God", "start": 11, "end": 21, "cross_refs_id": ["Rm. 14:10"], "cross_refs_tp": [] }
       ]
     },
@@ -12,17 +11,14 @@
       "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "", "title_tp": "Ol aposel i karim planti hevi long wok bilong ol", "start": 1, "end": 13, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Paulus dalam pelayanannya", "title_tp": "", "start": 1, "end": 10, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Jangan ada lagi noda kekafiran", "title_tp": "", "start": 11, "end": 13, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "", "title_tp": "Yumi stap haus bilong God", "start": 14, "end": 18, "cross_refs_id": [], "cross_refs_tp": [] }
+        { "title_id": "", "title_tp": "Ol aposel i karim planti hevi long wok bilong ol", "start": 1, "end": 13, "cross_refs_id": [], "cross_refs_tp": ["1 Ko 3.9, 2 Ko 5.20, Hi 12.15", "Ais 49.8, Lu 4.19-21", "Ro 14.13, 1 Ko 9.12, 10.32", "2 Ko 4.2", "Ap 16.23, 2 Ko 11.23-27", "1 Ti 4.12", "1 Ko 2.4, 2 Ko 10.4, Ef 6.11-13, 2 Ti 4.7", "Sng 118.18, 1 Ko 4.9, 2 Ko 4.2, 4.9-10", "2 Ko 7.4, Fl 2.17, Kl 1.24", "1 Ko 4.14"] },
+        { "title_id": "Paulus dalam pelayanannya", "title_tp": "", "start": 1, "end": 10, "cross_refs_id": ["Yes. 49:8", "Kis. 16:23"], "cross_refs_tp": [] },
+        { "title_id": "Jangan ada lagi noda kekafiran", "title_tp": "", "start": 11, "end": "7:1", "cross_refs_id": [], "cross_refs_tp": [] },
+        { "title_id": "", "title_tp": "Yumi stap haus bilong God", "start": 14, "end": 18, "cross_refs_id": [], "cross_refs_tp": ["Lo 7.2-3, 1 Sml 5.2-3, 1 Ko 5.9, Ef 5.7, 5.11", "Wkp 26.12, Ese 37.27, 1 Ko 3.16, 6.19", "Ais 52.11, Ese 20.34, 2 Ko 7.1, KTH 18.4", "2 Sml 7.14, 1 Sto 17.13, Ais 43.6, Jer 31.9, KTH 1.8, 21.7"] }
       ]
     },
     "7": {
-      "theme_id": "",
-      "theme_tp": "Ol Korin i mas redi long givim ol mani samting bilong helpim ol Kristen i stap long Judia",
-      "theme_range_id": "",
-      "theme_range_tp": "Sapta 8-9",
+      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
       "mid_themes": [],
       "pericopes": [
         { "title_id": "", "title_tp": "", "start": 1, "end": 1, "cross_refs_id": [], "cross_refs_tp": [] },
@@ -30,10 +26,10 @@
       ]
     },
     "8": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
+      "theme_id": "", "theme_tp": "Ol Korin i mas redi long givim ol mani samting bilong helpim ol Kristen i stap long Judia", "theme_range_id": "", "theme_range_tp": "Sapta 8-9",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "Pelayanan kasih", "title_tp": "Ol Kristen i bungim mani bilong helpim ol Judia", "start": 1, "end": 15, "cross_refs_id": ["Rm. 15:26; Kel. 16:18"], "cross_refs_tp": [] },
+        { "title_id": "Pelayanan kasih", "title_tp": "Ol Kristen i bungim mani bilong helpim ol Judia", "start": 1, "end": 15, "cross_refs_id": ["Rm. 15:26", "Kel. 16:18"], "cross_refs_tp": [] },
         { "title_id": "Titus diutus", "title_tp": "Pol i salim ol man i go long Korin", "start": 16, "end": 24, "cross_refs_id": [], "cross_refs_tp": [] }
       ]
     }
