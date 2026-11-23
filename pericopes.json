@@ -1,144 +1,41 @@
 {
-  "1CO": {
-    "1": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Salam", "title_tp": "Ol Kristen i no ken tok pait na litimapim nem bilong ol yet", "start": 1, "end": 3, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Ucapan syukur", "title_tp": "Pol i tenkyu long God", "start": 4, "end": 9, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Perpecahan dalam jemaat", "title_tp": "Sios i bruk hap hap", "start": 10, "end": 17, "cross_refs_id": ["Kis. 18:24"], "cross_refs_tp": [] },
-        { "title_id": "Hikmat Allah dan hikmat manusia", "title_tp": "Krais em i strong bilong God", "start": 18, "end": 31, "cross_refs_id": ["Yes. 29:14; Ayb. 12:17; Yes. 19:12, 33:18, 44:25"], "cross_refs_tp": [] }
-      ]
-    },
-    "2": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "", "title_tp": "Pol i tok long bilip bilong ol Korin", "start": 1, "end": 5, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Hikmat yang benar", "title_tp": "Spirit bilong God i givim gutpela tingting na save long yumi", "start": 6, "end": 16, "cross_refs_id": ["Yes. 64:4; Yes. 40:13"], "cross_refs_tp": [] }
-      ]
-    },
-    "3": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Perselisihan", "title_tp": "Wokman bilong sios em i wokman bilong God", "start": 1, "end": 9, "cross_refs_id": ["Ibr. 5:12-13; 1Kor. 1:12; Kis. 18:4-11, 24-28"], "cross_refs_tp": [] },
-        { "title_id": "Dasar dan bangunan", "title_tp": "Wokman bilong sios em i olsem kamda", "start": 10, "end": 15, "cross_refs_id": ["1Kor. 6:19; 2Kor. 6:16; Ayb. 5:13; Mzm. 94:11"], "cross_refs_tp": [] },
-        { "title_id": "Dasar dan bangunan", "title_tp": "Yupela i haus bilong God yet", "start": 16, "end": 17, "cross_refs_id": ["1Kor. 6:19; 2Kor. 6:16; Ayb. 5:13; Mzm. 94:11"], "cross_refs_tp": [] },
-        { "title_id": "Dasar dan bangunan", "title_tp": "Yumi no ken litimapim nem bilong ol man", "start": 18, "end": 23, "cross_refs_id": ["1Kor. 6:19; 2Kor. 6:16; Ayb. 5:13; Mzm. 94:11"], "cross_refs_tp": [] }
-      ]
-    },
-    "4": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Tuhan adalah satu-satunya hakim", "title_tp": "Bikpela yet i save skelim wokman bilong en", "start": 1, "end": 5, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Rendahkanlah dirimu", "title_tp": "Ol Korin i litimapim nem bilong ol yet", "start": 6, "end": 13, "cross_refs_id": ["1Kor. 11:1; Flp. 3:17; Ro 12:3; 1Kor. 1:12, 3:4, 3:21; Lu 12:42; 1Kor. 3:8; Ga 6:4-5; KTH 22:12; 1Kor. 1:12, 3:4-6, 2Ko 4:5, 4:15; Ro 8:36; 1Kor. 15:30-31, 2Ko 6:9, Hi 10:33; Jo 3:27, Ro 12:6, Je 1:17, 1Pi 4:10; KTH 3:17, 3:21; Ap 23:2, Ro 8:35, 2Ko 11:23-27, Fl 4:12; Sng 109:28, Mt 5:44, Ap 18:3, 1Ko 9:14-15, 1Te 2:9, 2Te 3:8, 1Ti 4:10; Kra 3:45"], "cross_refs_tp": [] },
-        { "title_id": "Rendahkanlah dirimu", "title_tp": "Pol i laik bai ol Korin i mas bihainim pasin bilong en", "start": 14, "end": 21, "cross_refs_id": ["1Kor. 11:1; Flp. 3:17; Ro 12:3; 1Kor. 1:12, 3:4, 3:21; Lu 12:42; 1Kor. 3:8; Ga 6:4-5; KTH 22:12; 1Kor. 1:12, 3:4-6, 2Ko 4:5, 4:15; Ro 8:36; 1Kor. 15:30-31, 2Ko 6:9, Hi 10:33; Jo 3:27, Ro 12:6, Je 1:17, 1Pi 4:10; KTH 3:17, 3:21; Ap 23:2, Ro 8:35, 2Ko 11:23-27, Fl 4:12; Sng 109:28, Mt 5:44, Ap 18:3, 1Ko 9:14-15, 1Te 2:9, 2Te 3:8, 1Ti 4:10; Kra 3:45"], "cross_refs_tp": [] }
-      ]
-    },
+  "2CO": {
     "5": {
       "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "Dosa dalam jemaat", "title_tp": "Pasin pamuk i stap namel long ol Korin", "start": 1, "end": 5, "cross_refs_id": ["Ul. 22:30"], "cross_refs_tp": [] },
-        { "title_id": "Dosa dalam jemaat", "title_tp": "Ol Korin i mas rausim man i mekim pasin nogut", "start": 6, "end": 13, "cross_refs_id": ["Gal. 5:9; Kel. 12:5; Kel. 13:7; Ul. 16:3; Mt. 18:17; 2Kor. 6:14; Ef. 5:11; 2Te. 3:14; Jo. 17:15; 1Ko. 1:20, 10:27; Mt. 18:17; Ro. 16:17; 2Te. 3:6; Ta. 3:10; 2Jo. 1:10; Mk. 4:11; 1Ko. 6:1-4; Kl. 4:5; 1Te. 4:12; 1Ti. 3:7; Lo. 13:5, 17:7, 21:21, 22:21-24"], "cross_refs_tp": [] }
+        { "title_id": "", "title_tp": "", "start": 1, "end": 10, "cross_refs_id": [], "cross_refs_tp": [] },
+        { "title_id": "Pelayanan untuk pendamaian", "title_tp": "Yumi gat wok bilong helpim ol man long kamap wanbel wantaim God", "start": 11, "end": 21, "cross_refs_id": ["Rm. 14:10"], "cross_refs_tp": [] }
       ]
     },
     "6": {
       "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "Mencari keadilan pada orang-orang yang tidak beriman", "title_tp": "Ol Kristen i no ken kotim ol arapela manmeri bilong sios", "start": 1, "end": 11, "cross_refs_id": ["1Kor. 10:23"], "cross_refs_tp": [] },
-        { "title_id": "Nasihat terhadap percabulan", "title_tp": "Bodi bilong yumi em i haus bilong Holi Spirit", "start": 12, "end": 20, "cross_refs_id": ["1Kor. 10:23; Kej. 2:24; 1Kor. 3:16; 2Kor. 6:16"], "cross_refs_tp": [] }
+        { "title_id": "", "title_tp": "Ol aposel i karim planti hevi long wok bilong ol", "start": 1, "end": 13, "cross_refs_id": [], "cross_refs_tp": [] },
+        { "title_id": "Paulus dalam pelayanannya", "title_tp": "", "start": 1, "end": 10, "cross_refs_id": [], "cross_refs_tp": [] },
+        { "title_id": "Jangan ada lagi noda kekafiran", "title_tp": "", "start": 11, "end": 13, "cross_refs_id": [], "cross_refs_tp": [] },
+        { "title_id": "", "title_tp": "Yumi stap haus bilong God", "start": 14, "end": 18, "cross_refs_id": [], "cross_refs_tp": [] }
       ]
     },
     "7": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
+      "theme_id": "",
+      "theme_tp": "Ol Korin i mas redi long givim ol mani samting bilong helpim ol Kristen i stap long Judia",
+      "theme_range_id": "",
+      "theme_range_tp": "Sapta 8-9",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "Tentang perkawinan", "title_tp": "Pol i tok long pasin bilong marit", "start": 1, "end": 16, "cross_refs_id": ["Mat. 5:32, 19:9; Mrk. 10:11-12; Luk. 16:18"], "cross_refs_tp": [] },
-        { "title_id": "Hidup dalam keadaan seperti waktu dipanggil Allah", "title_tp": "Yumi mas i stap long kain laip God i makim bilong yumi", "start": 17, "end": 24, "cross_refs_id": [], "cross_refs_tp": [] },
-        { "title_id": "Hidup dalam keadaan seperti waktu dipanggil Allah", "title_tp": "Pol i givim tok long ol manmeri i no marit", "start": 25, "end": 40, "cross_refs_id": [], "cross_refs_tp": [] }
+        { "title_id": "", "title_tp": "", "start": 1, "end": 1, "cross_refs_id": [], "cross_refs_tp": [] },
+        { "title_id": "Sukacita sesudah dukacita", "title_tp": "Ol Korin i tanim bel na Pol i amamas tru", "start": 2, "end": 16, "cross_refs_id": ["2Kor. 2:13"], "cross_refs_tp": [] }
       ]
     },
     "8": {
       "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
       "mid_themes": [],
       "pericopes": [
-        { "title_id": "Tentang persembahan berhala", "title_tp": "Pol i tok long abus ol i bin ofaim long ol giaman god", "start": 1, "end": 13, "cross_refs_id": [], "cross_refs_tp": [] }
-      ]
-    },
-    "9": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Hak dan kewajiban rasul", "title_tp": "Pol i amamas long em i no kisim pe bilong mekim wok aposel", "start": 1, "end": 18, "cross_refs_id": ["Ul. 25:4; 1Tim. 5:18; Rm. 15:27; Ul. 18:1; Mat. 10:10; Luk. 10:7"], "cross_refs_tp": [] },
-        { "title_id": "Hak dan kewajiban rasul", "title_tp": "Pol i stap olsem wokboi bilong olgeta manmeri", "start": 19, "end": 23, "cross_refs_id": ["Ul. 25:4; 1Tim. 5:18; Rm. 15:27; Ul. 18:1; Mat. 10:10; Luk. 10:7"], "cross_refs_tp": [] },
-        { "title_id": "Hak dan kewajiban rasul", "title_tp": "Yumi mas ran strong na kisim prais", "start": 24, "end": 27, "cross_refs_id": ["Ul. 25:4; 1Tim. 5:18; Rm. 15:27; Ul. 18:1; Mat. 10:10; Luk. 10:7"], "cross_refs_tp": [] }
-      ]
-    },
-    "10": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Israel sebagai suatu peringatan", "title_tp": "Nogut yumi pundaun long traim", "start": 1, "end": 13, "cross_refs_id": ["Kel. 13:21-22, 14:22-29; Kel. 16:35; Kel. 17:6; Bil. 20:11; Bil. 14:29-30; Bil. 11:4"], "cross_refs_tp": [] },
-        { "title_id": "Jauhilah penyembahan berhala!", "title_tp": "Yumi no ken lotu long God na long ol spirit nogut tu", "start": 14, "end": 22, "cross_refs_id": ["Bil. 25:1-18; Bil. 21:5-6; Bil. 16:41-49; Mat. 26:26-28; Mrk. 14:22-24; Luk. 22:19-20; Im. 7:6; Ul. 32:17"], "cross_refs_tp": [] },
-        { "title_id": "Kebebasan Kristen", "title_tp": "Oltaim yumi mas litimapim nem bilong God", "start": 23, "end": 33, "cross_refs_id": ["1Kor. 6:12; Mzm. 24:1; Lu. 10:8; 1Kor. 8:7; Ro. 14:6; 1Ti. 4:3-4; Ro. 14:13; 1Kor. 8:13; 2Ko. 6:3; 1Ti. 3:5"], "cross_refs_tp": [] }
-      ]
-    },
-    "11": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Hiasan kepala wanita", "title_tp": "Pol i tok long pasin bilong karamapim het", "start": 2, "end": 16, "cross_refs_id": ["Kej. 1:26-27; Kej. 2:18-23; 1Ti. 2:13"], "cross_refs_tp": [] },
-        { "title_id": "Kebiasaan-kebiasaan yang salah dalam perjamuan malam", "title_tp": "Ol Korin i no mekim stretpela pasin long kaikai bilong Bikpela", "start": 17, "end": 22, "cross_refs_id": ["1Kor. 1:10-12, 3:3; Lo. 13:3; 1Jo. 2:19; Je. 2:5-6"], "cross_refs_tp": [] },
-        { "title_id": "Kebiasaan-kebiasaan yang salah dalam perjamuan malam", "title_tp": "Bikpela Jisas i bin givim bret na kap wain long ol disaipel", "start": 23, "end": 26, "cross_refs_id": ["1Kor. 1:10-12, 3:3; Lo. 13:3; 1Jo. 2:19; Je. 2:5-6"], "cross_refs_tp": [] },
-        { "title_id": "Kebiasaan-kebiasaan yang salah dalam perjamuan malam", "title_tp": "Yumi mas skelim gut bel bilong yumi na kisim kaikai bilong Bikpela", "start": 27, "end": 34, "cross_refs_id": ["1Kor. 1:10-12, 3:3; Lo. 13:3; 1Jo. 2:19; Je. 2:5-6"], "cross_refs_tp": [] }
-      ]
-    },
-    "12": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Rupa-rupa karunia, tetapi satu Roh", "title_tp": "Pol i tok long ol kain kain presen bilong Holi Spirit", "start": 1, "end": 11, "cross_refs_id": ["Rm. 12:6-8"], "cross_refs_tp": [] },
-        { "title_id": "Banyak anggota, tetapi satu tubuh", "title_tp": "Yumi olgeta yumi stap olsem ol hap bilong wanpela bodi", "start": 12, "end": 27, "cross_refs_id": ["Rm. 12:4-5; Ef. 4:11"], "cross_refs_tp": [] },
-        { "title_id": "Banyak anggota, tetapi satu tubuh", "title_tp": "Yumi mas givim bel bilong yumi long ol arapela manmeri", "start": 28, "end": 31, "cross_refs_id": ["Rm. 12:4-5; Ef. 4:11"], "cross_refs_tp": [] }
-      ]
-    },
-    "13": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Kasih", "title_tp": "Pasin bilong givim bel bilong yumi long ol arapela", "start": 1, "end": 13, "cross_refs_id": ["Mat. 17:20, 21:21; Mrk. 11:23"], "cross_refs_tp": ["Mt 17.20, 21.21, Mk 11.23"] }
-      ]
-    },
-    "14": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Sekali lagi tentang karunia Roh", "title_tp": "Yupela i mas laikim tumas long autim tok bilong God", "start": 1, "end": 25, "cross_refs_id": ["Yes. 28:11-12"], "cross_refs_tp": ["Ais 28.11-12"] },
-        { "title_id": "Peraturan dalam pertemuan Jemaat", "title_tp": "Olgeta wok bilong lotu i mas kamap stret", "start": 26, "end": 40, "cross_refs_id": ["1Kor. 1:16; 1Kor. 11:3, 14:40; Kl. 3:18; 1Ti. 2:11-12; Ta. 2:5; 1Pi. 3:1"], "cross_refs_tp": ["1 Ko 11.3, 14.40, Kl 3.18, 1 Ti 2.11-12, Ta 2.5, 1 Pi 3.1"] }
-      ]
-    },
-    "15": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Kebangkitan Kristus", "title_tp": "Krais i dai pinis na i kirap bek", "start": 1, "end": 11, "cross_refs_id": ["Yes. 53:5-12; Mzm. 16:8-10; Mat. 12:40; Kis. 2:24-32; Mat. 28:16-17; Mrk. 16:14; Luk. 24:34-36; Yoh. 20:19; Kis. 9:3-6; Kis. 8:3"], "cross_refs_tp": ["Sng 22.15, Ais 53.5-12, Dan 9.26, Sek 13.7, 1 Ko 11.2, 11.23, Ga 1.12", "Sng 16.8-10, Mt 12.40, Lu 24.26, 24.46, Ap 2.24-32, 13.33-35", "Mt 28.16-17, Mk 16.14, Lu 24.34-36, Jo 20.19", "Ap 9.3-6, 22.14, 22.18, 1 Ko 9.1", "Ap 8.3, 9.1, Ga 1.13, Ef 3.8, 1 Ti 1.13-15"] },
-        { "title_id": "Kebangkitan kita", "title_tp": "Bihain olgeta man i dai pinis ol bai i kirap bek", "start": 12, "end": 34, "cross_refs_id": ["Ap. 1:22, 2:24-32, 4:10, 4:33, 5:32, 13:30; Mzm. 110:1; Mzm. 8:7; Yes. 22:13"], "cross_refs_tp": ["Ap 26.23, 1 Ko 15.23, Kl 1.18, 1 Pi 1.3, KTH 1.5", "Jo 11.25, Ro 5.12, 5.17-18, 6.23", "1 Te 4.15-17, KTH 20.5", "Sng 110.1, Mt 22.44, Ap 2.34-35, Hi 1.13", "2 Ti 1.10, KTH 20.14, 21.4", "Sng 8.6, Mt 28.18, Hi 2.8, 1 Pi 3.22", "Ro 8.36, 2 Ko 11.26, Ga 5.11", "Sav 2.24, Ais 22.13, Lu 12.19-20, 2 Ko 1.8, 4.10-11", "Ap 26.8, Ro 13.11, 1 Ko 6.5, Ef 5.14, 1 Te 4.5"] },
-        { "title_id": "Kebangkitan tubuh", "title_tp": "Bodi i kirap bek em i narakain", "start": 35, "end": 58, "cross_refs_id": ["Kej. 2:7; 1Tes. 4:15-17; Yes. 25:8; Hos. 13:14"], "cross_refs_tp": ["Jo 12.24, 1 Jo 3.2", "Jo 12.24", "Stt 1.11", "Dan 12.3, Mt 13.43", "Fl 3.20-21", "Stt 2.7, Jo 6.33, 6.39-40, 6.54, 6.63, 2 Ko 3.4-6, 3.17, Fl 3.21", "Stt 2.7, 3.19, Jo 3.13, 3.31", "Ro 8.29, 2 Ko 3.18, Fl 3.21, 1 Jo 3.2", "Mt 16.17, Jo 3.3-5, 1 Ko 6.13", "Fl 3.21", "1 Te 4.15-17", "Sek 9.14, Mt 24.31, 1 Te 4.16", "2 Ko 5.4", "Ais 25.8, Hi 2.14-15, KTH 20.14", "Hos 13.14", "Ro 4.15, 5.13, 6.14, 7.5, 7.13", "Ro 7.25, 1 Jo 5.4-5", "2 Sto 15.7, 1 Ko 3.8, 2 Pi 3.14, KTH 14.13"] }
-      ]
-    },
-    "16": {
-      "theme_id": "", "theme_tp": "", "theme_range_id": "", "theme_range_tp": "",
-      "mid_themes": [],
-      "pericopes": [
-        { "title_id": "Bantuan untuk Jemaat di Yerusalem", "title_tp": "Pol i tok long mani ol i laik salim i go long Jerusalem", "start": 1, "end": 4, "cross_refs_id": ["Rm. 15:25-26"], "cross_refs_tp": ["Ap 24.17, Ro 15.25-26, 2 Ko 8.1-9, Ga 2.10"] },
-        { "title_id": "Rencana Paulus", "title_tp": "Pol i laik i go lukim ol Korin", "start": 5, "end": 9, "cross_refs_id": ["Kis. 19:21; Im. 23:15-21; Ul. 16:9-11; Kis. 19:8-10"], "cross_refs_tp": ["Ro 15.24, Ta 3.12", "Wkp 23.15-21, Lo 16.9-11", "Ap 19.8-10, 2 Ko 2.12, Kl 4.3, KTH 3.8"] },
-        { "title_id": "Beberapa pemberitahuan", "title_tp": "Sampela tok moa", "start": 10, "end": 18, "cross_refs_id": ["1Kor. 4:17; 1Kor. 1:16"], "cross_refs_tp": ["1 Ko 4.17", "1 Ko 1.12, 3.6", "Sng 31.24, 1 Ko 15.1, Ef 6.10, Fl 1.27, Kl 1.11, 1 Te 5.6", "1 Te 5.12", "Fl 2.29"] },
-        { "title_id": "Salam", "title_tp": "Salam", "start": 19, "end": 24, "cross_refs_id": ["Kis. 18:2; 1Kor. 1:16"], "cross_refs_tp": ["Ap 18.2, 18.18, 18.26, Ro 16.5, 2 Ti 1.15", "Ro 16.16, 2 Ko 13.12", "Kl 4.18, 2 Te 3.17", "Ga 1.8-9"] }
+        { "title_id": "Pelayanan kasih", "title_tp": "Ol Kristen i bungim mani bilong helpim ol Judia", "start": 1, "end": 15, "cross_refs_id": ["Rm. 15:26; Kel. 16:18"], "cross_refs_tp": [] },
+        { "title_id": "Titus diutus", "title_tp": "Pol i salim ol man i go long Korin", "start": 16, "end": 24, "cross_refs_id": [], "cross_refs_tp": [] }
       ]
     }
   }
-  }
+}
